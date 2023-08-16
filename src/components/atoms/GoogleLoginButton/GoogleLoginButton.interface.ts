@@ -6,4 +6,5 @@ export interface IGoogleLoginButtonProps {
     onSuccess: any;
     onError: any;
     className?: string;
+    children?: React.ReactNode;
 }

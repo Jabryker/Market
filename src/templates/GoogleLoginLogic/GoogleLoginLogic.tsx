@@ -1,4 +1,5 @@
-import {GoogleOAuthProvider, CredentialResponse} from "@react-oauth/google";
+import { FC, ReactNode } from "react";
+import { GoogleOAuthProvider, CredentialResponse } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import GoogleLoginButton from "../../components/atoms/GoogleLoginButton/GoogleLoginButton";
 import AuthController from "../../controllers/AuthController";
@@ -12,7 +13,7 @@ interface IDecodedToken {
     picture: string;
 }
 
-const GoogleLoginLogic = () => {
+const GoogleLoginLogic: FC<{ children: ReactNode }> = ({ children }) => {
   const handleGoogleLoginSuccess = (credentialResponse: CredentialResponse) => {
     const accessToken = credentialResponse.credential;
     if (accessToken) {
@@ -32,6 +33,7 @@ const GoogleLoginLogic = () => {
       console.log("Access token missing");
     }
   };
+
   const handleGoogleLoginError = () => {
     console.log("Login Failed");
   };
@@ -41,7 +43,9 @@ const GoogleLoginLogic = () => {
       <GoogleLoginButton
         onSuccess={handleGoogleLoginSuccess}
         onError={handleGoogleLoginError}
-      />
+      >
+        {children}
+      </GoogleLoginButton>
     </GoogleOAuthProvider>
   );
 };
