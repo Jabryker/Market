@@ -6,18 +6,19 @@ import {ISellerData} from "./interfaces/SellerData.interface";
 const baseApiUrl = process.env.REACT_APP_API_URL;
 
 const AuthController = {
-  login: async (loginData: ILoginData, rememberMe: boolean) => {
+  login: async (loginData: ILoginData) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/auth/token/`, loginData);
-      const { refresh, access } = responseLogin.data;
+      // const { refresh, access } = responseLogin.data;
 
-      if (rememberMe) {
-        localStorage.setItem("refresh", refresh);
-        localStorage.setItem("access", access);
-      } else {
-        sessionStorage.setItem("refresh", refresh);
-        sessionStorage.setItem("access", access);
-      }
+      // if (rememberMe) {
+      //   localStorage.setItem("refresh", refresh);
+      //   localStorage.setItem("access", access);
+      // } else {
+      //   sessionStorage.setItem("refresh", refresh);
+      //   sessionStorage.setItem("access", access);
+      // }
+      console.log(responseLogin);
     } catch (error) {
       console.error("Error", error);
     }
@@ -47,6 +48,15 @@ const AuthController = {
 
     const responseSeller: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/accounts/sellers/`, payload);
     console.log(responseSeller);
+  },
+  googleAuth: async (googleData: any) => {
+    try {
+      console.log("google data", googleData);
+      const responseGoogleAuth: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/accounts/users/`, googleData);
+      console.log(responseGoogleAuth);
+    } catch (error) {
+      console.error("Error", error);
+    }
   },
 };
 

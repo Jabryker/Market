@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Input from "../../atoms/Input/Input";
+import CheckBox from "../../atoms/CheckBox/CheckBox";
 import { ILoginFormFieldsProps } from "./LoginFormFields.interface";
 
 const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
@@ -21,6 +22,7 @@ const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
         error={errors.password?.message}
         register={register}
       />
+      <CheckBox name="rememberMe" register={register} error={errors.rememberMe?.message} label="Запомнить меня" />
     </>
   );
 };
