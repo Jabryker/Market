@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import {Button} from "../../atoms/Button/Button";
 import LoginFormFields from "../../molecules/LoginFormFields/LoginFormFields";
 import { ILoginFormOrganismProps } from "./LoginFormOrganism.interface";
 
@@ -9,7 +10,7 @@ const LoginFormOrganism: FC<ILoginFormOrganismProps> = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <LoginFormFields register={register} errors={errors} />
-      <button type="submit">Login</button>
+      <Button type="submit">Войти</Button>
     </form>
   );
 };

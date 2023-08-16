@@ -1,5 +1,6 @@
 import {FC} from "react";
 import {useForm} from "react-hook-form";
+import {Button} from "../../atoms/Button/Button";
 import SellerRegistrationFormFields from "../../molecules/SellerRegistrationFormFields/SellerRegistrationFormFields";
 import {ISellerRegistrationFormOrganismProps} from "./SellerRegistrationFormOrganism.interface";
 
@@ -9,7 +10,7 @@ const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> =
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <SellerRegistrationFormFields register={register} errors={errors} />
-      <button type="submit">Register Seller</button>
+      <Button type="submit">Register Seller</Button>
     </form>
   );
 };
