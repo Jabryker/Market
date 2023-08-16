@@ -6,20 +6,18 @@ import {ISellerData} from "./interfaces/SellerData.interface";
 const baseApiUrl = process.env.REACT_APP_API_URL;
 
 const AuthController = {
-  login: async (loginData: ILoginData) => {
+  login: async (loginData: ILoginData, rememberMe: boolean) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/auth/token/`, loginData);
-      console.log(responseLogin);
       const { refresh, access } = responseLogin.data;
-      console.log(refresh, access);
 
-      // if (rememberMe) {
-      //   localStorage.setItem("refresh", refresh);
-      //   localStorage.setItem("access", access);
-      // } else {
-      //   sessionStorage.setItem("refresh", refresh);
-      //   sessionStorage.setItem("access", access);
-      // }
+      if (rememberMe) {
+        localStorage.setItem("refresh", refresh);
+        localStorage.setItem("access", access);
+      } else {
+        sessionStorage.setItem("refresh", refresh);
+        sessionStorage.setItem("access", access);
+      }
     } catch (error) {
       console.error("Error", error);
     }
