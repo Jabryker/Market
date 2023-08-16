@@ -7,6 +7,6 @@ export const Button: FC<IButtonProps> = ({ children, type }) => {
     <button
       type={type}
       className={styles.formBtn}
-    >{children}</button>
+    > <span className={styles.buttonContent}>{children}</span></button>
   );
 };
