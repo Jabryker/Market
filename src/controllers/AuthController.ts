@@ -50,9 +50,15 @@ const AuthController = {
     console.log(responseSeller);
   },
   googleAuth: async (googleData: any) => {
+    const googlePayload = {
+      email: googleData.email,
+      username: googleData.name,
+      picture: googleData.picture,
+    };
+    console.log(googlePayload);
     try {
       console.log("google data", googleData);
-      const responseGoogleAuth: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/accounts/users/`, googleData);
+      const responseGoogleAuth: AxiosResponse = await axios.post(`${baseApiUrl}/api/v1/accounts/users/`, googlePayload);
       console.log(responseGoogleAuth);
     } catch (error) {
       console.error("Error", error);

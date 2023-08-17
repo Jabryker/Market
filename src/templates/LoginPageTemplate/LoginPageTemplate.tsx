@@ -1,6 +1,5 @@
 import { FC } from "react";
 import HelpText from "../../components/atoms/HelpText/HelpText";
-import GoogleLoginLogic from "../GoogleLoginLogic/GoogleLoginLogic";
 import LoginFormOrganism from "../../components/organisms/LoginFormOrganism/LoginFormOrganism";
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
 import AuthController from "../../controllers/AuthController";
@@ -17,7 +16,6 @@ const LoginPageTemplate: FC = () => {
     <div className={styles.loginPage}>
       <h2 className={styles.loginPageTitle}>Войти</h2>
       <LoginFormOrganism onSubmit={handleLoginSubmit} />
-      <GoogleLoginLogic>Войти</GoogleLoginLogic>
       <HelpText linkTo="/registration" linkText="Создать аккаунт">Нет ещё аккаунта?</HelpText>
     </div>
   );
