@@ -4,7 +4,7 @@ import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import i18n from "./i18n";
-import "./assets/styles/global.css";
+import "./assets/styles/global.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
