@@ -1,6 +1,5 @@
-.selectСontainer {
+.selectContainer {
   width: 600px;
-  height: 65px;
   margin-bottom: 10px;
 }
 
@@ -10,23 +9,12 @@
 
 .selectDropdown {
   width: 100%;
-  padding: 8px;
+  height: 65px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none; 
-
-  background-image: url("../../../assets/images/auth/arrowDown.svg");
-  background-size: 10px;
-  background-position: right center;
-  background-repeat: no-repeat;
-  padding-right: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   padding: 5px 25px 5px 5px;
-
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid rgba(131, 131, 131, 0.30);
+  background: #EFF0F2;
   &:focus {
     outline: none;
     border-color: #007bff;
