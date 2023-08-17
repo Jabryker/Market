@@ -1,0 +1,20 @@
+.SellerRegistration {
+  width: 100%;
+  height: 100vh;
+
+  &Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &TitleText {
+    margin-top: 75px;
+
+    color: #373737;
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 600;
+  }
+}

@@ -17,7 +17,7 @@ const LoginPageTemplate: FC = () => {
     <div className={styles.loginPage}>
       <h2 className={styles.loginPageTitle}>Войти</h2>
       <LoginFormOrganism onSubmit={handleLoginSubmit} />
-      <GoogleLoginLogic />
+      <GoogleLoginLogic>Войти</GoogleLoginLogic>
       <HelpText linkTo="/registration" linkText="Создать аккаунт">Нет ещё аккаунта?</HelpText>
     </div>
   );

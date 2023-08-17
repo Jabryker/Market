@@ -18,7 +18,7 @@ const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ regist
 
   return (
     <>
-      <Select label="Select Type" name="type" options={["Physical", "Legal"]} register={formRegister} />
+      <Select label="Продавец" name="type" options={["Physical", "Legal"]} register={formRegister} />
       <Input label="Email" name="email" type="email" register={register} error={errors.email?.message} />
       <Input label="Username" name="username" type="text" register={register} error={errors.username?.message} />
       <Input label="Password" name="password" type="password" register={register} error={errors.password?.message} />
