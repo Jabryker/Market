@@ -1,7 +1,7 @@
 import {FC} from "react";
 import { useForm } from "react-hook-form";
-import GoogleLoginLogic from "../../../templates/GoogleLoginLogic/GoogleLoginLogic";
 import {Button} from "../../atoms/Button/Button";
+import GoogleAuthOrgamism from "../GoogleAuthOrgamism/GoogleAuthOrgamism";
 import BuyerRegistrationFormFields from "../../molecules/BuyerRegistrationFormFields/BuyerRegistrationFormFields";
 import {IBuyerRegistrationFormOrganismProps} from "./BuyerRegistrationFormOrganism.interface";
 
@@ -13,7 +13,7 @@ const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismProps> = (
       <BuyerRegistrationFormFields register={register} errors={errors} />
       <div style={{ marginTop: "48px" }}>
         <Button type="submit">Создать аккаунт</Button>
-        <GoogleLoginLogic>Создать аккаунт</GoogleLoginLogic>
+        <GoogleAuthOrgamism />
       </div>
     </form>
   );
