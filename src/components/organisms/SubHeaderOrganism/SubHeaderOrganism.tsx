@@ -1,17 +1,9 @@
-import React, { FC } from "react";
-// import { Dropdown } from "react-bootstrap";
-// import { useTranslation } from "react-i18next";
+import { FC } from "react";
 import ClockIcon from "../../../assets/images/header/time.svg";
 import WhatsAppIcon from "../../../assets/images/header/whatsapp.svg";
 import styles from "./SubHeaderOrganism.module.scss";
 
 const SubHeaderOrganism: FC = () => {
-  // const { t, i18n } = useTranslation(); // Инициализируем i18n
-  //
-  // const changeLanguage = (lng: string) => {
-  //   i18n.changeLanguage(lng); // Функция для изменения языка
-  // };
-
   return (
     <div className={styles.SubHeaderOrganism}>
       <span className={styles.LeftContent}>
