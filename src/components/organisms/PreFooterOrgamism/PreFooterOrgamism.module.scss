@@ -112,6 +112,9 @@ $background-color: #e6e6e6;
     .paymentIcons,
     .contactIcons {
       font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
