@@ -1,0 +1,25 @@
+.PartnersOrganismWrapper {
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+
+  &Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #373737;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 45px;
+  }
+
+  &Line {
+    width: 338.047px;
+    height: 4px;
+    background: #fb6d56;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
