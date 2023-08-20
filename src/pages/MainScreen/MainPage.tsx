@@ -1,4 +1,4 @@
-import {FC} from "react";
+import { FC } from "react";
 import HeaderOrganism from "../../components/organisms/HeaderOrganism/HeaderOrganism";
 import SubHeaderOrganism from "../../components/organisms/SubHeaderOrganism/SubHeaderOrganism";
 
