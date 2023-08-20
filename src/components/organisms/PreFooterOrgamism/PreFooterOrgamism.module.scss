@@ -1,0 +1,58 @@
+$primary-color: #007bff;
+$secondary-color: #333;
+$background-color: #e6e6e6;
+
+.preFooterContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: $background-color;
+}
+
+.preFooterColumn {
+  flex: 1;
+  padding: 20px;
+  color: $secondary-color;
+}
+
+.preFooterColumn h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.preFooterColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.preFooterColumn li {
+  margin-bottom: 5px;
+}
+
+.preFooterColumn a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #616161;
+  }
+}
+
+.paymentIcons,
+.contactIcons {
+  font-size: 24px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.contactIcons a {
+  color: $secondary-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
