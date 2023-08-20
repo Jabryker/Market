@@ -4,15 +4,19 @@ $background-color: #e6e6e6;
 
 .preFooterContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
   background-color: $background-color;
+
+  width: 100vw;
 }
 
 .preFooterColumn {
   flex: 1;
   padding: 20px;
   color: $secondary-color;
+  text-align: center;
 }
 
 .preFooterColumn h4 {
@@ -54,5 +58,89 @@ $background-color: #e6e6e6;
 
   &:hover {
     color: $primary-color;
+  }
+}
+
+@media (max-width: 280px) {
+  .preFooterContainer {
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .preFooterColumn {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+    text-align: center;
+
+    h4 {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .paymentIcons,
+  .contactIcons {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .preFooterColumn {
+    h4 {
+      font-size: 14px;
+    }
+
+    ul li {
+      margin-bottom: 3px;
+    }
+
+    .paymentIcons,
+    .contactIcons {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .preFooterColumn {
+    h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .paymentIcons,
+    .contactIcons {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .paymentIcons,
+  .contactIcons {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .preFooterContainer {
+    padding: 15px 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .preFooterContainer {
+    padding: 30px 0;
+  }
+
+  .preFooterColumn h4 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .paymentIcons,
+  .contactIcons {
+    font-size: 28px;
   }
 }
