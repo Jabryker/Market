@@ -71,16 +71,35 @@ const AuthController = {
       username: googleData.given_name,
       password: googleData.exp,
     };
-    console.log(googlePayload);
+    // console.log(googlePayload);
+
     try {
-      console.log("google data", googleData);
-      const responseGoogleAuth: AxiosResponse = await axios.post(
-        `${baseApiUrl}/api/v1/accounts/users/`,
-        googlePayload,
+      console.log("Данные Google", googleData);
+
+      // Проверяем, существует ли пользователь с таким email
+      const userExistsResponse = await axios.get(
+        `${baseApiUrl}/api/v1/accounts/check-user-exists/?email=${googleData.email}`,
       );
-      console.log(responseGoogleAuth);
+
+      const userExists = userExistsResponse.data.exists;
+
+      if (userExists) {
+        // Если пользователь существует, выполняем вход
+        const loginResponse: AxiosResponse = await axios.post(
+          `${baseApiUrl}/api/v1/accounts/login/`,
+          googlePayload,
+        );
+        console.log(loginResponse);
+      } else {
+        // Если пользователя нет, выполняем регистрацию
+        const responseGoogleAuth: AxiosResponse = await axios.post(
+          `${baseApiUrl}/api/v1/accounts/users/`,
+          googlePayload,
+        );
+        console.log(responseGoogleAuth);
+      }
     } catch (error) {
-      console.error("Error", error);
+      console.error("Ошибка", error);
     }
   },
 
