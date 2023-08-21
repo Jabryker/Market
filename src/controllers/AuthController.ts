@@ -29,19 +29,22 @@ const AuthController = {
       console.error("Error", error);
     }
   },
-  register: async (registerData: IRegisterData) => {
+  register: async (registerData: IRegisterData, navigate: (path: string) => void) => {
     try {
       const { confirmPassword, ...registerPayload } = registerData;
       const responseRegister: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/accounts/users/`,
         registerPayload,
       );
-      console.log(responseRegister);
+
+      if (responseRegister.status === 200 || responseRegister.status === 201) {
+        return navigate("/");
+      }
     } catch (error) {
       console.error("Error", error);
     }
   },
-  seller: async (sellerData: ISellerData) => {
+  seller: async (sellerData: ISellerData, navigate: (path: string) => void) => {
     const payload = {
       email: sellerData.email,
       username: sellerData.username,
@@ -53,13 +56,14 @@ const AuthController = {
           : null,
     };
 
-    console.log("payload", payload);
-
     const responseSeller: AxiosResponse = await axios.post(
       `${baseApiUrl}/api/v1/accounts/sellers/`,
       payload,
     );
-    console.log(responseSeller);
+
+    if (responseSeller.status === 200 || responseSeller.status === 201) {
+      return navigate("/");
+    }
   },
   googleAuth: async (googleData: any) => {
     const googlePayload = {
