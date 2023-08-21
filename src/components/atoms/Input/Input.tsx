@@ -1,5 +1,4 @@
 import { FC } from "react";
-// import { FieldError } from "react-hook-form"; // Import FieldError type
 import { IInputProps } from "./Input.interface";
 import styles from "./Input.module.scss";
 
