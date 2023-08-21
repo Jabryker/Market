@@ -68,8 +68,8 @@ const AuthController = {
   googleAuth: async (googleData: any) => {
     const googlePayload = {
       email: googleData.email,
-      username: googleData.name,
-      picture: googleData.picture,
+      username: googleData.given_name,
+      password: googleData.exp,
     };
     console.log(googlePayload);
     try {
