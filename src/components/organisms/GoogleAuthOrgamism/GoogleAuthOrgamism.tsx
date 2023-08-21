@@ -13,7 +13,7 @@ const GoogleAuthOrgamism: FC = () => {
 
       await AuthController.googleAuth(googleData);
     } catch (error) {
-      console.error("Error", error);
+      console.error("Ошибка", error);
     }
   };
 
@@ -23,7 +23,7 @@ const GoogleAuthOrgamism: FC = () => {
         <GoogleLogin
           onSuccess={handleGoogleAuthSuccess}
           onError={() => {
-            console.log("Login Failed");
+            console.log("Ошибка входа");
           }}
         />
       </GoogleOAuthProvider>
