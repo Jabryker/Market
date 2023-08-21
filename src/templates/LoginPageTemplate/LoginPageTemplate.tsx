@@ -5,6 +5,7 @@ import LoginFormOrganism from "../../components/organisms/LoginFormOrganism/Logi
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
 import AuthController from "../../controllers/AuthController";
 
+import GoogleAuthOrgamism from "../../components/organisms/GoogleAuthOrgamism/GoogleAuthOrgamism";
 import styles from "./LoginPageTemplate.module.scss";
 
 const LoginPageTemplate: FC = () => {
@@ -18,6 +19,7 @@ const LoginPageTemplate: FC = () => {
     <div className={styles.loginPage}>
       <h2 className={styles.loginPageTitle}>Войти</h2>
       <LoginFormOrganism onSubmit={handleLoginSubmit} />
+      <GoogleAuthOrgamism />
       <HelpText linkTo="/registration" linkText="Создать аккаунт">
         Нет ещё аккаунта?
       </HelpText>
