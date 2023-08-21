@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import HelpText from "../../components/atoms/HelpText/HelpText";
 import LoginFormOrganism from "../../components/organisms/LoginFormOrganism/LoginFormOrganism";
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
@@ -7,8 +8,10 @@ import AuthController from "../../controllers/AuthController";
 import styles from "./LoginPageTemplate.module.scss";
 
 const LoginPageTemplate: FC = () => {
+  const navigate = useNavigate();
+
   const handleLoginSubmit = async (loginData: ILoginData) => {
-    await AuthController.login(loginData);
+    await AuthController.login(loginData, navigate);
   };
 
   return (
