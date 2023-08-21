@@ -1,0 +1,25 @@
+.category {
+  border-radius: 48px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background: #fff;
+
+  &Text {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+  }
+}
+
+.customDropdownToggle {
+  background-color: #eeeded;
+  border-color: #eeeded;
+  color: #373737;
+
+  &::after {
+    color: #fa7d69; /* Set the desired color for the dropdown toggle icon */
+  }
+}
