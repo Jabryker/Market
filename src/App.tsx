@@ -6,6 +6,7 @@ import BuyerRegistrationPageTemplate from "./templates/BuyerRegistrationPageTemp
 import SellerRegistrationPageTemplates from "./templates/SellerRegistrationPageTemplates/SellerRegistrationPageTemplates";
 import PasswordConfirmationScreen from "./pages/PasswordConfirmationScreen/PasswordConfirmationScreen";
 import NotFoundScreen from "./pages/NotFoundScreen/NotFoundScreen";
+import PasswordReset from "./pages/PasswordReset/PasswordReset";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/registration/buyer" element={<BuyerRegistrationPageTemplate />} />
         <Route path="/registration/seller" element={<SellerRegistrationPageTemplates />} />
         <Route path="/confirmation-password" element={<PasswordConfirmationScreen />} />
+        <Route path="/password-reset" element={<PasswordReset />} />
         {/*<Route path="/confirmation-password/:id/:token" element={<PasswordConfirmationScreen />} />*/}
         <Route path="*" element={<NotFoundScreen />} />
       </Routes>
