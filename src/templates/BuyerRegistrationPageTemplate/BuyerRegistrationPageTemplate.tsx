@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import BuyerRegistrationFormOrganism from "../../components/organisms/BuyerRegistrationFormOrganism/BuyerRegistrationFormOrganism";
 import HelpText from "../../components/atoms/HelpText/HelpText";
 import AuthController from "../../controllers/AuthController";
@@ -6,9 +7,9 @@ import { IRegisterData } from "../../controllers/interfaces/RegisterData.interfa
 import styles from "./BuyerRegistrationPageTemplate.module.scss";
 
 const BuyerRegistrationPageTemplate: FC = () => {
+  const navigate = useNavigate();
   const handleBuyerSubmit = (registerData: IRegisterData) => {
-    // console.log("Submitted login data:", data);
-    AuthController.register(registerData);
+    AuthController.register(registerData, navigate);
   };
 
   return (
