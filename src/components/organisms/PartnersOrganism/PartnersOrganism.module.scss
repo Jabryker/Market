@@ -1,10 +1,18 @@
 .PartnersOrganismWrapper {
   width: 100vw;
+  height: 50vh;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &Header {
+    margin-bottom: 150px;
+  }
 
   &Title {
+    // margin-bottom: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +28,11 @@
     height: 4px;
     background: #fb6d56;
     margin: 0 auto;
-    margin-bottom: 20px;
+  }
+
+  &PartnersList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }
