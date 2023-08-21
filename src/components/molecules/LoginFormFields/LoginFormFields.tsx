@@ -22,7 +22,12 @@ const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
         error={errors.password?.message}
         register={register}
       />
-      <CheckBox name="rememberMe" register={register} error={errors.rememberMe?.message} label="Запомнить меня" />
+      <CheckBox
+        name="rememberMe"
+        register={register}
+        error={errors.rememberMe?.message}
+        label="Запомнить меня"
+      />
     </>
   );
 };

@@ -14,7 +14,7 @@ const PasswordConfirmationScreen: FC = () => {
         <button>
           <span>Отправить письмо ещё раз</span>
         </button>
-        <HelpText linkTo="/help" linkText="Свяжитесь с нами">
+        <HelpText linkTo="/" linkText="Свяжитесь с нами">
           Есть жалобы?
         </HelpText>
       </div>

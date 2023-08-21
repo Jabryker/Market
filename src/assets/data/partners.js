@@ -1,13 +1,23 @@
 const partners = [
   {
     id: 1,
-    logoUrl: "URL_TO_LOGO_1",
-    description: "Description of Partner 1",
+    logoUrl: require("../images/partners/mountain.png"),
+    description: "Mountain",
   },
   {
     id: 2,
-    logoUrl: "URL_TO_LOGO_2",
-    description: "Description of Partner 2",
+    logoUrl: require("../images/partners/mochaccino.png"),
+    description: "Mochaccino",
+  },
+  {
+    id: 3,
+    logoUrl: require("../images/partners/steckhouse.png"),
+    description: "Steckhouse",
+  },
+  {
+    id: 4,
+    logoUrl: require("../images/partners/deerbend.png"),
+    description: "DEERBEND",
   },
 ];
 
