@@ -8,8 +8,8 @@ import styles from "./SellerRegistrationPageTemplates.module.scss";
 
 const SellerRegistrationPageTemplates: FC = () => {
   const navigate = useNavigate();
-  const handleSellerSubmit = (sellerData: ISellerData, navigate) => {
-    AuthController.seller(sellerData);
+  const handleSellerSubmit = (sellerData: ISellerData) => {
+    AuthController.seller(sellerData, navigate);
   };
 
   return (
