@@ -83,6 +83,57 @@ const AuthController = {
       console.error("Error", error);
     }
   },
+
+  requestPasswordReset: async (email: string) => {
+    try {
+      const response: AxiosResponse = await axios.post(
+        `${baseApiUrl}/api/v1/accounts/password-reset/`,
+        { email },
+      );
+
+      if (response.status === 200) {
+        console.log("Password reset email sent successfully");
+        return true;
+      }
+    } catch (error) {
+      console.error("Error requesting password reset", error);
+    }
+    return false;
+  },
+
+  validatePasswordResetToken: async (token: string) => {
+    try {
+      const response: AxiosResponse = await axios.post(
+        `${baseApiUrl}/api/v1/accounts/password-reset/validate_token/`,
+        { token },
+      );
+
+      if (response.status === 200) {
+        console.log("Password reset token validated successfully");
+        return true;
+      }
+    } catch (error) {
+      console.error("Error validating password reset token", error);
+    }
+    return false;
+  },
+
+  confirmPasswordReset: async (token: string, password: string) => {
+    try {
+      const response: AxiosResponse = await axios.post(
+        `${baseApiUrl}/api/v1/accounts/password-reset/confirm/`,
+        { token, password },
+      );
+
+      if (response.status === 200) {
+        console.log("Password reset confirmed successfully");
+        return true;
+      }
+    } catch (error) {
+      console.error("Error confirming password reset", error);
+    }
+    return false;
+  },
 };
 
 export default AuthController;
