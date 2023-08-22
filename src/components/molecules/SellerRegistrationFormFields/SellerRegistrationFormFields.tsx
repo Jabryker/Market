@@ -4,7 +4,10 @@ import { Input, Select } from "../../atoms/";
 import styles from "../BuyerRegistrationFormFields/BuyerRegistrationFormFields.module.scss";
 import { ISellerRegistrationFormProps } from "./SellerRegistrationFormFields.interface";
 
-const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ register, errors }) => {
+export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
+  register,
+  errors,
+}) => {
   const { control, register: formRegister } = useForm({
     defaultValues: {
       type: "Physical",
@@ -55,8 +58,8 @@ const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ regist
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-          <div className={styles.ErrorMessage}>Passwords do not match</div>
-        )}
+        <div className={styles.ErrorMessage}>Passwords do not match</div>
+      )}
       <Input label="INN" name="inn" type="number" register={register} error={errors.inn?.message} />
       {userType === "Legal" && (
         <Input
@@ -70,7 +73,3 @@ const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ regist
     </>
   );
 };
-
-export default SellerRegistrationFormFields;
-
-// TODO: add placeholder
