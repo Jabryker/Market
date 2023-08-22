@@ -1,7 +1,5 @@
 import { toast } from "react-toastify";
 
-const displaySuccessToast = (message: string) => {
+export const displaySuccessToast = (message: string) => {
   toast.success(message);
 };
-
-export default displaySuccessToast;
