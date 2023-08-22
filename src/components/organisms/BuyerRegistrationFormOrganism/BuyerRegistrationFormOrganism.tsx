@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../atoms/";
-import GoogleAuthOrgamism from "../GoogleAuthOrgamism/GoogleAuthOrgamism";
-import BuyerRegistrationFormFields from "../../molecules/BuyerRegistrationFormFields/BuyerRegistrationFormFields";
+import { GoogleAuthOrgamism } from "../";
+import { BuyerRegistrationFormFields } from "../../molecules/";
 import { IBuyerRegistrationFormOrganismProps } from "./BuyerRegistrationFormOrganism.interface";
 
-const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismProps> = ({ onSubmit }) => {
+export const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismProps> = ({
+  onSubmit,
+}) => {
   const {
     register,
     handleSubmit,
@@ -21,5 +23,3 @@ const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismProps> = (
     </form>
   );
 };
-
-export default BuyerRegistrationFormOrganism;
