@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/";
 import SellerRegistrationFormFields from "../../molecules/SellerRegistrationFormFields/SellerRegistrationFormFields";
 import { ISellerRegistrationFormOrganismProps } from "./SellerRegistrationFormOrganism.interface";
 
