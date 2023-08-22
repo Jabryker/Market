@@ -1,4 +1,7 @@
 import axios, { AxiosResponse } from "axios";
+import displayErrorToast from "../components/atoms/displayErrorToast/displayErrorToast";
+import displaySuccessToast from "../components/atoms/displaySuccessToast/displaySuccessToast";
+import handleServerError from "./helpers/handleServerError";
 import { ILoginData } from "./interfaces/LoginData.interface";
 import { IRegisterData } from "./interfaces/RegisterData.interface";
 import { ISellerData } from "./interfaces/SellerData.interface";
@@ -22,11 +25,15 @@ const AuthController = {
       //   sessionStorage.setItem("access", access);
       // }
       if (responseLogin.status === 200) {
-        return navigate("/");
+        navigate("/");
+        displaySuccessToast("Logged in successfully");
       }
-      console.log(responseLogin);
     } catch (error) {
-      console.error("Error", error);
+      if (axios.isAxiosError(error)) {
+        handleServerError(error);
+      } else {
+        displayErrorToast("An unknown error occurred. Please try again later.");
+      }
     }
   },
   register: async (registerData: IRegisterData, navigate: (path: string) => void) => {
@@ -38,10 +45,15 @@ const AuthController = {
       );
 
       if (responseRegister.status === 200 || responseRegister.status === 201) {
-        return navigate("/");
+        navigate("/");
+        displaySuccessToast("Registeration in successfully");
       }
     } catch (error) {
-      console.error("Error", error);
+      if (axios.isAxiosError(error)) {
+        handleServerError(error);
+      } else {
+        displayErrorToast("An unknown error occurred. Please try again later.");
+      }
     }
   },
   seller: async (sellerData: ISellerData, navigate: (path: string) => void) => {
@@ -51,9 +63,7 @@ const AuthController = {
       password: sellerData.password,
       INN: sellerData.inn !== undefined ? parseInt(sellerData.inn, 10) : null,
       certificate_number:
-        sellerData.certificate !== undefined
-          ? parseInt(sellerData.certificate, 10) // Преобразуем в числовой тип
-          : null,
+        sellerData.certificate !== undefined ? parseInt(sellerData.certificate, 10) : null,
     };
 
     const responseSeller: AxiosResponse = await axios.post(
@@ -62,7 +72,8 @@ const AuthController = {
     );
 
     if (responseSeller.status === 200 || responseSeller.status === 201) {
-      return navigate("/");
+      navigate("/");
+      displaySuccessToast("Logged in successfully");
     }
   },
   googleAuth: async (googleData: any) => {
@@ -71,7 +82,6 @@ const AuthController = {
       username: googleData.given_name,
       password: googleData.exp,
     };
-    // console.log(googlePayload);
 
     try {
       console.log("Данные Google", googleData);
@@ -89,7 +99,7 @@ const AuthController = {
           `${baseApiUrl}/api/v1/accounts/login/`,
           googlePayload,
         );
-        console.log(loginResponse);
+        displaySuccessToast("Logged in successfully");
       } else {
         // Если пользователя нет, выполняем регистрацию
         const responseGoogleAuth: AxiosResponse = await axios.post(
@@ -99,7 +109,11 @@ const AuthController = {
         console.log(responseGoogleAuth);
       }
     } catch (error) {
-      console.error("Ошибка", error);
+      if (axios.isAxiosError(error)) {
+        handleServerError(error);
+      } else {
+        displayErrorToast("An unknown error occurred. Please try again later.");
+      }
     }
   },
 
@@ -112,10 +126,15 @@ const AuthController = {
 
       if (response.status === 200) {
         console.log("Password reset email sent successfully");
+
         return true;
       }
     } catch (error) {
-      console.error("Error requesting password reset", error);
+      if (axios.isAxiosError(error)) {
+        handleServerError(error);
+      } else {
+        displayErrorToast("An unknown error occurred. Please try again later.");
+      }
     }
     return false;
   },
@@ -145,7 +164,8 @@ const AuthController = {
       );
 
       if (response.status === 200) {
-        console.log("Password reset confirmed successfully");
+        displaySuccessToast("Password reset confirmed successfully");
+        // console.log("");
         return true;
       }
     } catch (error) {
