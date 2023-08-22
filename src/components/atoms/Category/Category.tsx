@@ -3,7 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { ICategoryProps } from "./Category.interface";
 import styles from "./Category.module.scss";
 
-const Category: FC<ICategoryProps> = ({ children, dropdownContent }) => {
+export const Category: FC<ICategoryProps> = ({ children, dropdownContent }) => {
   return (
     <div className={`p-3 rounded ${styles.category}`}>
       <Dropdown>
@@ -19,5 +19,3 @@ const Category: FC<ICategoryProps> = ({ children, dropdownContent }) => {
     </div>
   );
 };
-
-export default Category;
