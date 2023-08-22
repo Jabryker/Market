@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/";
 import GoogleAuthOrgamism from "../GoogleAuthOrgamism/GoogleAuthOrgamism";
 import BuyerRegistrationFormFields from "../../molecules/BuyerRegistrationFormFields/BuyerRegistrationFormFields";
 import { IBuyerRegistrationFormOrganismProps } from "./BuyerRegistrationFormOrganism.interface";
