@@ -3,7 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Category } from "../../atoms/";
 import styles from "./CategoryOrganism.module.scss";
 
-const CategoryOrganism: FC = () => {
+export const CategoryOrganism: FC = () => {
   const dropdownContent = (
     <>
       <Dropdown.Item>Действие 1</Dropdown.Item>
@@ -48,5 +48,3 @@ const CategoryOrganism: FC = () => {
     </div>
   );
 };
-
-export default CategoryOrganism;
