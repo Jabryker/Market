@@ -1,13 +1,15 @@
 import { FC } from "react";
-import HeaderOrganism from "../../components/organisms/HeaderOrganism/HeaderOrganism";
-import SubHeaderOrganism from "../../components/organisms/SubHeaderOrganism/SubHeaderOrganism";
-import SliderOrganisms from "../../components/organisms/SliderOrganisms/SliderOrganisms";
-import PartnersOrganism from "../../components/organisms/PartnersOrganism/PartnersOrganism";
-import PreFooterOrgamism from "../../components/organisms/PreFooterOrgamism/PreFooterOrgamism";
-import FooterOrganism from "../../components/organisms/FooterOrganism/FooterOrganism";
-import CategoryOrganism from "../../components/organisms/CategoryOrganism/CategoryOrganism";
+import {
+  HeaderOrganism,
+  SubHeaderOrganism,
+  SliderOrganisms,
+  PartnersOrganism,
+  PreFooterOrgamism,
+  FooterOrganism,
+  CategoryOrganism,
+} from "../../components/organisms";
 
-const MainPage: FC = () => {
+export const MainPage: FC = () => {
   return (
     <>
       <SubHeaderOrganism />
@@ -20,5 +22,3 @@ const MainPage: FC = () => {
     </>
   );
 };
-
-export default MainPage;

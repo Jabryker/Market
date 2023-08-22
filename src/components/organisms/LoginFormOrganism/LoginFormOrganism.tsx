@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../atoms/Button/Button";
-import LoginFormFields from "../../molecules/LoginFormFields/LoginFormFields";
+import { LoginFormFields } from "../../molecules/";
 import { ILoginFormOrganismProps } from "./LoginFormOrganism.interface";
 
-const LoginFormOrganism: FC<ILoginFormOrganismProps> = ({ onSubmit }) => {
+export const LoginFormOrganism: FC<ILoginFormOrganismProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -18,5 +18,3 @@ const LoginFormOrganism: FC<ILoginFormOrganismProps> = ({ onSubmit }) => {
     </form>
   );
 };
-
-export default LoginFormOrganism;

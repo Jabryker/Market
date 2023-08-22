@@ -1,11 +1,13 @@
 import { FC } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import Input from "../../atoms/Input/Input";
-import Select from "../../atoms/Select/Select";
+import { Input, Select } from "../../atoms/";
 import styles from "../BuyerRegistrationFormFields/BuyerRegistrationFormFields.module.scss";
 import { ISellerRegistrationFormProps } from "./SellerRegistrationFormFields.interface";
 
-const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ register, errors }) => {
+export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
+  register,
+  errors,
+}) => {
   const { control, register: formRegister } = useForm({
     defaultValues: {
       type: "Physical",
@@ -71,7 +73,3 @@ const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({ regist
     </>
   );
 };
-
-export default SellerRegistrationFormFields;
-
-// TODO: add placeholder

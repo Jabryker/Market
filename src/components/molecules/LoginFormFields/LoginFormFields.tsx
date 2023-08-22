@@ -1,9 +1,8 @@
 import { FC } from "react";
-import Input from "../../atoms/Input/Input";
-import CheckBox from "../../atoms/CheckBox/CheckBox";
+import { Input, CheckBox } from "../../atoms/";
 import { ILoginFormFieldsProps } from "./LoginFormFields.interface";
 
-const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
+export const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
   return (
     <>
       <Input
@@ -31,5 +30,3 @@ const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
     </>
   );
 };
-
-export default LoginFormFields;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../components/atoms/Button/Button";
 import styles from "./RegistrationScreen.module.scss";
 
-const RegistrationScreen: FC = () => {
+export const RegistrationScreen: FC = () => {
   return (
     <div className={styles.registrationScreenContainer}>
       <h1 className={styles.registrationScreenTitle}>
@@ -22,5 +22,3 @@ const RegistrationScreen: FC = () => {
     </div>
   );
 };
-
-export default RegistrationScreen;

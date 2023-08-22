@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import BuyerRegistrationFormOrganism from "../../components/organisms/BuyerRegistrationFormOrganism/BuyerRegistrationFormOrganism";
-import HelpText from "../../components/atoms/HelpText/HelpText";
+import { BuyerRegistrationFormOrganism } from "../../components/organisms/";
+import { HelpText } from "../../components/atoms/";
 import AuthController from "../../controllers/AuthController";
 import { IRegisterData } from "../../controllers/interfaces/RegisterData.interface";
 import styles from "./BuyerRegistrationPageTemplate.module.scss";
 
-const BuyerRegistrationPageTemplate: FC = () => {
+export const BuyerRegistrationPageTemplate: FC = () => {
   const navigate = useNavigate();
   const handleBuyerSubmit = (registerData: IRegisterData) => {
     AuthController.register(registerData, navigate);
@@ -22,5 +22,3 @@ const BuyerRegistrationPageTemplate: FC = () => {
     </div>
   );
 };
-
-export default BuyerRegistrationPageTemplate;

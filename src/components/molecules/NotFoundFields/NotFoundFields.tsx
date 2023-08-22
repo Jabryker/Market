@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/";
 import styles from "./NotFoundFields.module.scss";
 
-const NotFoundFields: FC = () => {
+export const NotFoundFields: FC = () => {
   return (
     <div className={styles.NotFoundFieldsWrapper}>
       <h1 className={styles.NotFoundFieldsWrapperTitle}>404 Not Found</h1>
@@ -17,5 +17,3 @@ const NotFoundFields: FC = () => {
     </div>
   );
 };
-
-export default NotFoundFields;

@@ -1,7 +1,6 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
-import HelpText from "../../components/atoms/HelpText/HelpText";
-import Input from "../../components/atoms/Input/Input";
+import { HelpText, Input } from "../../components/atoms";
 import AuthController from "../../controllers/AuthController";
 import { Button } from "../../components/atoms/Button/Button";
 import styles from "./PasswordReset.module.scss";
@@ -11,7 +10,7 @@ type IResetFormData = {
   password: string;
 };
 
-const PasswordReset: FC = () => {
+export const PasswordReset: FC = () => {
   const [step, setStep] = useState("request"); // "request", "validate", "reset"
   const [token, setToken] = useState("");
 
@@ -101,5 +100,3 @@ const PasswordReset: FC = () => {
     </div>
   );
 };
-
-export default PasswordReset;

@@ -1,11 +1,9 @@
-// SubHeaderOrganism.jsx
-
-import React, { FC } from "react";
+import { FC } from "react";
 import ClockIcon from "../../../assets/images/header/time.svg";
 import WhatsAppIcon from "../../../assets/images/header/whatsapp.svg";
 import styles from "./SubHeaderOrganism.module.scss";
 
-const SubHeaderOrganism: FC = () => {
+export const SubHeaderOrganism: FC = () => {
   return (
     <div className={`${styles.SubHeaderOrganism} container-fluid`}>
       <div className="row align-items-center">
@@ -30,5 +28,3 @@ const SubHeaderOrganism: FC = () => {
     </div>
   );
 };
-
-export default SubHeaderOrganism;

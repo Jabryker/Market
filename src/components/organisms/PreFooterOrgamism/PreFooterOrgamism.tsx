@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp, FaYoutube } from "react-
 import { AiFillApple, AiFillBank, AiFillPayCircle } from "react-icons/ai";
 import styles from "./PreFooterOrgamism.module.scss";
 
-const PreFooterOrgamism: FC = () => {
+export const PreFooterOrgamism: FC = () => {
   return (
     <div className={styles.preFooterContainer}>
       <div className={styles.preFooterColumn}>
@@ -48,5 +48,3 @@ const PreFooterOrgamism: FC = () => {
     </div>
   );
 };
-
-export default PreFooterOrgamism;

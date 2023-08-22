@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import styles from "./FooterOrganism.module.scss";
 
-const FooterOrganism: FC = () => {
+export const FooterOrganism: FC = () => {
   const currentYear = new Date().getFullYear();
   return (
     <div className={styles.FooterOrganismWrapper}>
@@ -29,5 +29,3 @@ const FooterOrganism: FC = () => {
     </div>
   );
 };
-
-export default FooterOrganism;

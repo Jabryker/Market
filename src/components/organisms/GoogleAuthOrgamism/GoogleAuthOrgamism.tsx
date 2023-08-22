@@ -5,7 +5,7 @@ import AuthController from "../../../controllers/AuthController";
 
 const googleClientId = "207861578408-kstr5g00ce40gc8jei84qoq6jddv4909.apps.googleusercontent.com";
 
-const GoogleAuthOrgamism: FC = () => {
+export const GoogleAuthOrgamism: FC = () => {
   const handleGoogleAuthSuccess = async (credentialResponse: any) => {
     try {
       const googleData = jwt_decode(credentialResponse.credential ?? "");
@@ -30,5 +30,3 @@ const GoogleAuthOrgamism: FC = () => {
     </div>
   );
 };
-
-export default GoogleAuthOrgamism;
