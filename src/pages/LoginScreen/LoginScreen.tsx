@@ -1,5 +1,5 @@
 import { FC } from "react";
-import LoginPageTemplate from "../../templates/LoginPageTemplate/LoginPageTemplate";
+import { LoginPageTemplate } from "../../templates/";
 
 const LoginScreen: FC = () => {
   return (
