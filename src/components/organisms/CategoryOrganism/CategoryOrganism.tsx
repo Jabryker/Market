@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import Category from "../../atoms/Category/Category";
+import { Category } from "../../atoms/";
 import styles from "./CategoryOrganism.module.scss";
 
 const CategoryOrganism: FC = () => {
@@ -13,9 +13,7 @@ const CategoryOrganism: FC = () => {
   );
 
   return (
-    <div
-      className={styles.CategoryOrganismWrapper}
-    >
+    <div className={styles.CategoryOrganismWrapper}>
       <Category dropdownContent={dropdownContent}>
         <span>Акции</span>
       </Category>
