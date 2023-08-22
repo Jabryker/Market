@@ -1,12 +1,15 @@
 import { useRoutes } from "react-router-dom";
-import MainPage from "../pages/MainScreen/MainPage";
-import LoginScreen from "../pages/LoginScreen/LoginScreen";
-import RegistrationScreen from "../pages/RegistrationScreen/RegistrationScreen";
-import BuyerRegistrationPageTemplate from "../templates/BuyerRegistrationPageTemplate/BuyerRegistrationPageTemplate";
-import SellerRegistrationPageTemplates from "../templates/SellerRegistrationPageTemplates/SellerRegistrationPageTemplates";
-import PasswordConfirmationScreen from "../pages/PasswordConfirmationScreen/PasswordConfirmationScreen";
-import PasswordReset from "../pages/PasswordReset/PasswordReset";
-import NotFoundScreen from "../pages/NotFoundScreen/NotFoundScreen";
+
+import {
+  MainPage,
+  LoginScreen,
+  RegistrationScreen,
+  PasswordConfirmationScreen,
+  PasswordReset,
+  NotFoundScreen,
+} from "../pages";
+
+import { BuyerRegistrationPageTemplate, SellerRegistrationPageTemplates } from "../templates/";
 
 const AppRoutes = () => {
   const routes = useRoutes([
