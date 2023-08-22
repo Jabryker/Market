@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/";
 import styles from "./NotFoundFields.module.scss";
 
 const NotFoundFields: FC = () => {
