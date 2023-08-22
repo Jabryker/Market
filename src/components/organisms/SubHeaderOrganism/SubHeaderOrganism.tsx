@@ -1,6 +1,4 @@
-// SubHeaderOrganism.jsx
-
-import React, { FC } from "react";
+import { FC } from "react";
 import ClockIcon from "../../../assets/images/header/time.svg";
 import WhatsAppIcon from "../../../assets/images/header/whatsapp.svg";
 import styles from "./SubHeaderOrganism.module.scss";
