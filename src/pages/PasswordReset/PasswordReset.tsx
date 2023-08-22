@@ -10,7 +10,7 @@ type IResetFormData = {
   password: string;
 };
 
-const PasswordReset: FC = () => {
+export const PasswordReset: FC = () => {
   const [step, setStep] = useState("request"); // "request", "validate", "reset"
   const [token, setToken] = useState("");
 
@@ -100,5 +100,3 @@ const PasswordReset: FC = () => {
     </div>
   );
 };
-
-export default PasswordReset;
