@@ -9,7 +9,7 @@ import { AiOutlineImport, AiOutlineHeart } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { LuShoppingBag } from "react-icons/lu";
 
-const HeaderOrganism: FC = () => {
+export const HeaderOrganism: FC = () => {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary mb-3">
@@ -71,5 +71,3 @@ const HeaderOrganism: FC = () => {
     </>
   );
 };
-
-export default HeaderOrganism;
