@@ -1,9 +1,9 @@
 import { FC } from "react";
 import partnerData from "../../../assets/data/partners";
-import PartnerCardFields from "../../molecules/PartnerCardFields/PartnerCardFirlds";
+import { PartnerCardFields } from "../../molecules/";
 import styles from "./PartnersOrganism.module.scss";
 
-const PartnersOrganism: FC = () => {
+export const PartnersOrganism: FC = () => {
   return (
     <div className={styles.PartnersOrganismWrapper}>
       <div className={styles.PartnersOrganismWrapperHeader}>
@@ -22,5 +22,3 @@ const PartnersOrganism: FC = () => {
     </div>
   );
 };
-
-export default PartnersOrganism;
