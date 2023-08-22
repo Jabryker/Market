@@ -9,7 +9,7 @@ import {
   CategoryOrganism,
 } from "../../components/organisms";
 
-const MainPage: FC = () => {
+export const MainPage: FC = () => {
   return (
     <>
       <SubHeaderOrganism />
@@ -22,5 +22,3 @@ const MainPage: FC = () => {
     </>
   );
 };
-
-export default MainPage;
