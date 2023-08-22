@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import displayErrorToast from "../../components/atoms/displayErrorToast/displayErrorToast";
+import { displayErrorToast } from "../../components/atoms/";
 
 const handleServerError = (error: AxiosError) => {
   if (error.response) {

@@ -30,7 +30,7 @@ const slideImages = [
   },
 ];
 
-const SilderOrganisms: FC = () => {
+export const SliderOrganisms: FC = () => {
   return (
     <div className="slide-container">
       <Slide>
@@ -45,5 +45,3 @@ const SilderOrganisms: FC = () => {
     </div>
   );
 };
-
-export default SilderOrganisms;

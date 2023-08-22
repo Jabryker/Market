@@ -1,5 +1,5 @@
 import { FC } from "react";
-import HelpText from "../../components/atoms/HelpText/HelpText";
+import { HelpText } from "../../components/atoms/";
 import styles from "./PasswordConfirmationScreen.module.scss";
 
 const PasswordConfirmationScreen: FC = () => {
