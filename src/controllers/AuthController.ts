@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import displayErrorToast from "../components/atoms/displayErrorToast/displayErrorToast";
-import displaySuccessToast from "../components/atoms/displaySuccessToast/displaySuccessToast";
+import { displaySuccessToast, displayErrorToast } from "../components/atoms";
 import handleServerError from "./helpers/handleServerError";
 import { ILoginData } from "./interfaces/LoginData.interface";
 import { IRegisterData } from "./interfaces/RegisterData.interface";
