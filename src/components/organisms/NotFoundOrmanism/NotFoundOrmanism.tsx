@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SubHeaderOrganism, PreFooterOrgamism } from "../";
+import { SubHeaderOrganism } from "../";
 import { HeaderOrganism, FooterOrganism } from "../";
 import { NotFoundFields } from "../../molecules/";
 
@@ -9,7 +9,6 @@ export const NotFoundOrmanism: FC = () => {
       <SubHeaderOrganism />
       <HeaderOrganism />
       <NotFoundFields />
-      <PreFooterOrgamism />
       <FooterOrganism />
     </>
   );

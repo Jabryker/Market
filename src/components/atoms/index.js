@@ -7,3 +7,5 @@ export { HelpText } from "./HelpText/HelpText";
 export { Input } from "./Input/Input";
 export { Select } from "./Select/Select";
 export { TitleText } from "./TitleText/TitleText";
+
+export { LoadingSkeleton } from "./LoadingSkeleton/LoadingSkeleton";
