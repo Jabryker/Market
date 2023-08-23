@@ -1,5 +1,4 @@
 export { BuyerRegistrationFormOrganism } from "./BuyerRegistrationFormOrganism/BuyerRegistrationFormOrganism";
-export { CategoryOrganism } from "./CategoryOrganism/CategoryOrganism";
 export { FooterOrganism } from "./FooterOrganism/FooterOrganism";
 export { GoogleAuthOrgamism } from "./GoogleAuthOrgamism/GoogleAuthOrgamism";
 export { HeaderOrganism } from "./HeaderOrganism/HeaderOrganism";
