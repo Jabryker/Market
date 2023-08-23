@@ -6,3 +6,4 @@ export { displaySuccessToast } from "./displaySuccessToast/displaySuccessToast";
 export { HelpText } from "./HelpText/HelpText";
 export { Input } from "./Input/Input";
 export { Select } from "./Select/Select";
+export { TitleText } from "./TitleText/TitleText";
