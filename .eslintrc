@@ -6,7 +6,6 @@
     "quotes": ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
     "indent": ["warn", 2],
-    "max-len": ["warn", { "code": 150 }],
     "comma-dangle": ["error", "always-multiline"],
     "semi": ["warn", "always"],
     "import/order": [
