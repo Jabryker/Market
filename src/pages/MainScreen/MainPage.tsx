@@ -3,7 +3,6 @@ import {
   HeaderOrganism,
   SubHeaderOrganism,
   // SliderOrganisms,
-  // PartnersOrganism,
   // PreFooterOrgamism,
   FooterOrganism,
   // CategoryOrganism,
@@ -14,10 +13,9 @@ export const MainPage: FC = () => {
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      {/* <CategoryOrganism />
-      <SliderOrganisms />
-      <PartnersOrganism />
-  <PreFooterOrgamism /> */}
+      {/* <CategoryOrganism /> */}
+      {/* <SliderOrganisms /> */}
+      {/* <PreFooterOrgamism />  */}
       <FooterOrganism />
     </>
   );

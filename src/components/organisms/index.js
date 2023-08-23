@@ -4,7 +4,6 @@ export { FooterOrganism } from "./FooterOrganism/FooterOrganism";
 export { GoogleAuthOrgamism } from "./GoogleAuthOrgamism/GoogleAuthOrgamism";
 export { HeaderOrganism } from "./HeaderOrganism/HeaderOrganism";
 export { LoginFormOrganism } from "./LoginFormOrganism/LoginFormOrganism";
-export { PartnersOrganism } from "./PartnersOrganism/PartnersOrganism";
 export { PreFooterOrgamism } from "./PreFooterOrgamism/PreFooterOrgamism";
 export { SellerRegistrationFormOrganism } from "./SellerRegistrationFormOrganism/SellerRegistrationFormOrganism";
 export { SliderOrganisms } from "./SliderOrganisms/SliderOrganisms";
