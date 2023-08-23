@@ -1,28 +1,19 @@
 import { FC } from "react";
-import ClockIcon from "../../../assets/images/header/time.svg";
-import WhatsAppIcon from "../../../assets/images/header/whatsapp.svg";
-import styles from "./SubHeaderOrganism.module.scss";
+import { AiOutlineClockCircle, AiOutlineWhatsApp } from "react-icons/ai";
 
 export const SubHeaderOrganism: FC = () => {
   return (
-    <div className={`${styles.SubHeaderOrganism} container-fluid`}>
-      <div className="row align-items-center">
-        <div className="col-md-8 col-sm-12">
-          <span className={`${styles.SubHeaderOrganismText} ${styles.Text}`}>
-            Welcome to worldwide Megamart!
-          </span>
+    <div className="flex flex-col md:flex-row justify-between items-center bg-[#373737] w-full text-[#fff] p-4 md:p-8">
+      <p className="mb-4 md:mb-0">Welcome to worldwide MarketKG!</p>
+
+      <div className="flex justify-between items-center">
+        <div className="flex items-center mb-2 md:mb-0">
+          <AiOutlineClockCircle className="mr-2" size={20} />
+          <span className="mr-2">08:00 - 19:00</span>
         </div>
-        <div className="col-md-4 col-sm-12">
-          <div className={`${styles.TimeAndWhatsApp} d-flex justify-content-end`}>
-            <div className={styles.TimeWrapper}>
-              <img src={ClockIcon} alt="Clock Icon" className={styles.Icon} />
-              <span className={styles.TimeRange}>08:00 - 19:00</span>
-            </div>
-            <div className={styles.WhatsAppWrapper}>
-              <img src={WhatsAppIcon} alt="WhatsApp Icon" className={styles.Icon} />
-              <span className={styles.TimeRange}>+996707654499</span>
-            </div>
-          </div>
+        <div className="flex items-center">
+          <AiOutlineWhatsApp className="mr-2" size={20} />
+          <span className="mr-2">+996707654499</span>
         </div>
       </div>
     </div>

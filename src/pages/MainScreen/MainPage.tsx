@@ -2,11 +2,11 @@ import { FC } from "react";
 import {
   HeaderOrganism,
   SubHeaderOrganism,
-  SliderOrganisms,
-  PartnersOrganism,
-  PreFooterOrgamism,
+  // SliderOrganisms,
+  // PartnersOrganism,
+  // PreFooterOrgamism,
   FooterOrganism,
-  CategoryOrganism,
+  // CategoryOrganism,
 } from "../../components/organisms";
 
 export const MainPage: FC = () => {
@@ -14,10 +14,10 @@ export const MainPage: FC = () => {
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      <CategoryOrganism />
+      {/* <CategoryOrganism />
       <SliderOrganisms />
       <PartnersOrganism />
-      <PreFooterOrgamism />
+  <PreFooterOrgamism /> */}
       <FooterOrganism />
     </>
   );
