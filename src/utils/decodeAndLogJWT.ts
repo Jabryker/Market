@@ -8,4 +8,3 @@ export const decodeAndLogJWT = (credential: string) => {
     console.log("Error decoding JWT:", error);
   }
 };
-
