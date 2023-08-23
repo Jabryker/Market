@@ -5,6 +5,7 @@
   "dependencies": {
     "@react-oauth/google": "^0.11.1",
     "@types/react-bootstrap": "^0.32.32",
+    "antd": "^5.8.4",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "jwt-decode": "^3.1.2",
@@ -14,6 +15,7 @@
     "react-google-oauth": "^1.0.0",
     "react-hook-form": "^7.45.4",
     "react-icons": "^4.10.1",
+    "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.14.2",
     "react-slideshow-image": "^4.2.1",
     "react-toastify": "^9.1.3",

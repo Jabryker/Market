@@ -2,21 +2,22 @@ import { FC } from "react";
 import {
   HeaderOrganism,
   SubHeaderOrganism,
-  // SliderOrganisms,
+  SliderOrganisms,
   // PreFooterOrgamism,
-  FooterOrganism,
-  // CategoryOrganism,
+  // FooterOrganism,
 } from "../../components/organisms";
+
+import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
 
 export const MainPage: FC = () => {
   return (
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      {/* <CategoryOrganism /> */}
-      {/* <SliderOrganisms /> */}
+      <SliderOrganisms />
+      <DiscountProductsOrganisms />
       {/* <PreFooterOrgamism />  */}
-      <FooterOrganism />
+      {/* <FooterOrganism /> */}
     </>
   );
 };
