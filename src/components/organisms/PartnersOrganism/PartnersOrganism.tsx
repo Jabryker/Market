@@ -1,5 +1,5 @@
 import { FC } from "react";
-import partnerData from "../../../assets/data/partners";
+import { partner } from "../../../assets/data/";
 import { PartnerCardFields } from "../../molecules/";
 import styles from "./PartnersOrganism.module.scss";
 
@@ -11,12 +11,8 @@ export const PartnersOrganism: FC = () => {
         <hr className={styles.PartnersOrganismWrapperLine} />
       </div>
       <div className={styles.PartnersOrganismWrapperPartnersList}>
-        {partnerData.map((partner) => (
-          <PartnerCardFields
-            key={partner.id}
-            logoUrl={partner.logoUrl}
-            description={partner.description}
-          />
+        {partner.map((item) => (
+          <PartnerCardFields key={item.id} logoUrl={item.logoUrl} description={item.description} />
         ))}
       </div>
     </div>
