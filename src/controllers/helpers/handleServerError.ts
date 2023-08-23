@@ -1,6 +1,13 @@
 import { AxiosError } from "axios";
 import { displayErrorToast } from "../../components/atoms/";
 
+/**
+ * Обрабатывает ошибки, связанные с запросами к серверу (используя библиотеку Axios).
+ * Выводит информативное уведомление об ошибке в зависимости от статуса ответа сервера или других ошибок.
+ *
+ * @param {AxiosError} error - Объект ошибки, полученный от Axios.
+ */
+
 const handleServerError = (error: AxiosError) => {
   if (error.response) {
     if (error.response.status === 400) {
