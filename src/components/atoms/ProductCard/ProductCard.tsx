@@ -29,7 +29,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
 
   return (
     <Card
-      className="w-full max-w-xs mx-auto" // Применение Tailwind CSS классов для ширины
+      className="w-full max-w-xs mx-auto"
       cover={
         <img
           src={product?.images[0].image}

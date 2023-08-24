@@ -3,11 +3,10 @@ import {
   HeaderOrganism,
   SubHeaderOrganism,
   SliderOrganisms,
+  DiscountProductsOrganisms,
   // PreFooterOrgamism,
   // FooterOrganism,
 } from "../../components/organisms";
-
-import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
 
 export const MainPage: FC = () => {
   return (

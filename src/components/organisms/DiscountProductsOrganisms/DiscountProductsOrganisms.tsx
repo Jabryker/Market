@@ -1,9 +1,9 @@
-import { FC, useState, useEffect } from "react";
-import DiscountProductsMolecules from "../../molecules/DiscountProductsMolecules/DiscountProductsMolecules";
+import { useState, useEffect } from "react";
+import { DiscountProductsMolecules } from "../../molecules/";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
 import ProductController from "../../../controllers/ProductController";
 
-export const DiscountProductsOrganisms: FC = () => {
+export const DiscountProductsOrganisms = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {

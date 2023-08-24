@@ -8,7 +8,7 @@ interface DiscountProductsOrganismProps {
   products: Product[];
 }
 
-const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ products }) => {
+export const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ products }) => {
   return (
     <div className="discount-products-block">
       <TitleText>Товары со скидкой</TitleText>
@@ -25,5 +25,3 @@ const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ products
     </div>
   );
 };
-
-export default DiscountProductsMolecules;
