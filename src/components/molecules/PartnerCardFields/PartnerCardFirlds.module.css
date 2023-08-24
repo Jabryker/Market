@@ -1,0 +1,19 @@
+.partnerCard {
+  width: 265px;
+  height: 120px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.partnerLogo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.partnerDescription {
+  text-align: center;
+}/*# sourceMappingURL=PartnerCardFirlds.module.css.map */

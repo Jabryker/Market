@@ -1,0 +1,16 @@
+.loginPage {
+  margin-top: 135px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginPageTitle {
+  color: #373737;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}/*# sourceMappingURL=LoginPageTemplate.module.css.map */

@@ -1,0 +1,29 @@
+.checkboxContainer {
+  margin: 32px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.checkboxContainer .checkboxLabel {
+  color: #4D5959;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.checkboxContainer .checkboxInput {
+  margin-left: -36px;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.checkboxContainer .checkboxInput:checked {
+  border-color: #007bff;
+  background-color: #007bff;
+}/*# sourceMappingURL=CheckBox.module.css.map */
