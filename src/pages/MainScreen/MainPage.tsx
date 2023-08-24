@@ -1,9 +1,9 @@
-import { FC } from "react";
 import {
   HeaderOrganism,
   SubHeaderOrganism,
   SliderOrganisms,
   DiscountProductsOrganisms,
+  FeaturedProductsOrganism,
   // PreFooterOrgamism,
   // FooterOrganism,
 } from "../../components/organisms";
@@ -18,6 +18,7 @@ export const MainPage = () => {
       <CategorySelectOrganism />
       <SliderOrganisms />
       <DiscountProductsOrganisms />
+      <FeaturedProductsOrganism />
       {/* <PreFooterOrgamism />  */}
       {/* <FooterOrganism /> */}
     </>

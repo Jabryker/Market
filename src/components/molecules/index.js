@@ -4,3 +4,5 @@ export { NotFoundFields } from "./NotFoundFields/NotFoundFields";
 export { PartnerCardFields } from "./PartnerCardFields/PartnerCardFirlds";
 export { SellerRegistrationFormFields } from "./SellerRegistrationFormFields/SellerRegistrationFormFields";
 export { DiscountProductsMolecules } from "./DiscountProductsMolecules/DiscountProductsMolecules";
+
+export { FeaturedProductsMolecules } from "./FeaturedProductsMolecules/FeaturedProductsMolecules";

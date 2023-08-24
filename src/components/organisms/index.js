@@ -8,3 +8,4 @@ export { SliderOrganisms } from "./SliderOrganisms/SliderOrganisms";
 export { SubHeaderOrganism } from "./SubHeaderOrganism/SubHeaderOrganism";
 export { NotFoundOrmanism } from "./NotFoundOrmanism/NotFoundOrmanism";
 export { DiscountProductsOrganisms } from "./DiscountProductsOrganisms/DiscountProductsOrganisms";
+export { FeaturedProductsOrganism } from "./FeaturedProductsOrganism/FeaturedProductsOrganism";
