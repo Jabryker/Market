@@ -10,6 +10,7 @@ import {
 
 import { CategorySelectOrganism } from "../../components/organisms/CategorySelectOrgamisn/CategorySelectOrgamisn";
 import { NewsListOrganism } from "../../components/organisms/NewsListOrganism/NewsListOrganism";
+import { UsefulArticlesOrganism } from "../../components/organisms/UsefulArticlesOrganism/UsefulArticlesOrganism";
 
 export const MainPage = () => {
   return (
@@ -21,6 +22,7 @@ export const MainPage = () => {
       <DiscountProductsOrganisms />
       <FeaturedProductsOrganism />
       <NewsListOrganism />
+      <UsefulArticlesOrganism />
       {/* <PreFooterOrgamism />  */}
       {/* <FooterOrganism /> */}
     </>

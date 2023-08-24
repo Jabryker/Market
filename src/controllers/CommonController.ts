@@ -12,6 +12,15 @@ const CommonController = {
       throw error;
     }
   },
+  getArticles: async () => {
+    try {
+      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/articles-list`);
+      console.log(response);
+      return response.data.results; //
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default CommonController;
