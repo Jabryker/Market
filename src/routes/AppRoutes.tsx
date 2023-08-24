@@ -43,7 +43,7 @@ const AppRoutes = () => {
       element: <PasswordReset />,
     },
     {
-      path: "/products/:productId",
+      path: "/products/:id",
       element: <ProductDetailsScreen />,
     },
     {
