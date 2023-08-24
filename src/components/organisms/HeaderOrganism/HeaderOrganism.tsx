@@ -8,6 +8,7 @@ import { FiShoppingCart, FiUser } from "react-icons/fi";
 import { AiOutlineImport, AiOutlineHeart } from "react-icons/ai";
 import { ImProfile } from "react-icons/im";
 import { LuShoppingBag } from "react-icons/lu";
+import { Dropdown } from "react-bootstrap";
 
 const HeaderOrganism: FC = () => {
   return (
@@ -45,25 +46,27 @@ const HeaderOrganism: FC = () => {
               <Nav.Link href="#cart">
                 <FiShoppingCart />
               </Nav.Link>
-              <NavDropdown
-                title={<FiUser />}
-                id="offcanvasNavbarProfileDropdown-expand"
-                style={{ marginLeft: "auto", marginRight: "30px" }}
-              >
-                <NavDropdown.Item href="/profile">
-                  <ImProfile /> Изменить профиль
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/shop">
-                  <LuShoppingBag /> Мои покупки
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/favorite">
-                  <AiOutlineHeart /> Избранные
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/logout">
-                  <AiOutlineImport /> Logout
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Dropdown>
+                <Dropdown.Toggle variant="none" id="dropdown-custom-1">
+                  <FiUser />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu align="end" style={{ right: "0" }}>
+                  <Dropdown.Item href="/profile">
+                    <ImProfile /> Изменить профиль
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/shop">
+                    <LuShoppingBag /> Мои покупки
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/favorite">
+                    <AiOutlineHeart /> Избранные
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="/logout">
+                    <AiOutlineImport /> Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
