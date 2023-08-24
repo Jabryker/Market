@@ -29,7 +29,14 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
 
   return (
     <Card
-      cover={<img src={product?.images[0].image} alt={product.name} />}
+      className="w-full max-w-xs mx-auto" // Применение Tailwind CSS классов для ширины
+      cover={
+        <img
+          src={product?.images[0].image}
+          alt={product.name}
+          className="w-full h-48 object-cover"
+        />
+      }
       actions={[
         <InputNumber min={1} value={quantity} onChange={handleQuantityChange} />,
         <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart}>
