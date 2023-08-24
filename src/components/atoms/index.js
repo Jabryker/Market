@@ -1,6 +1,6 @@
 export { Button } from "./Button/Button";
 export { Category } from "./Category/Category";
-export { CategorySelect } from "../atoms/CategorySelect";
+export { CategorySelect } from "./CategorySelect/CategorySelect";
 export { CheckBox } from "./CheckBox/CheckBox";
 export { displayErrorToast } from "./displayErrorToast/displayErrorToast";
 export { displaySuccessToast } from "./displaySuccessToast/displaySuccessToast";

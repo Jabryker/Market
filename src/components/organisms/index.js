@@ -1,11 +1,14 @@
 export { BuyerRegistrationFormOrganism } from "./BuyerRegistrationFormOrganism/BuyerRegistrationFormOrganism";
+export { CategorySelectOrganism } from "./CategorySelectOrgamisn/CategorySelectOrgamisn";
+export { DiscountProductsOrganisms } from "./DiscountProductsOrganisms/DiscountProductsOrganisms";
+export { FeaturedProductsOrganism } from "./FeaturedProductsOrganism/FeaturedProductsOrganism";
 export { FooterOrganism } from "./FooterOrganism/FooterOrganism";
 export { GoogleAuthOrgamism } from "./GoogleAuthOrgamism/GoogleAuthOrgamism";
 export { HeaderOrganism } from "./HeaderOrganism/HeaderOrganism";
 export { LoginFormOrganism } from "./LoginFormOrganism/LoginFormOrganism";
+export { NewsListOrganism } from "./NewsListOrganism/NewsListOrganism";
+export { NotFoundOrmanism } from "./NotFoundOrmanism/NotFoundOrmanism";
 export { SellerRegistrationFormOrganism } from "./SellerRegistrationFormOrganism/SellerRegistrationFormOrganism";
 export { SliderOrganisms } from "./SliderOrganisms/SliderOrganisms";
 export { SubHeaderOrganism } from "./SubHeaderOrganism/SubHeaderOrganism";
-export { NotFoundOrmanism } from "./NotFoundOrmanism/NotFoundOrmanism";
-export { DiscountProductsOrganisms } from "./DiscountProductsOrganisms/DiscountProductsOrganisms";
-export { FeaturedProductsOrganism } from "./FeaturedProductsOrganism/FeaturedProductsOrganism";
+export { UsefulArticlesOrganism } from "./UsefulArticlesOrganism/UsefulArticlesOrganism";

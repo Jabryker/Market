@@ -4,13 +4,12 @@ import {
   SliderOrganisms,
   DiscountProductsOrganisms,
   FeaturedProductsOrganism,
+  CategorySelectOrganism,
+  NewsListOrganism,
+  UsefulArticlesOrganism,
   // PreFooterOrgamism,
   // FooterOrganism,
 } from "../../components/organisms";
-
-import { CategorySelectOrganism } from "../../components/organisms/CategorySelectOrgamisn/CategorySelectOrgamisn";
-import { NewsListOrganism } from "../../components/organisms/NewsListOrganism/NewsListOrganism";
-import { UsefulArticlesOrganism } from "../../components/organisms/UsefulArticlesOrganism/UsefulArticlesOrganism";
 
 export const MainPage = () => {
   return (

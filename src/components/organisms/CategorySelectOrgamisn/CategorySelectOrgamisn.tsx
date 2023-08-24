@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Card } from "antd";
 import { CategorySelect } from "../../atoms"; // Путь к вашему CategorySelect компоненту
 

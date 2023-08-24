@@ -1,8 +1,9 @@
 export { BuyerRegistrationFormFields } from "./BuyerRegistrationFormFields/BuyerRegistrationFormFields";
+export { DiscountProductsMolecules } from "./DiscountProductsMolecules/DiscountProductsMolecules";
+export { FeaturedProductsMolecules } from "./FeaturedProductsMolecules/FeaturedProductsMolecules";
 export { LoginFormFields } from "./LoginFormFields/LoginFormFields";
+export { NewsListMolesules } from "./NewsListMolesules/NewsListMolesules";
 export { NotFoundFields } from "./NotFoundFields/NotFoundFields";
 export { PartnerCardFields } from "./PartnerCardFields/PartnerCardFirlds";
 export { SellerRegistrationFormFields } from "./SellerRegistrationFormFields/SellerRegistrationFormFields";
-export { DiscountProductsMolecules } from "./DiscountProductsMolecules/DiscountProductsMolecules";
-
-export { FeaturedProductsMolecules } from "./FeaturedProductsMolecules/FeaturedProductsMolecules";
+export { UsefulArticlesMolecules } from "./UsefulArticlesMolecules/UsefulArticlesMolecules";

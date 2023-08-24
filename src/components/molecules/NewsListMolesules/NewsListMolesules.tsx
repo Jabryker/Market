@@ -14,7 +14,7 @@ export interface INewsListMolesulesProps {
   newsData: News[];
 }
 
-const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => {
+export const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => {
   return (
     <div className="px-8">
       <TitleText>Наши новости</TitleText>
@@ -36,5 +36,3 @@ const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => {
     </div>
   );
 };
-
-export default NewsListMolesules;

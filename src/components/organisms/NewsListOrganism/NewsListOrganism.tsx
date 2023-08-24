@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import NewsListMolesules from "../../molecules/NewsListMolesules/NewsListMolesules";
+import { NewsListMolesules } from "../../molecules/";
 import { News } from "../../molecules/NewsListMolesules/NewsListMolesules"; // Импортируйте News
 import CommonController from "../../../controllers/CommonController";
 

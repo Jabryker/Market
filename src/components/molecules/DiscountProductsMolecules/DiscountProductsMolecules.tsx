@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Row, Col } from "antd";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
-import ProductCard from "../../atoms/ProductCard/ProductCard";
+import { ProductCard } from "../../atoms/";
 
 interface DiscountProductsOrganismProps {
   products: Product[];

@@ -1,8 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Row, Col } from "antd";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
-import ProductCard from "../../atoms/ProductCard/ProductCard";
-import { TitleText } from "../../atoms/";
+import { ProductCard, TitleText } from "../../atoms/";
 
 interface FeaturedProductsMoleculesProps {
   products: Product[];
