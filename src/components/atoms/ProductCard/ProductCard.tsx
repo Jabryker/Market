@@ -9,7 +9,7 @@ interface ProductCardProps {
   onAddToCart: (quantity: number) => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
+export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleQuantityChange = (value: number | null) => {
@@ -53,5 +53,3 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     </Card>
   );
 };
-
-export default ProductCard;
