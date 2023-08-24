@@ -9,3 +9,4 @@ export { Select } from "./Select/Select";
 export { TitleText } from "./TitleText/TitleText";
 
 export { LoadingSkeleton } from "./LoadingSkeleton/LoadingSkeleton";
+export { CategorySelect } from "./CategorySelect/CategorySelect";

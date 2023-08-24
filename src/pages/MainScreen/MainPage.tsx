@@ -8,11 +8,14 @@ import {
   // FooterOrganism,
 } from "../../components/organisms";
 
-export const MainPage: FC = () => {
+import { CategorySelectOrganism } from "../../components/organisms/CategorySelectOrgamisn/CategorySelectOrgamisn";
+
+export const MainPage = () => {
   return (
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
+      <CategorySelectOrganism />
       <SliderOrganisms />
       <DiscountProductsOrganisms />
       {/* <PreFooterOrgamism />  */}
