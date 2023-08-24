@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, Button, InputNumber } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { LoadingSkeleton } from "../../atoms";
@@ -43,7 +44,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
           Add to Cart
         </Button>,
         <Button type="primary" onClick={() => console.log("Details clicked")}>
-          Подробнее
+          <Link to={`/products/${product?.id}`}>Подробнее</Link>
         </Button>,
       ]}
     >
