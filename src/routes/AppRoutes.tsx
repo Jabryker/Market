@@ -7,6 +7,7 @@ import {
   PasswordConfirmationScreen,
   PasswordReset,
   NotFoundScreen,
+  ProductDetailsScreen,
 } from "../pages";
 
 import { BuyerRegistrationPageTemplate, SellerRegistrationPageTemplates } from "../templates/";
@@ -40,6 +41,10 @@ const AppRoutes = () => {
     {
       path: "/password-reset",
       element: <PasswordReset />,
+    },
+    {
+      path: "/products/:productId",
+      element: <ProductDetailsScreen />,
     },
     {
       path: "*",
