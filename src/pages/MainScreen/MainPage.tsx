@@ -1,24 +1,25 @@
 import { FC } from "react";
-import HeaderOrganism from "../../components/organisms/HeaderOrganism/HeaderOrganism";
-import SubHeaderOrganism from "../../components/organisms/SubHeaderOrganism/SubHeaderOrganism";
-import SliderOrganisms from "../../components/organisms/SliderOrganisms/SliderOrganisms";
-import PartnersOrganism from "../../components/organisms/PartnersOrganism/PartnersOrganism";
-import PreFooterOrgamism from "../../components/organisms/PreFooterOrgamism/PreFooterOrgamism";
-import FooterOrganism from "../../components/organisms/FooterOrganism/FooterOrganism";
-import CategoryOrganism from "../../components/organisms/CategoryOrganism/CategoryOrganism";
+import {
+  HeaderOrganism,
+  SubHeaderOrganism,
+  SliderOrganisms,
+  // PreFooterOrgamism,
+  // FooterOrganism,
+} from "../../components/organisms";
 
-const MainPage: FC = () => {
+import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
+import { ContactUsOrganism } from "../../components/organisms/ContactUsOrganism/ContactUsOrganism";
+
+export const MainPage: FC = () => {
   return (
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      <CategoryOrganism />
       <SliderOrganisms />
-      <PartnersOrganism />
-      <PreFooterOrgamism />
-      <FooterOrganism />
+      <DiscountProductsOrganisms />
+      <ContactUsOrganism />
+      {/* <PreFooterOrgamism /> */}
+      {/* <FooterOrganism /> */}
     </>
   );
 };
-
-export default MainPage;

@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Input from "../../atoms/Input/Input";
+import { Input } from "../../atoms/";
 import { IBuyerRegistrationFormProps } from "./BuyerRegistrationFormFields.interface";
 import styles from "./BuyerRegistrationFormFields.module.scss";
 
-const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({ register, errors }) => {
+export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({ register, errors }) => {
   return (
     <>
       <Input
@@ -42,5 +42,3 @@ const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({ register
     </>
   );
 };
-
-export default BuyerRegistrationFormFields;

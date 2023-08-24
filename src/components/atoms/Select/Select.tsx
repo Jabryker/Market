@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ISelectProps } from "./Select.interface";
 import styles from "./Select.module.scss";
 
-const Select: FC<ISelectProps> = ({ label, name, options, register }) => {
+export const Select: FC<ISelectProps> = ({ label, name, options, register }) => {
   return (
     <div className={styles.selectСontainer}>
       <label className={styles.selectLabel}>{label}</label>
@@ -16,5 +16,3 @@ const Select: FC<ISelectProps> = ({ label, name, options, register }) => {
     </div>
   );
 };
-
-export default Select;

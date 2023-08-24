@@ -1,8 +1,8 @@
 import { FC } from "react";
-import HelpText from "../../components/atoms/HelpText/HelpText";
+import { HelpText } from "../../components/atoms/";
 import styles from "./PasswordConfirmationScreen.module.scss";
 
-const PasswordConfirmationScreen: FC = () => {
+export const PasswordConfirmationScreen: FC = () => {
   return (
     <div className={styles.PassConfWrapper}>
       <h2 className={styles.PassConfTitle}>Потвердите вашу почту</h2>
@@ -21,5 +21,3 @@ const PasswordConfirmationScreen: FC = () => {
     </div>
   );
 };
-
-export default PasswordConfirmationScreen;

@@ -1,9 +1,8 @@
 import { FC } from "react";
-import { FieldError } from "react-hook-form"; // Import FieldError type
 import { IInputProps } from "./Input.interface";
 import styles from "./Input.module.scss";
 
-const Input: FC<IInputProps> = ({ type, name, label, placeholder, error, register }) => {
+export const Input: FC<IInputProps> = ({ type, name, label, placeholder, error, register }) => {
   return (
     <div className={styles.Input}>
       <label className={styles.Label} htmlFor={name}>
@@ -20,5 +19,3 @@ const Input: FC<IInputProps> = ({ type, name, label, placeholder, error, registe
     </div>
   );
 };
-
-export default Input;

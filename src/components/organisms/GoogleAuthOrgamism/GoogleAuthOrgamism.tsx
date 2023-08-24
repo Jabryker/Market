@@ -5,7 +5,7 @@ import AuthController from "../../../controllers/AuthController";
 
 const googleClientId = "207861578408-kstr5g00ce40gc8jei84qoq6jddv4909.apps.googleusercontent.com";
 
-const GoogleAuthOrgamism: FC = () => {
+export const GoogleAuthOrgamism: FC = () => {
   const handleGoogleAuthSuccess = async (credentialResponse: any) => {
     try {
       const googleData = jwt_decode(credentialResponse.credential ?? "");
@@ -13,7 +13,7 @@ const GoogleAuthOrgamism: FC = () => {
 
       await AuthController.googleAuth(googleData);
     } catch (error) {
-      console.error("Error", error);
+      console.error("Ошибка", error);
     }
   };
 
@@ -23,12 +23,10 @@ const GoogleAuthOrgamism: FC = () => {
         <GoogleLogin
           onSuccess={handleGoogleAuthSuccess}
           onError={() => {
-            console.log("Login Failed");
+            console.log("Ошибка входа");
           }}
         />
       </GoogleOAuthProvider>
     </div>
   );
 };
-
-export default GoogleAuthOrgamism;

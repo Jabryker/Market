@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../atoms/Button/Button";
-import SellerRegistrationFormFields from "../../molecules/SellerRegistrationFormFields/SellerRegistrationFormFields";
+import { Button } from "../../atoms/";
+import { SellerRegistrationFormFields } from "../../molecules/";
 import { ISellerRegistrationFormOrganismProps } from "./SellerRegistrationFormOrganism.interface";
 
-const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> = ({ onSubmit }) => {
+export const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -17,5 +17,3 @@ const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> =
     </form>
   );
 };
-
-export default SellerRegistrationFormOrganism;

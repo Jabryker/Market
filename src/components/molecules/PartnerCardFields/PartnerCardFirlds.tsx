@@ -2,7 +2,7 @@ import { FC } from "react";
 import { IPartnerCardProps } from "./PartnerCardFields.interface";
 import styles from "./PartnerCardFirlds.module.scss";
 
-const PartnerCardFields: FC<IPartnerCardProps> = ({ logoUrl, description }) => {
+export const PartnerCardFields: FC<IPartnerCardProps> = ({ logoUrl, description }) => {
   return (
     <div className={styles.partnerCard}>
       <img src={logoUrl} alt={description} className={styles.partnerLogo} />
@@ -10,5 +10,3 @@ const PartnerCardFields: FC<IPartnerCardProps> = ({ logoUrl, description }) => {
     </div>
   );
 };
-
-export default PartnerCardFields;

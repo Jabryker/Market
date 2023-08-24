@@ -1,14 +1,13 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import HelpText from "../../components/atoms/HelpText/HelpText";
-import LoginFormOrganism from "../../components/organisms/LoginFormOrganism/LoginFormOrganism";
+import { HelpText } from "../../components/atoms/";
+import { LoginFormOrganism, GoogleAuthOrgamism } from "../../components/organisms/";
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
 import AuthController from "../../controllers/AuthController";
 
-import GoogleAuthOrgamism from "../../components/organisms/GoogleAuthOrgamism/GoogleAuthOrgamism";
 import styles from "./LoginPageTemplate.module.scss";
 
-const LoginPageTemplate: FC = () => {
+export const LoginPageTemplate: FC = () => {
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (loginData: ILoginData) => {
@@ -26,5 +25,3 @@ const LoginPageTemplate: FC = () => {
     </div>
   );
 };
-
-export default LoginPageTemplate;

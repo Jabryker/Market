@@ -1,4 +1,4 @@
-const partners = [
+export const partners = [
   {
     id: 1,
     logoUrl: require("../images/partners/mountain.png"),
@@ -20,5 +20,3 @@ const partners = [
     description: "DEERBEND",
   },
 ];
-
-export default partners;
