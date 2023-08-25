@@ -39,7 +39,11 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
         />
       }
       actions={[
-        <InputNumber min={1} value={quantity} onChange={handleQuantityChange} />,
+        <InputNumber
+          min={1}
+          value={quantity}
+          onChange={handleQuantityChange}
+        />,
         <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart}>
           Add to Cart
         </Button>,
