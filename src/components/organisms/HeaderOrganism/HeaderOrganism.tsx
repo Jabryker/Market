@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
 
@@ -10,6 +10,8 @@ export const HeaderOrganism: FC = () => {
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const cartItemsCount = 5;
 
   return (
     <>
@@ -22,12 +24,22 @@ export const HeaderOrganism: FC = () => {
             </li>
           ))}
         </ul>
-        <div onClick={handleNav} className="block md:hidden">
-          {nav ? (
-            <AiOutlineClose size={20} color="black" />
-          ) : (
-            <AiOutlineMenu size={20} color="black" />
-          )}
+        <div className="flex items-center relative">
+          <Link to="/cart" className="mr-4">
+            <AiOutlineShoppingCart size={24} color="black" />
+            {cartItemsCount > 0 && (
+              <span className="absolute top-0 right-0 bg-red-500 text-white px-1 rounded-full text-xs">
+                {cartItemsCount}
+              </span>
+            )}
+          </Link>
+          <div onClick={handleNav} className="block md:hidden">
+            {nav ? (
+              <AiOutlineClose size={20} color="black" />
+            ) : (
+              <AiOutlineMenu size={20} color="black" />
+            )}
+          </div>
         </div>
         <div
           className={

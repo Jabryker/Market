@@ -8,6 +8,7 @@ import {
   PasswordReset,
   NotFoundScreen,
   ProductDetailsScreen,
+  BasketPages,
 } from "../pages";
 
 import { BuyerRegistrationPageTemplate, SellerRegistrationPageTemplates } from "../templates/";
@@ -45,6 +46,10 @@ const AppRoutes = () => {
     {
       path: "/products/:id",
       element: <ProductDetailsScreen />,
+    },
+    {
+      path: "/cart",
+      element: <BasketPages />,
     },
     {
       path: "*",

@@ -5,6 +5,11 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
 
+interface CartItem {
+  product: IProduct;
+  quantity: number;
+}
+
 export interface IProduct {
   id: number;
   name: string;
@@ -46,20 +51,30 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState("description");
 
+  const [cart, setCart] = useState<CartItem[]>([]);
+
   if (!product) {
     return null; // Handle loading or error state
   }
+
+  const saveCartToLocalStorage = (cartItems: CartItem[]) => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  };
 
   const handleTabChange = (tabKey: string) => {
     setActiveTab(tabKey);
   };
 
   const handleAddToCart = () => {
-    // Implement your add to cart logic here
+    const newItem: CartItem = { product, quantity };
+    const newCart = [...cart, newItem];
+    setCart(newCart);
+    saveCartToLocalStorage(newCart);
   };
 
   const handleBuyNow = () => {
     // Implement your buy now logic here
+    console.log("handleBuyNow");
   };
 
   return (
@@ -112,9 +127,14 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
               <Button type="text" onClick={handleBuyNow}>
                 Купить
               </Button>
-              <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart} className="ml-2">
+              {/* <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart} className="ml-2">
                 Добавить в корзину
-              </Button>
+              </Button> */}
+              <Button
+                icon={<ShoppingCartOutlined />}
+                onClick={handleAddToCart}
+                className="ml-2"
+              ></Button>
             </div>
           </div>
         </Card>
