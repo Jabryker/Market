@@ -8,6 +8,7 @@ import {
 } from "../../components/organisms";
 
 import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
+import { ContactUsOrganism } from "../../components/organisms/ContactUsOrganism/ContactUsOrganism";
 
 export const MainPage: FC = () => {
   return (
@@ -16,7 +17,8 @@ export const MainPage: FC = () => {
       <HeaderOrganism />
       <SliderOrganisms />
       <DiscountProductsOrganisms />
-      {/* <PreFooterOrgamism />  */}
+      <ContactUsOrganism />
+      {/* <PreFooterOrgamism /> */}
       {/* <FooterOrganism /> */}
     </>
   );

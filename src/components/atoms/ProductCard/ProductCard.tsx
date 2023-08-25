@@ -31,7 +31,11 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     <Card
       cover={<img src={product?.images[0].image} alt={product.name} />}
       actions={[
-        <InputNumber min={1} value={quantity} onChange={handleQuantityChange} />,
+        <InputNumber
+          min={1}
+          value={quantity}
+          onChange={handleQuantityChange}
+        />,
         <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart}>
           Add to Cart
         </Button>,
