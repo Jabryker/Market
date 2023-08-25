@@ -3,7 +3,10 @@ import { Input } from "../../atoms/";
 import { IBuyerRegistrationFormProps } from "./BuyerRegistrationFormFields.interface";
 import styles from "./BuyerRegistrationFormFields.module.scss";
 
-export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({ register, errors }) => {
+export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({
+  register,
+  errors,
+}) => {
   return (
     <>
       <Input
@@ -37,8 +40,8 @@ export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({ r
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-        <div className={styles.ErrorMessage}>Passwords do not match</div>
-      )}
+          <div className={styles.ErrorMessage}>Passwords do not match</div>
+        )}
     </>
   );
 };

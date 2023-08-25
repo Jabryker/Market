@@ -4,13 +4,13 @@ import { Product } from "../../atoms/ProductCard/ProductCard.interface";
 import ProductController from "../../../controllers/ProductController";
 import { TitleText } from "../../atoms";
 
-export const DiscountProductsOrganisms = () => {
+export const FeaturedProductsOrganism = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function fetchProduct() {
       try {
-        const productsData = await ProductController.getProductSale(); // Вызов контроллера
+        const productsData = await ProductController.getProductBest();
         setProducts(productsData.results);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -22,7 +22,7 @@ export const DiscountProductsOrganisms = () => {
 
   return (
     <div>
-      <TitleText>Товары со скидкой</TitleText>
+      <TitleText>Лучшие товары</TitleText>
       <DiscountProductsMolecules products={products} />
     </div>
   );

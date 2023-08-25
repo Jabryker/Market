@@ -1,3 +1,3 @@
 export interface IBuyerRegistrationFormOrganismProps {
-    onSubmit: (data: any) => void;
+  onSubmit: (data: any) => void;
 }
