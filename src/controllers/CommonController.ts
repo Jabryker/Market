@@ -5,7 +5,7 @@ const baseApiUrl = process.env.REACT_APP_API_URL;
 const CommonController = {
   getNews: async () => {
     try {
-      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/news-list`);
+      const response: AxiosResponse = await axios.get("http://16.171.197.36/api/v1/news/news-list");
       console.log(response);
       return response.data.results;
     } catch (error) {
@@ -14,7 +14,9 @@ const CommonController = {
   },
   getArticles: async () => {
     try {
-      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/articles-list`);
+      const response: AxiosResponse = await axios.get(
+        "http://16.171.197.36/api/v1/news/articles-list",
+      );
       console.log(response);
       return response.data.results;
     } catch (error) {
