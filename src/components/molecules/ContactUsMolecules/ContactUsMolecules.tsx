@@ -98,7 +98,7 @@ const ContactUsMolecules = () => {
               height="100%"
               frameBorder="0"
               style={{ border: 0 }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29718.221237317593!2d-74.00600946695127!3d40.7127761741128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM4zMDQnMzguMCJOIDEwNMKwMDcnMDguMiJX!5e0!3m2!1sen!2sus!4v1566916780143!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25494.338365698876!2d74.58742015330075!3d42.87462162426562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3878fabf88e2b5d3%3A0x7041b01777c2e55e!2sBishkek%2C%20Kyrgyzstan!5e0!3m2!1sen!2sus!4v1566916780143!5m2!1sen!2sus"
               allowFullScreen
             ></iframe>
           </div>
