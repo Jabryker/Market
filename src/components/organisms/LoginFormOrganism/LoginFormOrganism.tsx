@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../atoms/Button/Button";
+import { Button } from "../../atoms/";
 import { LoginFormFields } from "../../molecules/";
 import { ILoginFormOrganismProps } from "./LoginFormOrganism.interface";
 

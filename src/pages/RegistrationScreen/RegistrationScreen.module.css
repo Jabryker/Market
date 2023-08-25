@@ -1,0 +1,39 @@
+.registrationScreenContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.registrationScreenContainer .registrationScreenTitle {
+  margin-top: 256px;
+  color: #373737;
+  font-family: Inter;
+  font-size: 40px;
+  font-weight: 600;
+}
+.registrationScreenContainer .registrationScreenTitle > span {
+  color: #fb6d56;
+  font-family: Poppins;
+  font-size: 40px;
+  font-weight: 600;
+}
+.registrationScreenContainer .registrationScreenText {
+  margin-top: 40px;
+  color: #373737;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+}
+.registrationScreenContainer .registrationScreenBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 96px;
+}
+.registrationScreenContainer .registrationScreenBtns > span {
+  text-align: center;
+  color: #373737;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+}/*# sourceMappingURL=RegistrationScreen.module.css.map */

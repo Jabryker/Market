@@ -1,0 +1,13 @@
+.BuyerRegistrationPageTemplate {
+  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.BuyerRegistrationPageTemplateTitle {
+  color: #373737;
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 600;
+}/*# sourceMappingURL=BuyerRegistrationPageTemplate.module.css.map */

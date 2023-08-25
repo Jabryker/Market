@@ -1,0 +1,17 @@
+.SellerRegistration {
+  width: 100%;
+  height: 100vh;
+}
+.SellerRegistrationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.SellerRegistrationTitleText {
+  margin-top: 75px;
+  color: #373737;
+  font-family: Inter;
+  font-size: 36px;
+  font-weight: 600;
+}/*# sourceMappingURL=SellerRegistrationPageTemplates.module.css.map */

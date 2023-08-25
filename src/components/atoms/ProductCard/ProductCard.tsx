@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, Button, InputNumber } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { LoadingSkeleton } from "../../atoms";
@@ -9,7 +10,7 @@ interface ProductCardProps {
   onAddToCart: (quantity: number) => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
+export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleQuantityChange = (value: number | null) => {
@@ -29,7 +30,14 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
 
   return (
     <Card
-      cover={<img src={product?.images[0].image} alt={product.name} />}
+      className="w-full max-w-xs mx-auto"
+      cover={
+        <img
+          src={product?.images[0].image}
+          alt={product.name}
+          className="w-full h-48 object-cover"
+        />
+      }
       actions={[
         <InputNumber
           min={1}
@@ -40,7 +48,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
           Add to Cart
         </Button>,
         <Button type="primary" onClick={() => console.log("Details clicked")}>
-          Подробнее
+          <Link to={`/products/${product?.id}`}>Подробнее</Link>
         </Button>,
       ]}
     >
@@ -50,5 +58,3 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     </Card>
   );
 };
-
-export default ProductCard;
