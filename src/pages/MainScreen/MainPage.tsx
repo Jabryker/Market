@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   HeaderOrganism,
   SubHeaderOrganism,
@@ -8,9 +9,9 @@ import {
   NewsListOrganism,
   UsefulArticlesOrganism,
   // PreFooterOrgamism,
-  // FooterOrganism,
+  FooterOrganism,
 } from "../../components/organisms";
-import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
+// import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
 import { ContactUsOrganism } from "../../components/organisms/ContactUsOrganism/ContactUsOrganism";
 
 export const MainPage: FC = () => {
@@ -26,7 +27,7 @@ export const MainPage: FC = () => {
       <UsefulArticlesOrganism />
       <ContactUsOrganism />
       {/* <PreFooterOrgamism /> */}
-      {/* <FooterOrganism /> */}
+      <FooterOrganism />
     </>
   );
 };

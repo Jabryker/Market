@@ -12,11 +12,12 @@ export const ProductDetailsTemplate: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<IProduct | null>(null);
+  const baseURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/v1/stores/products/${id}/`);
+        const response = await axios.get(`${baseURL}/api/v1/stores/products/${id}/`);
         setProduct(response.data);
         setLoading(false);
       } catch (error) {

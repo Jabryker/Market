@@ -82,7 +82,7 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
       <Col span={6}>
         <div className="flex flex-col items-center">
           <div className="space-y-2">
-            {product.images.map((image, index) => (
+            {product?.images.map((image, index) => (
               <img
                 key={index}
                 alt={product.name}
@@ -100,7 +100,7 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
         <div className="flex flex-col items-center">
           <img
             alt={product.name}
-            src={product.images[selectedImageIndex].image}
+            src={product?.images[selectedImageIndex]?.image}
             className="w-full h-auto max-h-96 object-contain cursor-pointer hover:opacity-80 transition-opacity"
             onClick={() => setSelectedImageIndex(selectedImageIndex === 0 ? 1 : 0)}
           />

@@ -33,17 +33,13 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
       className="w-full max-w-xs mx-auto"
       cover={
         <img
-          src={product?.images[0].image}
+          src={product?.images[0]?.image}
           alt={product.name}
           className="w-full h-48 object-cover"
         />
       }
       actions={[
-        <InputNumber
-          min={1}
-          value={quantity}
-          onChange={handleQuantityChange}
-        />,
+        <InputNumber min={1} value={quantity} onChange={handleQuantityChange} />,
         <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart}>
           Add to Cart
         </Button>,
