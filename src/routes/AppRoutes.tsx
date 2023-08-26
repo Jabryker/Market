@@ -11,7 +11,11 @@ import {
   BasketPages,
 } from "../pages";
 
-import { BuyerRegistrationPageTemplate, SellerRegistrationPageTemplates } from "../templates/";
+import {
+  BuyerRegistrationPageTemplate,
+  SellerRegistrationPageTemplates,
+  NewsDetailsTemplate,
+} from "../templates/";
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -46,6 +50,10 @@ const AppRoutes = () => {
     {
       path: "/products/:id",
       element: <ProductDetailsScreen />,
+    },
+    {
+      path: "news/:id",
+      element: <NewsDetailsTemplate />,
     },
     {
       path: "/cart",
