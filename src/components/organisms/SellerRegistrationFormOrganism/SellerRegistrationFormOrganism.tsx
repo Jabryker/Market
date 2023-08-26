@@ -4,7 +4,9 @@ import { Button } from "../../atoms/";
 import { SellerRegistrationFormFields } from "../../molecules/";
 import { ISellerRegistrationFormOrganismProps } from "./SellerRegistrationFormOrganism.interface";
 
-export const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> = ({ onSubmit }) => {
+export const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> = ({
+  onSubmit,
+}) => {
   const {
     register,
     handleSubmit,

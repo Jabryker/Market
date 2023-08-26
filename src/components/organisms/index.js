@@ -1,5 +1,6 @@
 export { BuyerRegistrationFormOrganism } from "./BuyerRegistrationFormOrganism/BuyerRegistrationFormOrganism";
 export { CategorySelectOrganism } from "./CategorySelectOrgamisn/CategorySelectOrgamisn";
+export { ContactUsOrganism } from "./ContactUsOrganism/ContactUsOrganism";
 export { DiscountProductsOrganisms } from "./DiscountProductsOrganisms/DiscountProductsOrganisms";
 export { FeaturedProductsOrganism } from "./FeaturedProductsOrganism/FeaturedProductsOrganism";
 export { FooterOrganism } from "./FooterOrganism/FooterOrganism";

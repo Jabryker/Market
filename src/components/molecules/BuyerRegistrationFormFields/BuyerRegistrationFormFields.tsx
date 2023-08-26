@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Input } from "../../atoms/";
 import { IBuyerRegistrationFormProps } from "./BuyerRegistrationFormFields.interface";
-import styles from "./BuyerRegistrationFormFields.module.scss";
 
 export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({
   register,
@@ -40,7 +39,7 @@ export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-          <div className={styles.ErrorMessage}>Passwords do not match</div>
+          <div className="bg-red-500 text-black">Passwords do not match</div>
         )}
     </>
   );
