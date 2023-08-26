@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, InputNumber } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { Product } from "./ProductCard.interface";
 
 interface ProductCardProps {
@@ -27,24 +27,32 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     <Card
       className="w-full max-w-xs mx-auto"
       cover={
-        <img
-          src={product?.images[0]?.image}
-          alt={product?.name}
-          className="w-full h-48 object-cover"
-        />
+        <>
+          <Button
+            type="link"
+            icon={<HeartOutlined style={{ fontSize: "24px", color: "black" }} />}
+            className="absolute top-0 right-0"
+          />
+          <Button
+            icon={<ShoppingCartOutlined />}
+            className="absolute top-10 right-0"
+            onClick={handleAddToCart}
+          />
+          <img
+            src={product?.images[0]?.image}
+            alt={product?.name}
+            className="w-full h-48 object-cover"
+          />
+        </>
       }
       actions={[
-        <InputNumber min={1} value={quantity} onChange={handleQuantityChange} />,
-        <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart}>
-          Add to Cart
-        </Button>,
-        <Button type="primary" onClick={() => console.log("Details clicked")}>
+        <Button type="primary">
           <Link to={`/products/${product?.id}`}>Подробнее</Link>
         </Button>,
+        <InputNumber min={1} max={20} value={quantity} onChange={handleQuantityChange} />,
       ]}
     >
       <h3 className="text-lg font-semibold mb-1">{product?.name}</h3>
-      <p className="text-gray-600">{product?.description}</p>
       <p className="text-green-600 font-semibold">${product?.price}</p>
     </Card>
   );
