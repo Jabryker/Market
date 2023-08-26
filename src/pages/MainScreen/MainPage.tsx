@@ -8,11 +8,10 @@ import {
   CategorySelectOrganism,
   NewsListOrganism,
   UsefulArticlesOrganism,
-  // PreFooterOrgamism,
+  ContactUsOrganism,
   FooterOrganism,
 } from "../../components/organisms";
 // import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
-import { ContactUsOrganism } from "../../components/organisms/ContactUsOrganism/ContactUsOrganism";
 
 export const MainPage: FC = () => {
   return (
@@ -26,7 +25,6 @@ export const MainPage: FC = () => {
       <NewsListOrganism />
       <UsefulArticlesOrganism />
       <ContactUsOrganism />
-      {/* <PreFooterOrgamism /> */}
       <FooterOrganism />
     </>
   );

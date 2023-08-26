@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NewsListMolesules } from "../../molecules/";
-import { News } from "../../molecules/NewsListMolesules/NewsListMolesules"; // Импортируйте News
+import { News } from "../../molecules/NewsListMolesules/NewsListMolesules";
+import { displayErrorToast } from "../../atoms";
 import CommonController from "../../../controllers/CommonController";
 
 export const NewsListOrganism = () => {
@@ -12,7 +13,8 @@ export const NewsListOrganism = () => {
         const newsResponse = await CommonController.getNews();
         setNewsData(newsResponse);
       } catch (error) {
-        console.error("Error fetching news:", error);
+        // console.error("Error fetching news:", error);
+        displayErrorToast("Error fetching news :(");
       }
     }
 

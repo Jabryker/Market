@@ -13,11 +13,14 @@ export const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismPro
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <BuyerRegistrationFormFields register={register} errors={errors} />
-      <div style={{ marginTop: "48px" }}>
+
+      <div className="space-y-4">
         <Button type="submit">Создать аккаунт</Button>
+
         <GoogleAuthOrgamism />
       </div>
     </form>

@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import { displayErrorToast } from "../components/atoms";
 
 /*
  * Декодирует что нам присылает Google Auth
@@ -12,5 +13,6 @@ export const decodeAndLogJWT = (credential: string) => {
     console.log("Decoded JWT:", decoded);
   } catch (error) {
     console.log("Error decoding JWT:", error);
+    displayErrorToast("Ошибочные GoogleAuth данные");
   }
 };
