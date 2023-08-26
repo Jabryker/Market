@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, Button, InputNumber } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { LoadingSkeleton } from "../../atoms";
 import { Product } from "./ProductCard.interface";
 
 interface ProductCardProps {
@@ -24,17 +23,13 @@ export const ProductCard: FC<ProductCardProps> = ({ product, onAddToCart }) => {
     console.log("Added to cart:", quantity);
   };
 
-  if (!product) {
-    return <LoadingSkeleton />;
-  }
-
   return (
     <Card
       className="w-full max-w-xs mx-auto"
       cover={
         <img
           src={product?.images[0]?.image}
-          alt={product.name}
+          alt={product?.name}
           className="w-full h-48 object-cover"
         />
       }

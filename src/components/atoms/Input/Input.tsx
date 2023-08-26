@@ -13,7 +13,7 @@ export const Input: FC<IInputProps> = ({ type, name, label, placeholder, error, 
         type={type}
         name={name}
         placeholder={placeholder}
-        {...register(name, { required: "This field is required" })} // Add validation rule
+        {...register(name, { required: "This field is required" })}
       />
       {error && <div className={styles.ErrorMessage}>{error}</div>}
     </div>
