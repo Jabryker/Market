@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Row, Col, Card, Button, Typography, InputNumber, Tabs } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
@@ -111,9 +111,9 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
           <div className="flex flex-col">
             <Title level={4}>{product.name}</Title>
             <div className="flex items-center mb-4">
-              <Text strong>${product.price}</Text>
+              <Text strong>⃀{product.price}</Text>
               <Text type="secondary" className="ml-2">
-                <del>${product.price + 200}</del>
+                <del>⃀{product.price + 200}</del>
               </Text>
             </div>
             <Text>{product.description}</Text>

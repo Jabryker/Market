@@ -68,7 +68,7 @@ export const BasketPagesMolecules: FC = () => {
                 />
               }
               title={item.product.name}
-              description={`Цена: $${item.product.price}`}
+              description={`Цена: ⃀${item.product.price}`}
             />
           </List.Item>
         )}
