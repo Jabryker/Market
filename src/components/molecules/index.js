@@ -1,6 +1,7 @@
 export { BasketPagesMolecules } from "./BasketPagesMolecules/BasketPagesMolecules";
 export { BuyerRegistrationFormFields } from "./BuyerRegistrationFormFields/BuyerRegistrationFormFields";
 export { ContactUsMolecules } from "./ContactUsMolecules/ContactUsMolecules";
+export { DetailsMolecules } from "./DetailsMolecules/DetailsMolecules";
 export { DiscountProductsMolecules } from "./DiscountProductsMolecules/DiscountProductsMolecules";
 export { FeaturedProductsMolecules } from "./FeaturedProductsMolecules/FeaturedProductsMolecules";
 export { LoginFormFields } from "./LoginFormFields/LoginFormFields";
