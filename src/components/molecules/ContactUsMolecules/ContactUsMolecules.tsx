@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TitleText } from "../../atoms/";
 import nav from "../../../assets/images/contactIcons/.png";
 import phone from "../../../assets/images/contactIcons/phone.png";
 import mail from "../../../assets/images/contactIcons/mail.png";
 
-const ContactUsMolecules = () => {
+export const ContactUsMolecules = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -20,10 +20,7 @@ const ContactUsMolecules = () => {
         className="contactUs-form-block w-11/12 px-28 py-28 container mx-auto flex justify-between"
         style={{ background: "#F5F5F5" }}
       >
-        <div
-          className="contactUs-block-left w-1/2 pr-7"
-          style={{ color: "#0F001A" }}
-        >
+        <div className="contactUs-block-left w-1/2 pr-7" style={{ color: "#0F001A" }}>
           <h2>Оставьте нам сообщение</h2>
           <form onSubmit={handleSubmit} className="space-y-7 mt-4">
             <div className="flex space-x-4">
@@ -69,25 +66,14 @@ const ContactUsMolecules = () => {
           <ul className="space-y-3 flex-column justify-center">
             <li className="flex  space-x-3" style={{ margin: "10px 0" }}>
               <img src={nav} alt="" style={{ width: "20px", height: "20px" }} />
-              <span>
-                Infomation technologies building, Victoria Island, Lagos,
-                Nigeria.
-              </span>
+              <span>Infomation technologies building, Victoria Island, Lagos, Nigeria.</span>
             </li>
             <li className="flex  space-x-3" style={{ margin: "30px 0" }}>
-              <img
-                src={phone}
-                alt=""
-                style={{ width: "20px", height: "20px" }}
-              />
+              <img src={phone} alt="" style={{ width: "20px", height: "20px" }} />
               <span>+234 081-1236-4568</span>
             </li>
             <li className="flex  space-x-3" style={{ margin: "30px 0 10px" }}>
-              <img
-                src={mail}
-                alt=""
-                style={{ width: "20px", height: "20px" }}
-              />
+              <img src={mail} alt="" style={{ width: "20px", height: "20px" }} />
               <span>hello@info.com.ng</span>
             </li>
           </ul>
@@ -107,5 +93,3 @@ const ContactUsMolecules = () => {
     </div>
   );
 };
-
-export default ContactUsMolecules;
