@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "antd";
-import { TitleText } from "../../atoms";
 
 export interface News {
   id: number;
@@ -17,7 +16,6 @@ interface INewsListMolesulesProps {
 export const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => {
   return (
     <div className="px-8">
-      <TitleText>Наши новости</TitleText>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsData.map((news) => (
           <Card

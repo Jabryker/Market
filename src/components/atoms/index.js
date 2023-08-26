@@ -8,5 +8,6 @@ export { HelpText } from "./HelpText/HelpText";
 export { Input } from "./Input/Input";
 export { ProductCard } from "./ProductCard/ProductCard";
 export { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
+export { SkeletonCard } from "./SkeletonCard/SkeletonCard";
 export { Select } from "./Select/Select";
 export { TitleText } from "./TitleText/TitleText";
