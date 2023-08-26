@@ -15,6 +15,7 @@ import {
   BuyerRegistrationPageTemplate,
   SellerRegistrationPageTemplates,
   NewsDetailsTemplate,
+  UsefulArticlesDetailTemplate,
 } from "../templates/";
 
 const AppRoutes = () => {
@@ -52,8 +53,12 @@ const AppRoutes = () => {
       element: <ProductDetailsScreen />,
     },
     {
-      path: "news/:id",
+      path: "/news/:id",
       element: <NewsDetailsTemplate />,
+    },
+    {
+      path: "/articles/:id",
+      element: <UsefulArticlesDetailTemplate />,
     },
     {
       path: "/cart",

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 import { TitleText } from "../../atoms";
 
 export interface Article {
@@ -30,9 +31,9 @@ export const UsefulArticlesMolecules: FC<UsefulArticlesMoleculesProps> = ({ arti
             <p className="text-gray-600">{article.description}</p>
             <div className="mt-2">
               <hr className="border-gray-300" />
-              <a href="#" className="text-blue-500 hover:underline">
+              <Link to={`/articles/${article.id}`} className="text-blue-500 hover:underline">
                 Читать далее
-              </a>
+              </Link>
             </div>
           </Card>
         ))}

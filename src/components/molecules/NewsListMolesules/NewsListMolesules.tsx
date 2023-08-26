@@ -10,7 +10,7 @@ export interface News {
   photo: string;
 }
 
-export interface INewsListMolesulesProps {
+interface INewsListMolesulesProps {
   newsData: News[];
 }
 
