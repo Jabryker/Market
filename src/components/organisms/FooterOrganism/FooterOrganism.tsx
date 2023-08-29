@@ -2,7 +2,6 @@ import { FC } from "react";
 import {
   FaDribbbleSquare,
   FaFacebookSquare,
-  FaGithubSquare,
   FaInstagram,
   FaTwitterSquare,
   FaCcMastercard,
@@ -14,18 +13,32 @@ import {
 import { Link } from "react-router-dom";
 import { footer } from "../../../assets/data";
 
+interface ContactItem {
+  id: number;
+  label: string;
+  icon: JSX.Element;
+}
+
+const contactItems: ContactItem[] = [
+  { id: 1, label: "@ordomarket", icon: <FaInstagram size={30} /> },
+  { id: 2, label: "Ordo Market", icon: <FaFacebookSquare size={30} /> },
+  { id: 3, label: "OrdoMarket", icon: <FaTwitterSquare size={30} /> },
+  { id: 4, label: "Ordo Market", icon: <FaDribbbleSquare size={30} /> },
+];
+
 export const FooterOrganism: FC = () => {
   return (
     <>
-      <div className="max-w-[1240px] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-black-300">
+      <div className="mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-black-300 bg-[#47535F]">
         <div>
-          <p className="py-4">Контакты</p>
-          <div className="flex justify-between md:w-[75%] my-6">
-            <FaFacebookSquare size={30} />
-            <FaInstagram size={30} />
-            <FaTwitterSquare size={30} />
-            <FaGithubSquare size={30} />
-            <FaDribbbleSquare size={30} />
+          <p className="py-4">Социальная сеть</p>
+          <div className="md:w-[75%] my-6 flex-col space-y-4">
+            {contactItems.map((item) => (
+              <div key={item.id} className="flex items-center space-x-2">
+                {item.icon}
+                <span>{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
         <div className="lg:col-span-2 flex justify-between mt-6">
@@ -50,26 +63,6 @@ export const FooterOrganism: FC = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-black text-white text-center py-4 flex justify-between items-center">
-        <p>&copy; 2023. All rights reserved.</p>
-        <ul className="flex justify-center space-x-4 my-2">
-          <li>
-            <Link to="/terms-of-use">Условия использования</Link>
-          </li>
-          <li>
-            <Link to="/withdrawal-rights">Право на отзыв</Link>
-          </li>
-          <li>
-            <Link to="/imprint">Выходные данные</Link>
-          </li>
-          <li>
-            <Link to="/terms-and-conditions">Условия и положения</Link>
-          </li>
-          <li>
-            <Link to="/privacy-policy">Политика конфиденциальности</Link>
-          </li>
-        </ul>
       </div>
     </>
   );

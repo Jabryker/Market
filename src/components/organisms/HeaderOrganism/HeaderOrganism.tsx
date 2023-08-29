@@ -4,6 +4,12 @@ import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icon
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
 
+interface NavItem {
+  id: number;
+  to: string;
+  label: string;
+}
+
 export const HeaderOrganism: FC = () => {
   const [nav, setNav] = useState(false);
 
@@ -16,9 +22,9 @@ export const HeaderOrganism: FC = () => {
   return (
     <>
       <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-        <img src={logo} alt="Logo" />
+        <Link to="/"> <img src={logo} alt="Logo" /> </Link>
         <ul className="text-black hidden md:flex">
-          {navbar.map((item) => (
+          {navbar.map((item: NavItem) => (
             <li key={item.id} className="p-4">
               <Link to={item.to}>{item.label}</Link>
             </li>
@@ -41,24 +47,26 @@ export const HeaderOrganism: FC = () => {
             )}
           </div>
         </div>
-        <div
-          className={
-            nav
-              ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-600 ease-in-out duration-500 z-50"
-              : "fixed left-[-100%]"
-          }
-        >
-          <img src={logo} alt="Logo" />
-          <ul className="text-white capitalize p-4">
-            {navbar.map((item) => (
-              <li key={item.id} className="p-4">
-                <Link to={item.to} className="border-b border-black-600">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+      </div>
+      <div
+        className={
+          nav
+            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-600 ease-in-out duration-500 z-50"
+            : "fixed left-[-100%]"
+        }
+      >
+        <div className="p-4">
+          <Link to="/profile" className="text-white">Profile</Link>
         </div>
+        <ul className="text-white capitalize">
+          {navbar.map((item: NavItem) => (
+            <li key={item.id} className="p-4">
+              <Link to={item.to} className="border-b border-black-600">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
