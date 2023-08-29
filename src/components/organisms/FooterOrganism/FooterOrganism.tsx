@@ -29,31 +29,20 @@ const contactItems: ContactItem[] = [
 export const FooterOrganism: FC = () => {
   return (
     <>
-      <div className="mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-black-300 bg-[#47535F]">
-        <div>
-          <p className="py-4">Социальная сеть</p>
-          <div className="md:w-[75%] my-6 flex-col space-y-4">
-            {contactItems.map((item) => (
-              <div key={item.id} className="flex items-center space-x-2">
-                {item.icon}
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-black-300 bg-[#47535F] rounded-t-[50px]">
         <div className="lg:col-span-2 flex justify-between mt-6">
           <div>
-            <h6 className="font-medium text-gray-400">О нас</h6>
+            <h6 className="font-medium text-white">Меню</h6>
             <ul>
               {footer.map((item) => (
                 <li key={item.id} className="py-2 text-sm">
-                  <Link to={item.to}>{item.label}</Link>
+                  <Link to={item.to} className="text-[#A7B2BD]" >{item.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="py-4 text-center">Безопасные покупки</p>
+            <p className="py-4 text-center text-white">Безопасные покупки</p>
             <div className="flex justify-between md:w-[75%] my-6 m-10">
               <FaCcMastercard size={30} />
               <FaCcVisa size={30} />
@@ -61,6 +50,17 @@ export const FooterOrganism: FC = () => {
               <FaCcApplePay size={30} />
               <FaCcAmazonPay size={30} />
             </div>
+          </div>
+        </div>
+        <div>
+          <p className="py-4 text-white">Социальная сеть</p>
+          <div className="md:w-[75%] my-6 flex-col space-y-4">
+            {contactItems.map((item) => (
+              <div key={item.id} className="flex items-center space-x-2">
+                {item.icon}
+                <span className="text-[#A7B2BD]">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
