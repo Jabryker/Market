@@ -3,5 +3,6 @@ export { BuyerRegistrationPageTemplate } from "./BuyerRegistrationPageTemplate/B
 export { LoginPageTemplate } from "./LoginPageTemplate/LoginPageTemplate";
 export { NewsDetailsTemplate } from "./NewsDetailsTemplate/NewsDetailsTemplate";
 export { ProductDetailsTemplate } from "./ProductDetailsTemplate/ProductDetailsTemplate";
+export { ProfileTemplate } from "./ProfileTemplate/ProfileTemplate";
 export { SellerRegistrationPageTemplates } from "./SellerRegistrationPageTemplates/SellerRegistrationPageTemplates";
 export { UsefulArticlesDetailTemplate } from "./UsefulArticlesDetailTemplate/UsefulArticlesDetailTemplate";

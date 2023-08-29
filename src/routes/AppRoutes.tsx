@@ -9,6 +9,7 @@ import {
   NotFoundScreen,
   ProductDetailsScreen,
   BasketPages,
+  ProfilePages,
 } from "../pages";
 
 import {
@@ -63,6 +64,10 @@ const AppRoutes = () => {
     {
       path: "/cart",
       element: <BasketPages />,
+    },
+    {
+      path: "/profile",
+      element: <ProfilePages />,
     },
     {
       path: "*",

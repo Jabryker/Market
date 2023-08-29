@@ -34,7 +34,9 @@ export const ProductDetailsTemplate: FC = () => {
   return (
     <div>
       {loading ? (
-        <Spin size="large" />
+        <Spin tip="Loading" size="large">
+          <div className="content" />
+        </Spin>
       ) : (
         <>
           <HeaderOrganism />
