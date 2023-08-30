@@ -10,6 +10,7 @@ import {
   ProductDetailsScreen,
   BasketPages,
   ProfilePages,
+  ProductPages,
 } from "../pages";
 
 import {
@@ -48,6 +49,10 @@ const AppRoutes = () => {
     {
       path: "/password-reset",
       element: <PasswordReset />,
+    },
+    {
+      path: "/product",
+      element: <ProductPages />,
     },
     {
       path: "/products/:id",
