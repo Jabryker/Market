@@ -34,7 +34,7 @@ export const HeaderOrganism: FC = () => {
         </ul>
         <div className="flex items-center relative">
           <Input.Search placeholder="Search" />
-          <Button className="ml-2">Войти</Button> {/* Кнопка "Войти" из Ant Design */}
+          <Link to="/login"><Button className="ml-2">Войти</Button></Link>
           <Link to="/cart" className="ml-4">
             <Badge count={cartItemsCount} showZero>
               <AiOutlineShoppingCart size={24} color="black" />
