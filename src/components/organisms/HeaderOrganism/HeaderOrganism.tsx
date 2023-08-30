@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { Input, Button, Badge } from "antd";
 import { navbar } from "../../../assets/data/";
@@ -14,9 +14,15 @@ interface NavItem {
 
 export const HeaderOrganism: FC = () => {
   const [nav, setNav] = useState(false);
+  const navigate = useNavigate(); 
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleNav = () => {
     setNav(!nav);
+  };
+
+  const handleSearch = () => {
+    navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -33,7 +39,12 @@ export const HeaderOrganism: FC = () => {
           ))}
         </ul>
         <div className="flex items-center relative">
-          <Input.Search placeholder="Search" />
+          <Input.Search
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onSearch={handleSearch}
+          />
           <Link to="/login"><Button className="ml-2">Войти</Button></Link>
           <Link to="/cart" className="ml-4">
             <Badge count={cartItemsCount} showZero>
