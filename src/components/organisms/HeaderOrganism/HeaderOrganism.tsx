@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { Input, Button, Badge } from "antd";
 import { navbar } from "../../../assets/data/";
+import store from "../../../store/store";
 import logo from "../../../assets/images/logo.svg";
 
 interface NavItem {
@@ -17,7 +19,7 @@ export const HeaderOrganism: FC = () => {
     setNav(!nav);
   };
 
-  const cartItemsCount = 5;
+  const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
@@ -31,13 +33,12 @@ export const HeaderOrganism: FC = () => {
           ))}
         </ul>
         <div className="flex items-center relative">
-          <Link to="/cart" className="mr-4">
-            <AiOutlineShoppingCart size={24} color="black" />
-            {cartItemsCount > 0 && (
-              <span className="absolute top-0 right-0 bg-red-500 text-white px-1 rounded-full text-xs">
-                {cartItemsCount}
-              </span>
-            )}
+          <Input.Search placeholder="Search" />
+          <Button className="ml-2">Войти</Button> {/* Кнопка "Войти" из Ant Design */}
+          <Link to="/cart" className="ml-4">
+            <Badge count={cartItemsCount} showZero>
+              <AiOutlineShoppingCart size={24} color="black" />
+            </Badge>
           </Link>
           <div onClick={handleNav} className="block md:hidden">
             {nav ? (
@@ -55,9 +56,6 @@ export const HeaderOrganism: FC = () => {
             : "fixed left-[-100%]"
         }
       >
-        <div className="p-4">
-          <Link to="/profile" className="text-white">Profile</Link>
-        </div>
         <ul className="text-white capitalize">
           {navbar.map((item: NavItem) => (
             <li key={item.id} className="p-4">
