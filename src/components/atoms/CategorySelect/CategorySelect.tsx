@@ -1,29 +1,33 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Select } from "antd";
+import HeaderController from "../../../controllers/HeaderController";
 import { ICategorySelectProps } from "./CategorySelect.interface";
 
-// const { Option } = Select;
+export const CategorySelect: FC<ICategorySelectProps> = () => {
+  const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
 
-export const CategorySelect: FC<ICategorySelectProps> = ({ selectedCategory, onChange }) => {
-  const categories = [
-    "Акции",
-    "Кухонное оборудование",
-    "Хлебопекарное",
-    "Холодильное",
-    "Прачечное",
-    "Вспомогательное",
-    "Собственная продукция",
-    "Комплектующие",
-    "Атомарный design архитектура",
-  ];
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const categoryData = await HeaderController.getCategories();
+        setCategories(categoryData);
+      } catch (error) {
+        console.error("Ошибка при получении категорий:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <div>
-      {categories.map((category, index) => (
-        <Select key={index} value={category}>
-          {category}
-        </Select>
-      ))}
+      <Select>
+        {categories.map((category) => (
+          <Select.Option key={category.id} value={category.id}>
+            {category.name}
+          </Select.Option>
+        ))}
+      </Select>
     </div>
   );
 };
