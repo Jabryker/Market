@@ -8,6 +8,11 @@ interface PriceRangeFilterProps {
 }
 
 export const PriceRangeFilter: FC<PriceRangeFilterProps> = ({ minPrice, maxPrice, onChange }) => {
+  const handleChange = (values: [number, number]) => {
+    onChange(values);
+    console.log("Новое значение PriceRangeFilter:", values);
+  };
+
   return (
     <Slider
       range
@@ -15,7 +20,7 @@ export const PriceRangeFilter: FC<PriceRangeFilterProps> = ({ minPrice, maxPrice
       max={1000}
       step={10}
       defaultValue={[minPrice, maxPrice]}
-      onChange={(values) => onChange(values as [number, number])}
+      onChange={handleChange}
     />
   );
 };

@@ -35,7 +35,6 @@ export const ProductPageTemplate: FC = () => {
     <div>
       <h2>Product Page</h2>
 
-      {/* Атомарные компоненты фильтров */}
       <CategoryFilter
         categories={["Категория 1", "Категория 2", "Категория 3"]}
         selectedCategory={selectedCategory}
@@ -58,7 +57,6 @@ export const ProductPageTemplate: FC = () => {
         onChange={setSelectedAddress}
       />
 
-      {/* Отображение списка отфильтрованных товаров */}
       <DiscountProductsMolecules products={allProduct} />
     </div>
   );
