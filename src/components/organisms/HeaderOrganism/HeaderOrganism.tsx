@@ -22,7 +22,7 @@ export const HeaderOrganism: FC = () => {
   };
 
   const handleSearch = () => {
-    navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
+    navigate(`/api/v1/stores/products/?search=${searchQuery}&category=&address=&price__gte=&price__lte=`);
   };
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
