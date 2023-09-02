@@ -22,10 +22,23 @@ const ProductController = {
       throw error;
     }
   },
-  getAllProduct: async () => {
+  getFilteredProducts: async (filters: {
+    category?: string;
+    name?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    address?: string;
+  }) => {
     try {
-      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/stores/products/`);
-      console.log(response);
+      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/stores/products/`, {
+        params: {
+          category: filters.category,
+          name: filters.name,
+          price__gte: filters.minPrice,
+          price__lte: filters.maxPrice,
+          address: filters.address,
+        },
+      });
 
       // Assuming your API response structure matches the data field of the response
       const products: IProduct[] = response.data.results;
@@ -35,6 +48,19 @@ const ProductController = {
       throw error;
     }
   },
+  // getAllProduct: async () => {
+  //   try {
+  //     const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/stores/products/`);
+  //     console.log(response);
+  //
+  //     // Assuming your API response structure matches the data field of the response
+  //     const products: IProduct[] = response.data.results;
+  //
+  //     return products;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // },
 };
 
 export default ProductController;
