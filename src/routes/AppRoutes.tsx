@@ -71,8 +71,12 @@ const AppRoutes = () => {
       element: <BasketPages />,
     },
     {
-      path: "/profile",
-      element: <ProfilePages />,
+      path: "/profile/buyer/:id",
+      element: <ProfilePages userType="buyer" />,
+    },
+    {
+      path: "/profile/seller/:id",
+      element: <ProfilePages userType="seller" />,
     },
     {
       path: "*",
