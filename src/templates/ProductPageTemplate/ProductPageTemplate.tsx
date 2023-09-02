@@ -14,7 +14,6 @@ export const ProductPageTemplate: FC = () => {
   useEffect(() => {
     try {
       const fetchProducts = async () => {
-        // Передача параметров фильтров в запрос
         const fetchedProducts: IProduct[] = await ProductController.getFilteredProducts({
           category: selectedCategory,
           name: nameFilter,
