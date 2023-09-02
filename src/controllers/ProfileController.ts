@@ -14,20 +14,12 @@ export interface IUser {
   telegram?: string;
 }
 
-export interface IUserProfile {
-  email: string;
-  username: string;
-  certificate_number?: number;
-  INN?: number;
-  type?: string;
-  address?: string;
-  birthday?: string;
-  job?: string;
-  specialization?: string;
-  whatsapp: string;
-  telegram: string;
-  photo?: string;
+export interface IUserProfile extends IUser {
+    certificate_number?: number;
+    INN?: number;
+    type?: string;
 }
+
 
 export enum UserType {
   Buyer = "buyer",
