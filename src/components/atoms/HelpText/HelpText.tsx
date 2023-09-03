@@ -1,13 +1,20 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 import { IHelpTextProps } from "./HelpText.interface";
 
-export const HelpText: FC<IHelpTextProps> = ({ children, linkTo, linkText }) => {
+export const HelpText: FC<IHelpTextProps> = ({
+  children,
+  linkTo,
+  linkText,
+}) => {
   return (
-    <div className="mt-8 md:mt-12">
-      <p className="text-base md:text-lg font-medium text-gray-700">
+    <div className="mt-2 mb-5 ">
+      <p className="text-[#A7B2BD] text-sm font-medium">
         {children}{" "}
-        <Link to={linkTo} className="text-[#fb6d56] font-medium">
+        <Link
+          to={linkTo}
+          className="text-[#EC9A1E] text-sm font-medium underline"
+        >
           {linkText}
         </Link>
       </p>

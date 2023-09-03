@@ -1,40 +1,23 @@
-import React, { FC, useState } from "react";
+import { FC } from "react";
 import { Button, Empty, InputNumber, List } from "antd";
 import { Link } from "react-router-dom";
-
-// Определение типа для элемента корзины
-interface CartItem {
-  product: IProduct;
-  quantity: number;
-}
-
-// Определение типа для продукта
-interface IProduct {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
-  images: Image[];
-  // ... остальные поля продукта
-}
-
-// Определение типа для изображения
-interface Image {
-  id: number;
-  image: string;
-}
+import { useSelector, useDispatch } from "react-redux";
+import { removeFromCart, updateCartItemQuantity } from "../../../store/slice/cartSlice";
+import { CartItem } from "../../atoms/ProductCard/ProductCard.interface";
+import rootReducer from "../../../store/reducers/rootReducer"; // Импортируем корректный корневой редюсер
 
 export const BasketPagesMolecules: FC = () => {
-  const getCartFromLocalStorage = () => {
-    const cartItemsJSON = localStorage.getItem("cart");
-    if (cartItemsJSON) {
-      return JSON.parse(cartItemsJSON) as CartItem[];
-    }
-    return [];
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state: ReturnType<typeof rootReducer>) => state.cart.cartItems); // Используем корректный rootReducer
+
+  const handleRemoveFromCart = (productId: number) => {
+    dispatch(removeFromCart(productId));
   };
 
-  const [cart, setCart] = useState<CartItem[]>(getCartFromLocalStorage());
+  const handleUpdateQuantity = (productId: number, quantity: number) => {
+    dispatch(updateCartItemQuantity({ productId, quantity }));
+  };
 
   if (cart.length === 0) {
     return (
@@ -68,7 +51,7 @@ export const BasketPagesMolecules: FC = () => {
                 />
               }
               title={item.product.name}
-              description={`Цена: $${item.product.price}`}
+              description={`Цена: ⃀${item.product.price}`}
             />
           </List.Item>
         )}

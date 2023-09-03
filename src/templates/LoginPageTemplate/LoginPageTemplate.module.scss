@@ -1,18 +1,28 @@
 .loginPage {
-  margin-top: 135px;
-
-  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  background-image: url(../../assets/images/auth/Rectangle%201922.png);
 
   &Title {
-    color: #373737;
-    font-family: Inter;
-    font-size: 36px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 26px;
     font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    font-weight: 500;
+    line-height: 30.47px;
   }
+}
+.grayImage {
+  background-image: url(../../assets/images/auth/image%203.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.loginPageForm {
+  margin: auto;
+  background-color: #47535f;
+  padding: 60px;
+  border-radius: 20px;
 }

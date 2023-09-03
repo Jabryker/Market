@@ -6,6 +6,7 @@ import { IRegisterData } from "./interfaces/RegisterData.interface";
 import { ISellerData } from "./interfaces/SellerData.interface";
 
 const baseApiUrl = process.env.REACT_APP_API_URL;
+// const baseApiUrl = "http://16.171.197.36/";
 
 const AuthController = {
   login: async (loginData: ILoginData, navigate: (path: string) => void) => {

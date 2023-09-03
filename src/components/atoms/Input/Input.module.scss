@@ -5,23 +5,24 @@
   margin-top: 24px;
 
   .Label {
-    color: #4D5959;
+    color: #a7b2bd;
     font-family: Poppins;
-    font-size: 20px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    margin-bottom: 10px;
   }
 
   .InputField {
     border-radius: 10px;
-    background: #EFF0F2;
+    background: #ffffff;
     border: none;
     outline: none;
     padding: 18px 29px;
 
-    width: 600px;
-    height: 65px;
+    width: 357px;
+    height: 50px;
 
     &::placeholder {
       color: #838383;
@@ -32,5 +33,4 @@
       line-height: normal;
     }
   }
-
 }

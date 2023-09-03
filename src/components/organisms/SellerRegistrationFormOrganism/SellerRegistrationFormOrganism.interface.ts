@@ -1,3 +1,3 @@
 export interface ISellerRegistrationFormOrganismProps {
-    onSubmit: (data: any) => void;
+  onSubmit: (data: any) => void;
 }

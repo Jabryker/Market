@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Card } from "antd";
-import { CategorySelect } from "../../atoms"; // Путь к вашему CategorySelect компоненту
+import { CategorySelect } from "../../atoms";
 
 export const CategorySelectOrganism: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -14,7 +14,6 @@ export const CategorySelectOrganism: FC = () => {
   return (
     <Card>
       <CategorySelect selectedCategory={selectedCategory} onChange={handleCategoryChange} />
-      {/* Другой контент вашего компонента */}
     </Card>
   );
 };

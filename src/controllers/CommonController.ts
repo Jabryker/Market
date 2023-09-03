@@ -7,7 +7,7 @@ const CommonController = {
     try {
       const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/news-list`);
       console.log(response);
-      return response.data.results; //
+      return response.data.results;
     } catch (error) {
       throw error;
     }
@@ -16,7 +16,7 @@ const CommonController = {
     try {
       const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/articles-list`);
       console.log(response);
-      return response.data.results; //
+      return response.data.results;
     } catch (error) {
       throw error;
     }

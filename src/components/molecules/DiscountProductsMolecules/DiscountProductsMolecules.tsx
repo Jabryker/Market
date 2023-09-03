@@ -15,7 +15,7 @@ export const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ p
           <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
             <ProductCard
               product={product}
-              onAddToCart={() => console.log("add card", product.id)}
+              // onAddToCart={() => console.log("add card", product.id)}
             />
           </Col>
         ))}

@@ -1,14 +1,10 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Select } from "antd";
+import { ICategorySelectProps } from "./CategorySelect.interface";
 
 const { Option } = Select;
 
-interface CategorySelectProps {
-  selectedCategory: string | null;
-  onChange: (category: string) => void;
-}
-
-export const CategorySelect: FC<CategorySelectProps> = ({ selectedCategory, onChange }) => {
+export const CategorySelect: FC<ICategorySelectProps> = ({ selectedCategory, onChange }) => {
   const categories = [
     "Акции",
     "Кухонное оборудование",
