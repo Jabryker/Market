@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { Input, Button, Badge } from "antd";
 import { navbar } from "../../../assets/data/";
 import store from "../../../store/store";
@@ -14,7 +14,7 @@ interface NavItem {
 
 export const HeaderOrganism: FC = () => {
   const [nav, setNav] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleNav = () => {
@@ -39,13 +39,23 @@ export const HeaderOrganism: FC = () => {
           ))}
         </ul>
         <div className="flex items-center relative">
-          <Input.Search
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onSearch={handleSearch}
-          />
-          <Link to="/login"><Button className="ml-2">Войти</Button></Link>
+          <div className="flex space-x-2">
+            <Input
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              size="large"
+            />
+            <Button
+              type="primary"
+              onClick={handleSearch}
+              size="large"
+              className="bg-[#EC9A1E] text-white flex items-center gap-2"
+            >
+              <AiOutlineSearch /> Поиск
+            </Button>
+          </div>
+          <Link to="/login"><Button className="ml-2 bg-white" size="large">Войти</Button></Link>
           <Link to="/cart" className="ml-4">
             <Badge count={cartItemsCount} showZero>
               <AiOutlineShoppingCart size={24} color="black" />
