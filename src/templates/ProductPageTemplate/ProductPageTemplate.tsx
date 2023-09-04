@@ -48,7 +48,7 @@ export const ProductPageTemplate: FC = () => {
       <PriceRangeFilter
         minPrice={0}
         maxPrice={1000}
-        onChange={setPriceRange}
+        // onChange={setPriceRange}
       />
 
       <AddressFilter
