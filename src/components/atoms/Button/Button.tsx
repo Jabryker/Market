@@ -5,9 +5,15 @@ export const Button: FC<IButtonProps> = ({ children, type }) => {
   return (
     <button
       type={type}
-      className="flex items-center justify-center h-12 bg-[#fb6d56] text-white rounded-lg outline-none focus:outline-none transition duration-300 ease-in-out hover:bg-opacity-90 transform hover:scale-95 w-full md:w-2/3 lg:w-full md:text-lg lg:text-xl"
+      className="flex items-center justify-center h-12 bg-[#EC9A1E] text-white transition-colors duration-300 ease-in-out hover:bg-[#FFFFFF] hover:text-[#000000] focus:bg-[#767E8C] focus:text-[#000000]"
+      style={{
+        width: "100%",
+        borderRadius: "10px",
+      }}
     >
-      <span className="font-inter font-semibold text-lg lg:text-xl">{children}</span>
+      <span className="font-inter font-semibold text-lg lg:text-xl">
+        {children}
+      </span>
     </button>
   );
 };

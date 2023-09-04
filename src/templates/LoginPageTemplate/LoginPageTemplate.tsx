@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { HelpText } from "../../components/atoms/";
-import { LoginFormOrganism, GoogleAuthOrgamism } from "../../components/organisms/";
+import {
+  LoginFormOrganism,
+  GoogleAuthOrgamism,
+} from "../../components/organisms/";
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
 import AuthController from "../../controllers/AuthController";
 
@@ -15,13 +18,17 @@ export const LoginPageTemplate: FC = () => {
   };
 
   return (
-    <div className={styles.loginPage}>
-      <h2 className={styles.loginPageTitle}>Войти</h2>
-      <LoginFormOrganism onSubmit={handleLoginSubmit} />
-      <GoogleAuthOrgamism />
-      <HelpText linkTo="/registration" linkText="Создать аккаунт">
-        Нет ещё аккаунта?
-      </HelpText>
+    <div className={styles.grayImage}>
+      <div className={styles.loginPage}>
+        <div className={styles.loginPageForm}>
+          <h2 className={styles.loginPageTitle}>Авторизоваться</h2>
+          <HelpText linkTo="/registration" linkText="Создать аккаунт">
+            Ещё не зарегистрированы?
+          </HelpText>
+          <LoginFormOrganism onSubmit={handleLoginSubmit} />
+          <GoogleAuthOrgamism />
+        </div>
+      </div>
     </div>
   );
 };

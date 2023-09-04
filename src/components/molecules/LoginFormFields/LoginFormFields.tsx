@@ -2,14 +2,16 @@ import { FC } from "react";
 import { Input, CheckBox } from "../../atoms/";
 import { ILoginFormFieldsProps } from "./LoginFormFields.interface";
 
-export const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors }) => {
+export const LoginFormFields: FC<ILoginFormFieldsProps> = ({
+  register,
+  errors,
+}) => {
   return (
     <>
       <Input
         type="email"
         name="email"
-        label="Email"
-        placeholder="Enter your email"
+        label="E-mail"
         error={errors.email?.message}
         register={register}
       />
@@ -17,7 +19,6 @@ export const LoginFormFields: FC<ILoginFormFieldsProps> = ({ register, errors })
         type="password"
         name="password"
         label="Password"
-        placeholder="Enter your password"
         error={errors.password?.message}
         register={register}
       />
