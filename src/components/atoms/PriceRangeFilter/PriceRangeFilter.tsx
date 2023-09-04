@@ -1,16 +1,31 @@
 import React, { FC } from "react";
 import { Slider } from "antd";
+import { useNavigate, useLocation } from "react-router-dom"; // Correct import and usage
 
 interface PriceRangeFilterProps {
     minPrice: number;
     maxPrice: number;
-    onChange: (values: [number, number]) => void;
 }
 
-export const PriceRangeFilter: FC<PriceRangeFilterProps> = ({ minPrice, maxPrice, onChange }) => {
+export const PriceRangeFilter: FC<PriceRangeFilterProps> = ({ minPrice, maxPrice }) => {
+  const navigate = useNavigate(); // Use useNavigate to get the navigate function
+  const location = useLocation();
+
   const handleChange = (values: [number, number]) => {
-    onChange(values);
-    console.log("Новое значение PriceRangeFilter:", values);
+    const [min, max] = values;
+    const searchParams = new URLSearchParams(location.search);
+
+    if (min !== minPrice || max !== maxPrice) {
+      // Обновляем параметры запроса только если они изменились
+      searchParams.set("price__gte", min.toString());
+      searchParams.set("price__lte", max.toString());
+
+      // Обновляем URL с новыми параметрами
+      navigate({
+        pathname: location.pathname,
+        search: `?${searchParams.toString()}`,
+      });
+    }
   };
 
   return (
