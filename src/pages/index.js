@@ -5,4 +5,6 @@ export { NotFoundScreen } from "./NotFoundScreen/NotFoundScreen";
 export { PasswordConfirmationScreen } from "./PasswordConfirmationScreen/PasswordConfirmationScreen";
 export { PasswordReset } from "./PasswordReset/PasswordReset";
 export { ProductDetailsScreen } from "./ProductDetailsScreen/ProductDetailsScreen";
+export { ProductPages } from "./ProductPages/ProductPages";
+export { ProfilePages } from "./ProfilePages/ProfilePages";
 export { RegistrationScreen } from "./RegistrationScreen/RegistrationScreen";

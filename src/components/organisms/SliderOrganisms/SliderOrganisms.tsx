@@ -4,7 +4,7 @@ import { slideImages } from "../../../assets/data/slider";
 
 export const SliderOrganisms: FC = () => {
   return (
-    <Carousel dotPosition="bottom">
+    <Carousel dotPosition="bottom" effect="fade">
       {slideImages.map((slideImage) => (
         <div key={slideImage.id}>
           <div

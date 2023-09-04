@@ -1,6 +1,6 @@
 export const navbar = [
-  { to: "/", label: "Home", id: 1 },
-  { to: "/about-us", label: "About Us", id: 2 },
-  { to: "/products", label: "Products", id: 3 },
-  { to: "/contact-us", label: "Contact Us", id: 4 },
+  { to: "/", label: "Главная", id: 1 },
+  { to: "/product", label: "Продукция", id: 2 },
+  { to: "/about-us", label: "О нас", id: 3 },
+  { to: "/contact", label: "Контакты", id: 4 },
 ];

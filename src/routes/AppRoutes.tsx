@@ -9,6 +9,8 @@ import {
   NotFoundScreen,
   ProductDetailsScreen,
   BasketPages,
+  ProfilePages,
+  ProductPages,
 } from "../pages";
 
 import {
@@ -49,6 +51,10 @@ const AppRoutes = () => {
       element: <PasswordReset />,
     },
     {
+      path: "/product",
+      element: <ProductPages />,
+    },
+    {
       path: "/products/:id",
       element: <ProductDetailsScreen />,
     },
@@ -63,6 +69,14 @@ const AppRoutes = () => {
     {
       path: "/cart",
       element: <BasketPages />,
+    },
+    {
+      path: "/profile/buyer/:id",
+      element: <ProfilePages userType="buyer" />,
+    },
+    {
+      path: "/profile/seller/:id",
+      element: <ProfilePages userType="seller" />,
     },
     {
       path: "*",
