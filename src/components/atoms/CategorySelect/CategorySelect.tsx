@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { Select } from "antd";
 import HeaderController from "../../../controllers/HeaderController";
-import { ICategorySelectProps } from "./CategorySelect.interface";
+import {displayErrorToast} from "../displayErrorToast/displayErrorToast";
+import { ICategorySelectProps, ICategory } from "./CategorySelect.interface";
 
 export const CategorySelect: FC<ICategorySelectProps> = () => {
-  const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -12,7 +13,7 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
         const categoryData = await HeaderController.getCategories();
         setCategories(categoryData);
       } catch (error) {
-        console.error("Ошибка при получении категорий:", error);
+        displayErrorToast("Ошибка при получении категорий ");
       }
     };
 
@@ -20,14 +21,16 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
   }, []);
 
   return (
-    <div>
-      <Select>
+      <div>
         {categories.map((category) => (
-          <Select.Option key={category.id} value={category.id}>
-            {category.name}
-          </Select.Option>
+            <Select key={category.id} value={category.name}>
+              {category.children?.map((child) => (
+                  <Select.Option key={child.id} value={child.name}>
+                    {child.name}
+                  </Select.Option>
+              ))}
+            </Select>
         ))}
-      </Select>
-    </div>
+      </div>
   );
 };
