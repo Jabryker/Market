@@ -9,22 +9,27 @@ const baseApiUrl = process.env.REACT_APP_API_URL;
 // const baseApiUrl = "http://16.171.197.36/";
 
 const AuthController = {
-  login: async (loginData: ILoginData, navigate: (path: string) => void) => {
+  login: async (loginData: ILoginData, navigate: (path: string) => void, rememberMe: boolean) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/auth/token/`,
-        loginData,
+        {
+          ...loginData,
+          rememberMe,
+        },
       );
-      // const { refresh, access } = responseLogin.data;
 
-      // if (rememberMe) {
-      //   localStorage.setItem("refresh", refresh);
-      //   localStorage.setItem("access", access);
-      // } else {
-      //   sessionStorage.setItem("refresh", refresh);
-      //   sessionStorage.setItem("access", access);
-      // }
       if (responseLogin.status === 200) {
+        const { refresh, access } = responseLogin.data;
+
+        if (rememberMe) {
+          localStorage.setItem("refresh", refresh);
+          localStorage.setItem("access", access);
+        } else {
+          sessionStorage.setItem("refresh", refresh);
+          sessionStorage.setItem("access", access);
+        }
+
         navigate("/");
         displaySuccessToast("Logged in successfully");
       }
