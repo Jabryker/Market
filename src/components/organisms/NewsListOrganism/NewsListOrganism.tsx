@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import CommonController from "../../../controllers/CommonController";
+import { SkeletonCombine, TitleText, displayErrorToast } from "../../atoms";
 import { NewsListMolesules } from "../../molecules/";
 import { News } from "../../molecules/NewsListMolesules/NewsListMolesules";
-import { displayErrorToast, TitleText, SkeletonCard } from "../../atoms";
-import CommonController from "../../../controllers/CommonController";
 
 export const NewsListOrganism = () => {
   const [newsData, setNewsData] = useState<News[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchNews() {
@@ -27,7 +27,13 @@ export const NewsListOrganism = () => {
   return (
     <div>
       <TitleText>Наши новости</TitleText>
-      {loading ? <SkeletonCard quantity={4} /> : <NewsListMolesules newsData={newsData} />}
+      {loading ? (
+        <SkeletonCombine quantity={4} />
+      ) : newsData.length === 0 ? (
+        <SkeletonCombine quantity={4} />
+      ) : (
+        <NewsListMolesules newsData={newsData} />
+      )}
     </div>
   );
 };
