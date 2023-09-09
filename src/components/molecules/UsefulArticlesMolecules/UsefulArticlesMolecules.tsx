@@ -1,5 +1,5 @@
+import { Button, Card } from "antd";
 import { FC } from "react";
-import { Card } from "antd";
 import { Link } from "react-router-dom";
 import { TitleText } from "../../atoms";
 
@@ -22,17 +22,16 @@ export const UsefulArticlesMolecules: FC<UsefulArticlesMoleculesProps> = ({ arti
         {articles.map((article) => (
           <Card
             key={article.id}
-            className="border rounded-lg overflow-hidden"
-            cover={
-              <img src={article.photo} alt={article.title} className="h-48 w-full object-cover" />
-            }
+            className="flex border-[#A7B2BD]" 
+            cover={<img src={article.photo} alt={article.title} className="w-48 h-auto object-cover" />}
           >
-            <h3 className="text-lg font-semibold mb-2">{article.title}</h3>
-            <p className="text-gray-600">{article.description}</p>
-            <div className="mt-2">
-              <hr className="border-gray-300" />
-              <Link to={`/articles/${article.id}`} className="text-blue-500 hover:underline">
-                Читать далее
+            <div className="flex-grow p-3">
+              <h3 className="text-lg font-semibold mb-1">{article.title}</h3>
+              <p className="text-gray-600">{article.description}</p>
+            </div>
+            <div className="flex-shrink-0">
+              <Link to={`/article/${article.id}`}>
+                <Button type="link">Подробнее</Button>
               </Link>
             </div>
           </Card>
