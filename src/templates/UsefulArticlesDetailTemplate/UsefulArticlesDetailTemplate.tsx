@@ -1,10 +1,10 @@
-import { FC, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { Spin } from "antd";
 import axios from "axios";
-import { FooterOrganism, HeaderOrganism } from "../../components/organisms";
+import { FC, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { DetailsMolecules } from "../../components/molecules/";
 import { IDetailsMolecules } from "../../components/molecules/DetailsMolecules/DetailsMolecules";
+import { FooterOrganism, HeaderOrganism } from "../../components/organisms";
 
 export const UsefulArticlesDetailTemplate: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +15,7 @@ export const UsefulArticlesDetailTemplate: FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${baseURL}/api/v1/news/articles-detail/${id}`);
+        const response = await axios.get(`${baseURL}/api/v1/news/articles/${id}`);
         setArticle(response.data);
         setLoading(false);
       } catch (error) {
