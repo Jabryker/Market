@@ -1,13 +1,19 @@
-export const CardSkeleton = () => {
+import { FC } from "react";
+import ContentLoader from "react-content-loader";
+
+export const CardSkeleton: FC = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      viewBox="0 0 400 400"
-      preserveAspectRatio="xMidYMid meet"
+    <ContentLoader
+      speed={2}
+      width={400}
+      height={460}
+      viewBox="0 0 400 460"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#ecebeb"
     >
-      <rect x="0" y="0" rx="10" ry="10" width="100%" height="100%" fill="#E0E0E0" />
-    </svg>
+      <rect x="7" y="0" rx="2" ry="2" width="386" height="400" />
+      <rect x="7" y="416" rx="0" ry="0" width="386" height="24" />
+      <rect x="318" y="436" rx="0" ry="0" width="70" height="16" />
+    </ContentLoader>
   );
 };
