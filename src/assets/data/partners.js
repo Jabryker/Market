@@ -12,11 +12,11 @@ export const partners = [
   {
     id: 3,
     logoUrl: require("../images/partners/steckhouse.png"),
-    description: "Steckhouse",
+    description: "Steakhouse",
   },
   {
     id: 4,
     logoUrl: require("../images/partners/deerbend.png"),
-    description: "DEERBEND",
+    description: "DERBENT",
   },
 ];
