@@ -1,10 +1,10 @@
+import { Badge, Button, Dropdown, Input, Menu } from "antd";
 import { FC, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
-import { Input, Button, Badge, Dropdown, Menu } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
-import store from "../../../store/store";
 import logo from "../../../assets/images/logo.svg";
+import store from "../../../store/store";
 
 interface NavItem {
   id: number;
@@ -57,72 +57,79 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       ) : null}
       <Menu.Divider />
       <Menu.Item key="logout" onClick={handleLogout}>
-          Выйти из аккаунта
+        Выйти из аккаунта
       </Menu.Item>
     </Menu>
   );
 
   return (
     <>
-      <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-        <Link to="/"> <img src={logo} alt="Logo" /> </Link>
-        <ul className="text-black hidden md:flex">
-          {navbar.map((item: NavItem) => (
-            <li key={item.id} className="p-4">
-              <Link to={item.to}>{item.label}</Link>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-center relative">
-          <div className="flex space-x-2">
-            <Input
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              size="large"
-            />
-            <Button
-              type="primary"
-              onClick={handleSearch}
-              size="large"
-              className="bg-[#EC9A1E] text-white flex items-center gap-2"
-            >
-              <AiOutlineSearch /> Поиск
-            </Button>
-          </div>
-
-          {hasAccess && hasRefresh ? (
-            <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
-              <Button className="ml-2 bg-white" size="large">
-                    Профиль
-              </Button>
-            </Dropdown>
-          ) : (
-            <Link to="/login">
-              <Button className="ml-2 bg-white" size="large">
-                    Вход
-              </Button>
-            </Link>
-          )}
-
-          <Link to="/cart" className="ml-4">
-            <Badge count={cartItemsCount} showZero>
-              <AiOutlineShoppingCart size={24} color="black" />
-            </Badge>
+      <div className="bg-blue-500 py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link to="/">
+            <img src={logo} alt="Logo" className="h-12" />
           </Link>
-          <div onClick={handleNav} className="block md:hidden">
-            {nav ? (
-              <AiOutlineClose size={20} color="black" />
+          <ul className="hidden md:flex space-x-4">
+            {navbar.map((item: NavItem) => (
+              <li key={item.id}>
+                <Link to={item.to} className="text-white hover:text-blue-300">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center">
+            <div className="flex space-x-2">
+              <Input
+                placeholder="Поиск"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                size="large"
+                className="rounded-l-full"
+              />
+              <Button
+                type="primary"
+                onClick={handleSearch}
+                size="large"
+                className="bg-[#EC9A1E] text-white flex items-center gap-2 rounded-r-full"
+              >
+                <AiOutlineSearch /> Поиск
+              </Button>
+            </div>
+
+            {hasAccess && hasRefresh ? (
+              <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
+                <Button className="ml-4 text-white">
+                  Профиль
+                </Button>
+              </Dropdown>
             ) : (
-              <AiOutlineMenu size={20} color="black" />
+              <Link to="/login">
+                <Button className="ml-4 bg-white text-blue-500 hover:bg-blue-200 hover:text-blue-800">
+                  Вход
+                </Button>
+              </Link>
             )}
+
+            <Link to="/cart" className="ml-4 text-white">
+              <Badge count={cartItemsCount} showZero>
+                <AiOutlineShoppingCart size={24} />
+              </Badge>
+            </Link>
+            <div onClick={handleNav} className="md:hidden cursor-pointer">
+              {nav ? (
+                <AiOutlineClose size={20} color="white" />
+              ) : (
+                <AiOutlineMenu size={20} color="white" />
+              )}
+            </div>
           </div>
         </div>
       </div>
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-600 ease-in-out duration-500 z-50"
+            ? "fixed left-0 top-0 w-[60%] h-full bg-gray-600 ease-in-out duration-500 z-50"
             : "fixed left-[-100%]"
         }
       >
