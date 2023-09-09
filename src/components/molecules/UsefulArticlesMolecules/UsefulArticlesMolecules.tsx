@@ -30,7 +30,7 @@ export const UsefulArticlesMolecules: FC<UsefulArticlesMoleculesProps> = ({ arti
               <p className="text-gray-600">{article.description}</p>
             </div>
             <div className="flex-shrink-0">
-              <Link to={`/article/${article.id}`}>
+              <Link to={`/articles/${article.id}`}>
                 <Button type="link">Подробнее</Button>
               </Link>
             </div>
