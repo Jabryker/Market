@@ -21,16 +21,16 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
   }, []);
 
   return (
-      <div>
-        {categories.map((category) => (
-            <Select key={category.id} value={category.name}>
-              {category.children?.map((child) => (
-                  <Select.Option key={child.id} value={child.name}>
-                    {child.name}
-                  </Select.Option>
-              ))}
-            </Select>
-        ))}
-      </div>
+    <div>
+      {categories.map((category) => (
+        <Select key={category.id} value={category.name}>
+          {category.children?.map((child) => (
+            <Select.Option key={child.id} value={child.name}>
+              {child.name}
+            </Select.Option>
+          ))}
+        </Select>
+      ))}
+    </div>
   );
 };

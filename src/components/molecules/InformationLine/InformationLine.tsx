@@ -1,6 +1,6 @@
-import React from "react";
+import {FC} from "react";
 
-const InformationLine = () => {
+const InformationLine: FC = () => {
   return (
     <div className="w-fullWidth bg-[#373737] text-white py-20 flex flex-col items-center justify-center">
       <h2 className="text-center text-4xl font-semibold">
