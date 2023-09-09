@@ -1,5 +1,5 @@
+import { Col, Row, Skeleton } from "antd";
 import { FC } from "react";
-import { Row, Col, Skeleton } from "antd";
 
 interface ProductSkeletonProps {
   quantity: number;
