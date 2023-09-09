@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
-import { Input, Button, Badge } from "antd";
+import { Input, Button, Badge, Dropdown, Menu } from "antd";
 import { navbar } from "../../../assets/data/";
 import store from "../../../store/store";
 import logo from "../../../assets/images/logo.svg";
@@ -12,7 +12,11 @@ interface NavItem {
   label: string;
 }
 
-export const HeaderOrganism: FC = () => {
+interface IHeaderOrganismProps {
+  userType?: string;
+}
+
+export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,6 +30,37 @@ export const HeaderOrganism: FC = () => {
   };
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const hasAccess = localStorage.getItem("access") || sessionStorage.getItem("access");
+  const hasRefresh = localStorage.getItem("refresh") || sessionStorage.getItem("refresh");
+
+  const handleLogout = () => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    sessionStorage.removeItem("access");
+    sessionStorage.removeItem("refresh");
+    navigate("/");
+  };
+
+  const menu = (
+    <Menu>
+      {hasAccess && hasRefresh ? (
+        userType === "buyer" ? (
+          <Menu.Item key="profile-buyer">
+            <Link to="/profile/buyer/:id">Профиль покупателя</Link>
+          </Menu.Item>
+        ) : (
+          <Menu.Item key="profile-seller">
+            <Link to="/profile/seller/:id">Профиль продавца</Link>
+          </Menu.Item>
+        )
+      ) : null}
+      <Menu.Divider />
+      <Menu.Item key="logout" onClick={handleLogout}>
+          Выйти из аккаунта
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <>
@@ -55,7 +90,21 @@ export const HeaderOrganism: FC = () => {
               <AiOutlineSearch /> Поиск
             </Button>
           </div>
-          <Link to="/login"><Button className="ml-2 bg-white" size="large">Войти</Button></Link>
+
+          {hasAccess && hasRefresh ? (
+            <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
+              <Button className="ml-2 bg-white" size="large">
+                    Профиль
+              </Button>
+            </Dropdown>
+          ) : (
+            <Link to="/login">
+              <Button className="ml-2 bg-white" size="large">
+                    Вход
+              </Button>
+            </Link>
+          )}
+
           <Link to="/cart" className="ml-4">
             <Badge count={cartItemsCount} showZero>
               <AiOutlineShoppingCart size={24} color="black" />
