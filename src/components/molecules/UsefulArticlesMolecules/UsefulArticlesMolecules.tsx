@@ -1,7 +1,6 @@
 import { Button, Card } from "antd";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { TitleText } from "../../atoms";
 
 export interface Article {
   id: number;
@@ -17,7 +16,6 @@ interface UsefulArticlesMoleculesProps {
 export const UsefulArticlesMolecules: FC<UsefulArticlesMoleculesProps> = ({ articles }) => {
   return (
     <div className="px-8">
-      <TitleText>Полезные статьи</TitleText>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
           <Card
