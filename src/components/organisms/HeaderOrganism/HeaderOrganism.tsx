@@ -64,7 +64,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
 
   return (
     <>
-      <div className="bg-blue-500 py-4">
+      <div className="bg-[#F3F2F2] py-4">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />

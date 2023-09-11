@@ -23,7 +23,7 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
   return (
     <div>
       {categories.map((category) => (
-        <Select key={category.id} value={category.name}>
+        <Select key={category.id} value={category.name} size="large">
           {category.children?.map((child) => (
             <Select.Option key={child.id} value={child.name}>
               {child.name}
