@@ -1,3 +1,4 @@
-export { partners } from "./partners";
+export { contactItems } from "./contactItems";
 export { navbar } from "./navbar";
-export { footer } from "./footer";
+export { partners } from "./partners";
+

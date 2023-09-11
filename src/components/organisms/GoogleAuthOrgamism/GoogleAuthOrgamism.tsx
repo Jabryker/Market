@@ -1,8 +1,8 @@
-import { FC } from "react";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
-import { displayErrorToast } from "../../atoms";
+import { FC } from "react";
 import AuthController from "../../../controllers/AuthController";
+import { displayErrorToast } from "../../atoms";
 
 const googleClientId = "207861578408-kstr5g00ce40gc8jei84qoq6jddv4909.apps.googleusercontent.com";
 
@@ -23,6 +23,10 @@ export const GoogleAuthOrgamism: FC = () => {
     <div className="mt-8">
       <GoogleOAuthProvider clientId={googleClientId}>
         <GoogleLogin
+          theme="filled_black"
+          size="medium"
+          shape="pill"
+          width="2000px"
           onSuccess={handleGoogleAuthSuccess}
           onError={() => {
             console.log("Ошибка входа");

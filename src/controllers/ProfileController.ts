@@ -45,4 +45,19 @@ export const ProfileController = {
       throw new Error("Error fetching user profile");
     }
   },
+  updateProfile: async (userType: UserType, userId: string, updatedUserData: IUserProfile): Promise<void> => {
+    try {
+      let endpoint = "";
+      if (userType === UserType.Buyer) {
+        endpoint = `/api/v1/accounts/users/${userId}`;
+      } else {
+        endpoint = `/api/v1/accounts/sellers/${userId}`;
+      }
+
+      await axios.patch(`${basicApi}${endpoint}`, updatedUserData);
+
+    } catch (error) {
+      throw new Error("Error updating user profile");
+    }
+  },
 };

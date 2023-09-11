@@ -1,14 +1,25 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, Button } from "antd";
-import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  IconButton,
+  Typography,
+  Box,
+  Grid,
+  TextField,
+  Chip,
+} from "@mui/material";
+import { Grade } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../../store/slice/cartSlice"; // Correct import path
-import { Product, CartItem } from "./ProductCard.interface"; // Import CartItem
+import { CustomShoppingCartIcon } from "../../../assets/images/cunstomIcons/CustomShoppingCartIcon";
+import { addToCart } from "../../../store/slice/cartSlice";
+import { Product, CartItem } from "./ProductCard.interface";
 
 interface ProductCardProps {
   product: Product;
-  // onAddToCart?: () => void;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
@@ -27,33 +38,102 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
     }
   };
 
+  // Рассчитываем скидку в процентах
+  const discountPercentage = 30;
+
   return (
-    <Link to={`/products/${product?.id}`}>
-      <Card
-        className="w-full max-w-xs mx-auto"
-        cover={
-          <>
-            <Button
-              type="link"
-              icon={<HeartOutlined style={{ fontSize: "24px", color: "black" }} />}
-              className="absolute top-0 right-0"
-            />
+      <Card className="border border-gray-300 rounded-lg shadow-md">
+        <CardContent>
+          <Box className="flex items-center justify-between">
+            <Box className="flex items-center">
+              <Grid item xs={12}>
+                {discountPercentage > 0 && (
+                    <Chip
+                        label={`${discountPercentage}% скидка`}
+                        className="bg-gradient-to-r from-yellow-500 via-red-500 to-red-700 text-white rounded-sm px-2 py-1"
+                    />
+                )}
+              </Grid>
+            </Box>
+            <IconButton aria-label="Add to cart">
+              <CustomShoppingCartIcon />
+            </IconButton>
+          </Box>
+          <Link to={`/products/${product?.id}`}>
             <img
-              src={product?.images[0]?.image}
-              alt={product?.name}
-              className="w-full h-48 object-cover"
+                src={product?.images[0]?.image}
+                alt={product?.name}
+                className="w-full h-48 object-cover"
             />
-          </>
-        }
-        actions={[
-          <Button icon={<ShoppingCartOutlined />} onClick={() => handleAddToCart(quantity)}>
-            Добавить в корзину
-          </Button>,
-        ]}
-      >
-        <h3 className="text-lg font-semibold mb-1">{product?.name}</h3>
-        <p className="text-black-600 font-semibold">${product?.price}</p>
+          </Link>
+          <Box className="flex items-center">
+            <Grade fontSize="small" color="primary" />
+            <Typography variant="subtitle1" color="primary" className="ml-1">
+              {/*{product?.rating}*/} rating
+            </Typography>
+          </Box>
+          <Typography variant="h6" className="mb-4">
+            {product?.name}
+          </Typography>
+          <Typography variant="subtitle1" className="text-amber-500 font-bold">
+            ${product?.price}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Grid container alignItems="center" spacing={2}>
+            <Grid item xs={4}>
+              <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+                  fullWidth
+              >
+                -
+              </Button>
+            </Grid>
+            <Grid item xs={4}>
+              <TextField
+                  label="Количество"
+                  type="number"
+                  InputProps={{
+                    inputProps: {
+                      min: 1,
+                      style: {
+                        WebkitAppearance: "none",
+                        MozAppearance: "textfield",
+                      },
+                    },
+                  }}
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={quantity}
+                  onChange={(e) => handleQuantityChange(Number(e.target.value))}
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => setQuantity(quantity + 1)}
+                  fullWidth
+              >
+                +
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                  variant="contained"
+                  className=""
+                  fullWidth
+                  onClick={() => handleAddToCart(quantity)}
+                  style={{ backgroundColor: "#FE9C08", color: "#fff",  borderRadius: "4px", transition: "background-color 0.3s" }}
+              >
+                Купить
+              </Button>
+            </Grid>
+          </Grid>
+        </CardActions>
       </Card>
-    </Link>
   );
 };
