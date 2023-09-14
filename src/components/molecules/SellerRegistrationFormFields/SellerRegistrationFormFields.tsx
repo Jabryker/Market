@@ -20,25 +20,26 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
 
   return (
     <>
-      <Select
-        label="Продавец"
-        name="type"
-        options={["Physical", "Legal"]}
-        register={formRegister}
-      />
       <Input
-        label="Email"
-        name="email"
-        type="email"
-        register={register}
-        error={errors.email?.message}
-      />
-      <Input
-        label="Username"
-        name="username"
+        label="Имя"
+        name="name"
         type="text"
         register={register}
         error={errors.username?.message}
+      />
+      <Input
+        label="Фамилия"
+        name="surname"
+        type="text"
+        register={register}
+        error={errors.surname?.message}
+      />
+      <Input
+        label="Отчество"
+        name="patronymic"
+        type="text"
+        register={register}
+        error={errors.patronymic?.message}
       />
       <Input
         label="Password"
@@ -54,12 +55,26 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
         register={register}
         error={errors.confirmPassword?.message}
       />
+      <Input
+        label="ИНН"
+        name="inn"
+        type="number"
+        register={register}
+        error={errors.inn?.message}
+      />
+      <Input
+        label="Название компании / магазина"
+        name="inn"
+        type="number"
+        register={register}
+        error={errors.inn?.message}
+      />
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-        <div className="bg-red-500 text-black">Passwords do not match</div>
-      )}
-      <Input label="INN" name="inn" type="number" register={register} error={errors.inn?.message} />
+          <div className="bg-red-500 text-black">Passwords do not match</div>
+        )}
+
       {userType === "Legal" && (
         <Input
           label="Certificate"

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import Terms from "../../components/atoms/Terms/Terms";
 import { HelpText } from "../../components/atoms/";
 import {
   LoginFormOrganism,
@@ -27,6 +28,7 @@ export const LoginPageTemplate: FC = () => {
           </HelpText>
           <LoginFormOrganism onSubmit={handleLoginSubmit} />
           <GoogleAuthOrgamism />
+          <Terms />
         </div>
       </div>
     </div>

@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 import { displayErrorToast } from "../../atoms";
 import AuthController from "../../../controllers/AuthController";
 
-const googleClientId = "207861578408-kstr5g00ce40gc8jei84qoq6jddv4909.apps.googleusercontent.com";
+const googleClientId =
+  "207861578408-kstr5g00ce40gc8jei84qoq6jddv4909.apps.googleusercontent.com";
 
 export const GoogleAuthOrgamism: FC = () => {
   const handleGoogleAuthSuccess = async (credentialResponse: any) => {

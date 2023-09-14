@@ -1,23 +1,59 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
+import { useForm, FieldValues } from "react-hook-form";
+import Terms from "../../components/atoms/Terms/Terms";
+import { GoogleAuthOrgamism } from "../../components/organisms/";
 import { Button } from "../../components/atoms/Button/Button";
+import { CheckBox, HelpText } from "../../components/atoms/";
 import styles from "./RegistrationScreen.module.scss";
 
 export const RegistrationScreen: FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FieldValues>();
+  const [role, setRole] = useState("");
   return (
-    <div className={styles.registrationScreenContainer}>
-      <h1 className={styles.registrationScreenTitle}>
-        Добро пожаловать в <span>MarketKG</span>
-      </h1>
-      <p className={styles.registrationScreenText}>В качестве кого вы хотите зарегистрироваться?</p>
-      <div className={styles.registrationScreenBtns}>
-        <Link to="/registration/buyer">
-          <Button type="submit">Покупатель</Button>
-        </Link>
-        <span>или</span>
-        <Link to="/registration/seller">
-          <Button type="submit">Продавец</Button>
-        </Link>
+    <div className={styles.grayImage}>
+      <div className={styles.registrationPage}>
+        <div className={styles.registrationPageForm}>
+          <h2 className={styles.registrationPageTitle}>Выберите роль</h2>
+          <HelpText linkTo="/login" linkText="Войти">
+            У вас уже есть аккаунт?
+          </HelpText>
+
+          <div
+            className={
+              role === "/registration/buyer"
+                ? styles.buttonActive
+                : styles.button
+            }
+            onClick={() => setRole("/registration/buyer")}
+          >
+            Покупатель
+          </div>
+
+          <div
+            className={
+              role === "/registration/seller"
+                ? styles.buttonActive
+                : styles.button
+            }
+            onClick={() => setRole("/registration/seller")}
+          >
+            Продавец
+          </div>
+
+          <Link to={role}>
+            <Button type="submit">
+              {role ? "Продолжить" : "Выберите роль"}
+            </Button>
+          </Link>
+          <CheckBox name="rememberMe" register={register} />
+          <GoogleAuthOrgamism />
+          <Terms />
+        </div>
       </div>
     </div>
   );

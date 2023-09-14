@@ -1,20 +1,20 @@
-.SellerRegistration {
+.grayImage {
+  background-image: url(../../assets/images/auth/image%203.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.sellerRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   width: 100%;
-  height: 100vh;
-
-  &Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  &TitleText {
-    margin-top: 75px;
-
-    color: #373737;
-    font-family: Inter;
-    font-size: 36px;
-    font-weight: 600;
-  }
+  background-image: url(../../assets/images/auth/Rectangle%201922.png);
+}
+.sellerRegisterForm {
+  margin: auto;
+  background-color: #47535f;
+  padding: 60px;
+  border-radius: 20px;
 }
