@@ -5,6 +5,6 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>; // Define RootState here
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default store;
