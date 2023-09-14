@@ -84,6 +84,7 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
                 value={editedEmail}
                 onChange={(e) => setEditedEmail(e.target.value)}
               />
+              ,
             </Descriptions.Item>
             <Descriptions.Item label="Username">
               {userData.username}
@@ -93,6 +94,7 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
                 value={editedPhone}
                 onChange={(e) => setEditedPhone(e.target.value)}
               />
+              ,
             </Descriptions.Item>
             <Descriptions.Item label="Birthday">
               <DatePicker
@@ -111,9 +113,10 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
                 value={editedSpecialization}
                 onChange={(value) => setEditedSpecialization(value)}
               >
-                <Option value="option1">Option 1</Option>
+                ,<Option value="option1">Option 1</Option>
                 <Option value="option2">Option 2</Option>
               </Select>
+              ,
             </Descriptions.Item>
           </Descriptions>
           <button onClick={handleSaveChanges}>Save</button>

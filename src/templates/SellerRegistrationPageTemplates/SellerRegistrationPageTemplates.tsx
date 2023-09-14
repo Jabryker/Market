@@ -20,7 +20,7 @@ export const SellerRegistrationPageTemplates: FC = () => {
     <div className={styles.grayImage}>
       <div className={styles.sellerRegister}>
         <div className={styles.sellerRegisterForm}>
-          <h2 className={styles.SellerRegistrationTitleText}>Регистрация</h2>
+          <h2 className={styles.sellerRegisterFormTitle}>Данные продавца</h2>
           <SellerRegistrationFormOrganism onSubmit={handleSellerSubmit} />
           <CheckBox name="rememberMe" />
           <GoogleAuthOrgamism />

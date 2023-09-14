@@ -9,28 +9,35 @@ export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({
   return (
     <>
       <Input
-        label="Username"
+        label="Имя"
         name="username"
         type="text"
         register={register}
         error={errors.username?.message}
       />
       <Input
-        label="Email"
+        label="Фамилия"
+        name="username"
+        type="text"
+        register={register}
+        error={errors.username?.message}
+      />
+      <Input
+        label="E-mail"
         name="email"
         type="email"
         register={register}
         error={errors.email?.message}
       />
       <Input
-        label="Password"
+        label="Пароль"
         name="password"
         type="password"
         register={register}
         error={errors.password?.message}
       />
       <Input
-        label="Confirm Password"
+        label="Подтвердите пароль"
         name="confirmPassword"
         type="password"
         register={register}
@@ -39,8 +46,8 @@ export const BuyerRegistrationFormFields: FC<IBuyerRegistrationFormProps> = ({
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-        <div className="bg-red-500 text-black">Passwords do not match</div>
-      )}
+          <div className="bg-red-500 text-black">Passwords do not match</div>
+        )}
     </>
   );
 };

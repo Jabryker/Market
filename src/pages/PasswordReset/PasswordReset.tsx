@@ -29,7 +29,10 @@ export const PasswordReset: FC = () => {
   };
 
   const handleStepReset = async (data: IResetFormData) => {
-    const success = await AuthController.confirmPasswordReset(token, data.password);
+    const success = await AuthController.confirmPasswordReset(
+      token,
+      data.password
+    );
     if (success) {
       // FIXME: redirect
     }
@@ -52,51 +55,58 @@ export const PasswordReset: FC = () => {
   };
 
   return (
-    <div className={styles.PasswordResetWrapper}>
-      <h1 className={styles.PasswordResetWrapperTitle}>Сброс пароля</h1>
-      {step === "request" && (
-        <>
-          <p className={styles.PasswordResetWrapperSubTitle}>
-            Введите вашу электронную почту, и мы вам отправим инструкцию по восстановлению пароля
-          </p>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              type="email"
-              name="email"
-              label="Email"
-              placeholder="Enter your email"
-              error={errors.password?.message}
-              register={register}
-            />
-            <Button type="submit">Сбросить пароль</Button>
-          </form>
-        </>
-      )}
-      {step === "validate" && (
-        <>
-          <p>Enter the token received in your email:</p>
-          <input type="text" value={token} onChange={(e) => setToken(e.target.value)} />
-          <button onClick={handleStepValidate}>Validate Token</button>
-        </>
-      )}
-      {step === "reset" && (
-        <>
-          <p>Enter your new password:</p>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              type="password"
-              name="password"
-              label="New Password"
-              placeholder="Enter your new password"
-              register={register}
-            />
-            <Button type="submit">Reset Password</Button>
-          </form>
-        </>
-      )}
-      <HelpText linkTo="/login" linkText="Войти">
-        Вспомнили пароль?
-      </HelpText>
+    <div className={styles.grayImage}>
+      <div className={styles.resetPassword}>
+        <div className={styles.resetPasswordForm}>
+          <h1 className={styles.resetPasswordFormTitle}>Забыли пароль?</h1>
+          {step === "request" && (
+            <>
+              <form
+                style={{ width: "357px" }}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <Input
+                  type="email"
+                  name="email"
+                  label="E-mail"
+                  error={errors.password?.message}
+                  register={register}
+                />
+                <p className={styles.resetPasswordFormSubTitle}>
+                  Вам на почту будет отправлена ссылка для изменения пароля
+                </p>
+                <Button type="submit">Отправить</Button>
+              </form>
+            </>
+          )}
+          {step === "validate" && (
+            <>
+              <p>Enter the token received in your email:</p>
+              <input
+                type="text"
+                value={token}
+                onChange={(e) => setToken(e.target.value)}
+              />
+              <button onClick={handleStepValidate}>Validate Token</button>
+            </>
+          )}
+          {step === "reset" && (
+            <>
+              <p>Enter your new password:</p>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Input
+                  type="password"
+                  name="password"
+                  label="New Password"
+                  placeholder="Enter your new password"
+                  register={register}
+                />
+                <Button type="submit">Reset Password</Button>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "../../atoms/";
+import Terms from "../../atoms/Terms/Terms";
+import { Button, CheckBox } from "../../atoms/";
 import { GoogleAuthOrgamism } from "../";
 import { BuyerRegistrationFormFields } from "../../molecules/";
 import { IBuyerRegistrationFormOrganismProps } from "./BuyerRegistrationFormOrganism.interface";
 
-export const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismProps> = ({
-  onSubmit,
-}) => {
+export const BuyerRegistrationFormOrganism: FC<
+  IBuyerRegistrationFormOrganismProps
+> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -19,9 +20,10 @@ export const BuyerRegistrationFormOrganism: FC<IBuyerRegistrationFormOrganismPro
       <BuyerRegistrationFormFields register={register} errors={errors} />
 
       <div className="space-y-4">
-        <Button type="submit">Создать аккаунт</Button>
-
+        <Button type="submit">Зарегистрироваться</Button>
+        <CheckBox name="rememberMe" />
         <GoogleAuthOrgamism />
+        <Terms />
       </div>
     </form>
   );

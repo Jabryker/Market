@@ -1,8 +1,11 @@
 .grayImage {
   background-image: url(../../assets/images/auth/image%203.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
 }
+
 .sellerRegister {
   display: flex;
   flex-direction: column;
@@ -11,10 +14,19 @@
   height: 100%;
   width: 100%;
   background-image: url(../../assets/images/auth/Rectangle%201922.png);
+  padding: 50px 0;
 }
 .sellerRegisterForm {
   margin: auto;
   background-color: #47535f;
   padding: 60px;
   border-radius: 20px;
+  &Title {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30.47px;
+  }
 }
