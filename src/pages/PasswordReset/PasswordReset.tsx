@@ -31,7 +31,7 @@ export const PasswordReset: FC = () => {
   const handleStepReset = async (data: IResetFormData) => {
     const success = await AuthController.confirmPasswordReset(
       token,
-      data.password
+      data.password,
     );
     if (success) {
       // FIXME: redirect

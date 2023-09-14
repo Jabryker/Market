@@ -52,11 +52,11 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
   const [editedEmail, setEditedEmail] = useState(userData.email);
   const [editedPhone, setEditedPhone] = useState(userData.phone_number);
   const [editedBirthday, setEditedBirthday] = useState<dayjs.Dayjs | null>(
-    dayjs(userData.birthday)
+    dayjs(userData.birthday),
   );
   const [editedJob, setEditedJob] = useState(userData.job);
   const [editedSpecialization, setEditedSpecialization] = useState(
-    userData.specialization
+    userData.specialization,
   );
 
   // Функция для сохранения изменений

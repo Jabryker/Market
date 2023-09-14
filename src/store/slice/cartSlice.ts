@@ -1,18 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../../components/atoms/ProductCard/ProductCard.interface";
 
-// Define the type for a cart item
 interface CartItem {
   product: Product;
   quantity: number;
 }
 
-// Define the type for the cart state
 interface CartState {
   cartItems: CartItem[];
 }
 
-// Define the initial state of the cart
 const initialState: CartState = {
   cartItems: [],
 };

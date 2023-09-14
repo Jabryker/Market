@@ -10,6 +10,6 @@ export { LoginFormOrganism } from "./LoginFormOrganism/LoginFormOrganism";
 export { NewsListOrganism } from "./NewsListOrganism/NewsListOrganism";
 export { NotFoundOrmanism } from "./NotFoundOrmanism/NotFoundOrmanism";
 export { SellerRegistrationFormOrganism } from "./SellerRegistrationFormOrganism/SellerRegistrationFormOrganism";
-export { SliderOrganisms } from "./SliderOrganisms/SliderOrganisms";
 export { SubHeaderOrganism } from "./SubHeaderOrganism/SubHeaderOrganism";
 export { UsefulArticlesOrganism } from "./UsefulArticlesOrganism/UsefulArticlesOrganism";
+export { SearchWithBannerOrgamism } from "./SearchWithBannerOrgamism/SearchWithBannerOrgamism";

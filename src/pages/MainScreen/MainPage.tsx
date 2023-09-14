@@ -2,16 +2,15 @@ import { FC } from "react";
 import {
   HeaderOrganism,
   SubHeaderOrganism,
-  SliderOrganisms,
   DiscountProductsOrganisms,
   FeaturedProductsOrganism,
+  SearchWithBannerOrgamism,
   CategorySelectOrganism,
   NewsListOrganism,
   UsefulArticlesOrganism,
   ContactUsOrganism,
   FooterOrganism,
 } from "../../components/organisms";
-// import { DiscountProductsOrganisms } from "../../components/organisms/DiscountProductsOrganisms/DiscountProductsOrganisms";
 
 export const MainPage: FC = () => {
   return (
@@ -19,7 +18,7 @@ export const MainPage: FC = () => {
       <SubHeaderOrganism />
       <HeaderOrganism />
       <CategorySelectOrganism />
-      <SliderOrganisms />
+      <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
       <FeaturedProductsOrganism />
       <NewsListOrganism />

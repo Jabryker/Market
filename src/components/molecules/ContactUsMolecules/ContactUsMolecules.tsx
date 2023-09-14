@@ -1,64 +1,74 @@
-import { useState } from "react";
-import { TitleText } from "../../atoms/";
+import { FC, useState } from "react";
+import {Button, TitleText} from "../../atoms/";
 import nav from "../../../assets/images/contactIcons/.png";
 import phone from "../../../assets/images/contactIcons/phone.png";
 import mail from "../../../assets/images/contactIcons/mail.png";
 
-export const ContactUsMolecules = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+export const ContactUsMolecules: FC = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const handleSubmit = () => {
-    console.log("Отправка данных:", { name, email, message });
+    console.log("Отправка данных:", formData);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="contactUs-block">
+    <div className="contactUs-block mb-40">
       <TitleText>Свяжитесь с нами</TitleText>
       <div
         className="contactUs-form-block w-11/12 px-28 py-28 container mx-auto flex justify-between"
         style={{ background: "#F5F5F5" }}
       >
-        <div className="contactUs-block-left w-1/2 pr-7" style={{ color: "#0F001A" }}>
+        <div className="contactUs-block-left w-1/2 pr-7" style={{ color: "#ECEBE9" }}>
           <h2>Оставьте нам сообщение</h2>
           <form onSubmit={handleSubmit} className="space-y-7 mt-4">
             <div className="flex space-x-4">
               <input
                 type="text"
+                name="name"
                 placeholder="Введите ваше имя"
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={formData.name}
+                onChange={handleInputChange}
                 required
               />
             </div>
             <div className="flex space-x-4">
               <input
                 type="email"
+                name="email"
                 placeholder="Ваш Email"
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleInputChange}
                 required
               />
             </div>
             <div className="flex space-x-4">
               <textarea
+                name="message"
                 placeholder="Ваше сообщение"
                 className="w-full h-56 px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                value={formData.message}
+                onChange={handleInputChange}
                 required
               />
             </div>
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="w-full px-6 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none"
-              >
+              <Button type="submit">
                 Отправить
-              </button>
+              </Button>
             </div>
           </form>
         </div>

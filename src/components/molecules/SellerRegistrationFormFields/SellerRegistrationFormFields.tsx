@@ -72,6 +72,36 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
       />
 
       <Input
+        label="ИНН"
+        name="inn"
+        type="number"
+        register={register}
+        error={errors.inn?.message}
+      />
+
+      <Input
+        label="Название компании / магазина"
+        name="company"
+        type="text"
+        register={register}
+        error={errors.inn?.message}
+      />
+      <Input
+        label="Должность в компании"
+        name="title"
+        type="text"
+        register={register}
+        error={errors.inn?.message}
+      />
+      <Input
+        label="E-mail"
+        name="email"
+        type="email"
+        register={register}
+        error={errors.inn?.message}
+      />
+
+      <Input
         label="Пароль"
         name="password"
         type="password"
