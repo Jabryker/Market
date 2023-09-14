@@ -9,6 +9,7 @@ export const Button: FC<IButtonProps> = ({ children, type }) => {
       style={{
         width: "100%",
         borderRadius: "10px",
+        marginTop: "30px",
       }}
     >
       <span className="font-inter font-semibold text-lg lg:text-xl">

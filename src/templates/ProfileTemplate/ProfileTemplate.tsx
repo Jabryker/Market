@@ -36,7 +36,6 @@
 //   );
 // };
 
-
 import { FC, useState } from "react";
 import { Descriptions, Input, DatePicker, Select } from "antd";
 import dayjs from "dayjs";
@@ -52,9 +51,13 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
   // Состояния для редактируемых полей
   const [editedEmail, setEditedEmail] = useState(userData.email);
   const [editedPhone, setEditedPhone] = useState(userData.phone_number);
-  const [editedBirthday, setEditedBirthday] = useState<dayjs.Dayjs | null>(dayjs(userData.birthday));
+  const [editedBirthday, setEditedBirthday] = useState<dayjs.Dayjs | null>(
+    dayjs(userData.birthday)
+  );
   const [editedJob, setEditedJob] = useState(userData.job);
-  const [editedSpecialization, setEditedSpecialization] = useState(userData.specialization);
+  const [editedSpecialization, setEditedSpecialization] = useState(
+    userData.specialization
+  );
 
   // Функция для сохранения изменений
   const handleSaveChanges = () => {
@@ -63,7 +66,9 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-10 text-center">Welcome to profile {userData.username}!</h2>
+      <h2 className="text-2xl font-bold mb-10 text-center">
+        Welcome to profile {userData.username}!
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="col-span-1">
           <img
@@ -79,13 +84,17 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
                 value={editedEmail}
                 onChange={(e) => setEditedEmail(e.target.value)}
               />
+              ,
             </Descriptions.Item>
-            <Descriptions.Item label="Username">{userData.username}</Descriptions.Item>
+            <Descriptions.Item label="Username">
+              {userData.username}
+            </Descriptions.Item>
             <Descriptions.Item label="Phone Number">
               <Input
                 value={editedPhone}
                 onChange={(e) => setEditedPhone(e.target.value)}
               />
+              ,
             </Descriptions.Item>
             <Descriptions.Item label="Birthday">
               <DatePicker
@@ -104,9 +113,10 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
                 value={editedSpecialization}
                 onChange={(value) => setEditedSpecialization(value)}
               >
-                <Option value="option1">Option 1</Option>
+                ,<Option value="option1">Option 1</Option>
                 <Option value="option2">Option 2</Option>
               </Select>
+              ,
             </Descriptions.Item>
           </Descriptions>
           <button onClick={handleSaveChanges}>Save</button>
@@ -115,4 +125,3 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
     </div>
   );
 };
-
