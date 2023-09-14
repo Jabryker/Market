@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import CommonController from "../../../controllers/CommonController";
 import { SkeletonCombine, TitleText, displayErrorToast } from "../../atoms";
 import { UsefulArticlesMolecules } from "../../molecules/";
-import { Article } from "../../molecules/UsefulArticlesMolecules/UsefulArticlesMolecules";
+import { IArticle } from "../../molecules/UsefulArticlesMolecules/UsefulArticlesMolecules";
 
 export const UsefulArticlesOrganism = () => {
-  const [articlesData, setArticlesData] = useState<Article[]>([]);
+  const [articlesData, setArticlesData] = useState<IArticle[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {

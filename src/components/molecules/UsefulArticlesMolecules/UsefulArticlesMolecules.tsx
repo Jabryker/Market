@@ -1,38 +1,50 @@
-import { Button, Card } from "antd";
+import { Button } from "antd";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 
-export interface Article {
-  id: number;
-  title: string;
-  description: string;
-  photo: string;
+export interface IArticle {
+    id: number;
+    title: string;
+    description: string;
+    photo: string;
 }
 
 interface UsefulArticlesMoleculesProps {
-  articles: Article[];
+    articles: IArticle[];
 }
 
 export const UsefulArticlesMolecules: FC<UsefulArticlesMoleculesProps> = ({ articles }) => {
   return (
-    <div className="px-8">
+    <div className="px-8 pb-8 mb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
-          <Card
+          <div
             key={article.id}
-            className="flex border-[#A7B2BD]" 
-            cover={<img src={article.photo} alt={article.title} className="w-48 h-auto object-cover" />}
+            className="flex p-4 rounded-lg shadow-lg transition duration-300 ease-in-out relative hover:bg-gray-100"
+            style={{
+              minHeight: "250px",
+            }}
           >
-            <div className="flex-grow p-3">
-              <h3 className="text-lg font-semibold mb-1">{article.title}</h3>
-              <p className="text-gray-600">{article.description}</p>
+            <div className="flex-shrink-0 w-80">
+              <img
+                src={article.photo}
+                alt={article.title}
+                className="w-full h-auto object-cover rounded-lg"
+                style={{ maxHeight: "100%" }}
+              />
             </div>
-            <div className="flex-shrink-0">
-              <Link to={`/articles/${article.id}`}>
-                <Button type="link">Подробнее</Button>
-              </Link>
+            <div className="flex-grow pl-4">
+              <h3 className="text-2xl font-semibold mb-2">{article.title}</h3>
+              <div className="max-w-40 overflow-y-auto">
+                <p className="text-gray-700 text-lg mb-4">{article.description}</p>
+              </div>
+              <div className="absolute bottom-4 right-4">
+                <Link to={`/articles/${article.id}`}>
+                  <Button type="link">Подробнее</Button>
+                </Link>
+              </div>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
     </div>

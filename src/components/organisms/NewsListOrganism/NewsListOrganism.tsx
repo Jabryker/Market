@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import CommonController from "../../../controllers/CommonController";
 import { SkeletonCombine, TitleText, displayErrorToast } from "../../atoms";
 import { NewsListMolesules } from "../../molecules/";
-import { News } from "../../molecules/NewsListMolesules/NewsListMolesules";
+import { INews } from "../../molecules/NewsListMolesules/NewsListMolesules";
 
 export const NewsListOrganism = () => {
-  const [newsData, setNewsData] = useState<News[]>([]);
+  const [newsData, setNewsData] = useState<INews[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
