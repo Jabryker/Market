@@ -1,6 +1,6 @@
-import { Badge, Button, Dropdown, Input, Menu } from "antd";
+import { Badge, Button, Dropdown, Menu } from "antd";
 import { FC, useState } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
@@ -19,14 +19,9 @@ interface IHeaderOrganismProps {
 export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleNav = () => {
     setNav(!nav);
-  };
-
-  const handleSearch = () => {
-    navigate(`/api/v1/stores/products/?search=${searchQuery}&category=&address=&price__gte=&price__lte=`);
   };
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -57,7 +52,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       ) : null}
       <Menu.Divider />
       <Menu.Item key="logout" onClick={handleLogout}>
-        Выйти из аккаунта
+          Выйти из аккаунта
       </Menu.Item>
     </Menu>
   );
@@ -72,55 +67,37 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           <ul className="hidden md:flex space-x-4">
             {navbar.map((item: NavItem) => (
               <li key={item.id}>
-                <Link to={item.to} className="text-white hover:text-blue-300">
+                <Link to={item.to} className="text-[#333] hover:text-blue-300 font-semibold text-lg">
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
           <div className="flex items-center">
-            <div className="flex space-x-2">
-              <Input
-                placeholder="Поиск"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                size="large"
-                className="rounded-l-full"
-              />
-              <Button
-                type="primary"
-                onClick={handleSearch}
-                size="large"
-                className="bg-[#EC9A1E] text-white flex items-center gap-2 rounded-r-full"
-              >
-                <AiOutlineSearch /> Поиск
-              </Button>
-            </div>
-
             {hasAccess && hasRefresh ? (
               <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
                 <Button className="ml-4 text-white">
-                  Профиль
+                      Профиль
                 </Button>
               </Dropdown>
             ) : (
               <Link to="/login">
-                <Button className="ml-4 bg-white text-blue-500 hover:bg-blue-200 hover:text-blue-800">
-                  Вход
-                </Button>
+                <button className="ml-4 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold py-2 px-4 rounded-full shadow-md transition">
+                  <AiOutlineUser className="inline-block mr-2" /> Войти в аккаунт
+                </button>
               </Link>
             )}
 
-            <Link to="/cart" className="ml-4 text-white">
+            <Link to="/cart" className="ml-4 text-[#333] hover:text-blue-300">
               <Badge count={cartItemsCount} showZero>
                 <AiOutlineShoppingCart size={24} />
               </Badge>
             </Link>
             <div onClick={handleNav} className="md:hidden cursor-pointer">
               {nav ? (
-                <AiOutlineClose size={20} color="white" />
+                <AiOutlineClose size={24} color="#333" />
               ) : (
-                <AiOutlineMenu size={20} color="white" />
+                <AiOutlineMenu size={24} color="#333" />
               )}
             </div>
           </div>
@@ -136,7 +113,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
         <ul className="text-white capitalize">
           {navbar.map((item: NavItem) => (
             <li key={item.id} className="p-4">
-              <Link to={item.to} className="border-b border-black-600">
+              <Link to={item.to} className="border-b border-[#999] hover:text-blue-300">
                 {item.label}
               </Link>
             </li>
