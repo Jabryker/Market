@@ -2,14 +2,12 @@ import { FC } from "react";
 import { ICheckBox } from "./CheckBox.interface";
 import styles from "./CheckBox.module.scss";
 
-export const CheckBox: FC<ICheckBox> = ({ name, label, register, error }) => {
+export const CheckBox: FC<ICheckBox> = () => {
   return (
-    <div className={styles.checkboxContainer}>
-      <label className={styles.checkboxLabel}>
-        <input className={styles.checkboxInput} type="checkbox" {...register(name)} />
-        {label}
-      </label>
-      {error && <div>{error.message}</div>}
+    <div className={styles.lineMainContainer}>
+      <div className={styles.lineContainer}></div>
+      <div className={styles.containerText}>или</div>
+      <div className={styles.lineContainer}></div>
     </div>
   );
 };

@@ -4,9 +4,9 @@ import { Button } from "../../atoms/";
 import { SellerRegistrationFormFields } from "../../molecules/";
 import { ISellerRegistrationFormOrganismProps } from "./SellerRegistrationFormOrganism.interface";
 
-export const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismProps> = ({
-  onSubmit,
-}) => {
+export const SellerRegistrationFormOrganism: FC<
+  ISellerRegistrationFormOrganismProps
+> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ export const SellerRegistrationFormOrganism: FC<ISellerRegistrationFormOrganismP
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <SellerRegistrationFormFields register={register} errors={errors} />
-      <Button type="submit">Register Seller</Button>
+      <Button type="submit">Зарегистрироваться</Button>
     </form>
   );
 };

@@ -72,6 +72,36 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
       />
 
       <Input
+        label="ИНН"
+        name="inn"
+        type="number"
+        register={register}
+        error={errors.inn?.message}
+      />
+
+      <Input
+        label="Название компании / магазина"
+        name="company"
+        type="text"
+        register={register}
+        error={errors.inn?.message}
+      />
+      <Input
+        label="Должность в компании"
+        name="title"
+        type="text"
+        register={register}
+        error={errors.inn?.message}
+      />
+      <Input
+        label="E-mail"
+        name="email"
+        type="email"
+        register={register}
+        error={errors.inn?.message}
+      />
+
+      <Input
         label="Пароль"
         name="password"
         type="password"
@@ -89,8 +119,8 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-        <div className="bg-red-500 text-black">Passwords do not match</div>
-      )}
+          <div className="bg-red-500 text-black">Passwords do not match</div>
+        )}
 
       {userType === "Legal" && (
         <Input

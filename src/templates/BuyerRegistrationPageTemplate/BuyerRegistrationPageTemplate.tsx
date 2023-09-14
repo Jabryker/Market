@@ -13,12 +13,16 @@ export const BuyerRegistrationPageTemplate: FC = () => {
   };
 
   return (
-    <div className={styles.BuyerRegistrationPageTemplate}>
-      <h2 className={styles.BuyerRegistrationPageTemplateTitle}>Регистрация</h2>
-      <BuyerRegistrationFormOrganism onSubmit={handleBuyerSubmit} />
-      <HelpText linkTo="/login" linkText="Войти">
-        У вас есть аккаунт?
-      </HelpText>
+    <div className={styles.grayImage}>
+      <div className={styles.sellerRegister}>
+        <div className={styles.sellerRegisterForm}>
+          <h2 className={styles.sellerRegisterFormTitle}>Зарегистрироваться</h2>
+          <HelpText linkTo="/login" linkText="Войти">
+            У вас уже есть аккаунт?
+          </HelpText>
+          <BuyerRegistrationFormOrganism onSubmit={handleBuyerSubmit} />
+        </div>
+      </div>
     </div>
   );
 };

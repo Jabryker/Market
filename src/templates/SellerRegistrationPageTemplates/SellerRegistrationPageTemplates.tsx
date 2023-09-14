@@ -1,9 +1,13 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { SellerRegistrationFormOrganism } from "../../components/organisms/";
+import Terms from "../../components/atoms/Terms/Terms";
+import {
+  GoogleAuthOrgamism,
+  SellerRegistrationFormOrganism,
+} from "../../components/organisms/";
 import { ISellerData } from "../../controllers/interfaces/SellerData.interface";
 import AuthController from "../../controllers/AuthController";
-import { HelpText } from "../../components/atoms/";
+import { CheckBox, HelpText } from "../../components/atoms/";
 import styles from "./SellerRegistrationPageTemplates.module.scss";
 
 export const SellerRegistrationPageTemplates: FC = () => {
@@ -13,12 +17,16 @@ export const SellerRegistrationPageTemplates: FC = () => {
   };
 
   return (
-    <div className={styles.SellerRegistrationContainer}>
-      <h2 className={styles.SellerRegistrationTitleText}>Регистрация</h2>
-      <SellerRegistrationFormOrganism onSubmit={handleSellerSubmit} />
-      <HelpText linkTo="/login" linkText="Войти">
-        У вас есть аккаунт?
-      </HelpText>
+    <div className={styles.grayImage}>
+      <div className={styles.sellerRegister}>
+        <div className={styles.sellerRegisterForm}>
+          <h2 className={styles.sellerRegisterFormTitle}>Данные продавца</h2>
+          <SellerRegistrationFormOrganism onSubmit={handleSellerSubmit} />
+          <CheckBox name="rememberMe" />
+          <GoogleAuthOrgamism />
+          <Terms />
+        </div>
+      </div>
     </div>
   );
 };

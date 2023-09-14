@@ -29,17 +29,9 @@ export const LoginFormFields: FC<ILoginFormFieldsProps> = ({
       <Input
         type="password"
         name="password"
-        label="Password"
+        label="Пароль"
         error={errors.password?.message}
         register={register}
-      />
-      <CheckBox
-        name="rememberMe"
-        register={register}
-        error={errors.rememberMe?.message}
-        label="Запомнить меня"
-        checked={rememberMe}
-        onChange={handleRememberMeChange}
       />
     </>
   );

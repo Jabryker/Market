@@ -15,13 +15,15 @@ export const Input: FC<IInputProps> = ({
       <label className={styles.Label} htmlFor={name}>
         {label}
       </label>
-      <input
-        className={styles.InputField}
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        {...register(name, { required: "This field is required" })}
-      />
+      <div>
+        <input
+          className={styles.InputField}
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          {...register(name, { required: "This field is required" })}
+        />
+      </div>
       {error && <div className={styles.ErrorMessage}>{error}</div>}
     </div>
   );
