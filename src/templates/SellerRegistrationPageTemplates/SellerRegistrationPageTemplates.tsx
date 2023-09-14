@@ -7,7 +7,7 @@ import {
 } from "../../components/organisms/";
 import { ISellerData } from "../../controllers/interfaces/SellerData.interface";
 import AuthController from "../../controllers/AuthController";
-import { HelpText } from "../../components/atoms/";
+import { CheckBox, HelpText } from "../../components/atoms/";
 import styles from "./SellerRegistrationPageTemplates.module.scss";
 
 export const SellerRegistrationPageTemplates: FC = () => {
@@ -22,6 +22,7 @@ export const SellerRegistrationPageTemplates: FC = () => {
         <div className={styles.sellerRegisterForm}>
           <h2 className={styles.SellerRegistrationTitleText}>Регистрация</h2>
           <SellerRegistrationFormOrganism onSubmit={handleSellerSubmit} />
+          <CheckBox name="rememberMe" />
           <GoogleAuthOrgamism />
           <Terms />
         </div>

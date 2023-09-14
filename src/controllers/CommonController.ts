@@ -14,7 +14,7 @@ const CommonController = {
   },
   getArticles: async () => {
     try {
-      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/articles-list`);
+      const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/news/articles/`);
       console.log(response);
       return response.data.results;
     } catch (error) {

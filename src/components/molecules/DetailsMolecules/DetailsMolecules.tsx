@@ -1,5 +1,5 @@
+import { Button, Card, Col, Divider, Row, Steps, Tag } from "antd";
 import { FC } from "react";
-import { Card, Row, Col, Steps, Tag, Divider, Button } from "antd";
 
 const { Step } = Steps;
 

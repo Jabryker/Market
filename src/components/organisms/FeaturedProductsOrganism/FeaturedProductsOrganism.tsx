@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { DiscountProductsMolecules } from "../../molecules/";
-import { Product } from "../../atoms/ProductCard/ProductCard.interface";
+import { useEffect, useState } from "react";
 import ProductController from "../../../controllers/ProductController";
-import { TitleText, displayErrorToast, ProductSkeleton } from "../../atoms";
+import { SkeletonCard, TitleText, displayErrorToast } from "../../atoms";
+import { Product } from "../../atoms/ProductCard/ProductCard.interface";
+import { DiscountProductsMolecules } from "../../molecules/";
 
 export const FeaturedProductsOrganism = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,7 +28,9 @@ export const FeaturedProductsOrganism = () => {
     <div>
       <TitleText>Лучшие товары</TitleText>
       {loading ? (
-        <ProductSkeleton quantity={4} />
+        <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
+      ) : products.length === 0 ? (
+        <SkeletonCard quantity={4} /> // Display SkeletonCard when no products available
       ) : (
         <DiscountProductsMolecules products={products} />
       )}

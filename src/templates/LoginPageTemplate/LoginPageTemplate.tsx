@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Terms from "../../components/atoms/Terms/Terms";
+
 import { HelpText } from "../../components/atoms/";
 import {
   LoginFormOrganism,
@@ -8,14 +10,17 @@ import {
 } from "../../components/organisms/";
 import { ILoginData } from "../../controllers/interfaces/LoginData.interface";
 import AuthController from "../../controllers/AuthController";
+import { RootState } from "../../store/store";
 
 import styles from "./LoginPageTemplate.module.scss";
 
 export const LoginPageTemplate: FC = () => {
   const navigate = useNavigate();
 
+  const rememberMe = useSelector((state: RootState) => state.auth.rememberMe);
+
   const handleLoginSubmit = async (loginData: ILoginData) => {
-    await AuthController.login(loginData, navigate);
+    await AuthController.login(loginData, navigate, rememberMe);
   };
 
   return (

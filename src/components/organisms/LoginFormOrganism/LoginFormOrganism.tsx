@@ -16,7 +16,7 @@ export const LoginFormOrganism: FC<ILoginFormOrganismProps> = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <LoginFormFields register={register} errors={errors} />
-      <CheckBox name="rememberMe" register={register} />
+      <CheckBox name="rememberMe" />
       <Button type="submit">{"Войти"}</Button>
     </form>
   );

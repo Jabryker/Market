@@ -50,7 +50,7 @@ export const RegistrationScreen: FC = () => {
               {role ? "Продолжить" : "Выберите роль"}
             </Button>
           </Link>
-          <CheckBox name="rememberMe" register={register} />
+          <CheckBox name="rememberMe" />
           <GoogleAuthOrgamism />
           <Terms />
         </div>
