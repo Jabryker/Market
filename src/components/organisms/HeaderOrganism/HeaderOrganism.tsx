@@ -1,5 +1,5 @@
+import { FC, useState, useEffect } from "react";
 import { Badge, Button, Dropdown, Menu } from "antd";
-import { FC, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
@@ -7,22 +7,38 @@ import logo from "../../../assets/images/logo.svg";
 import store from "../../../store/store";
 
 interface NavItem {
-  id: number;
-  to: string;
-  label: string;
+    id: number;
+    to: string;
+    label: string;
 }
 
 interface IHeaderOrganismProps {
-  userType?: string;
+    userType?: string;
 }
 
 export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
   const navigate = useNavigate();
 
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -52,33 +68,36 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       ) : null}
       <Menu.Divider />
       <Menu.Item key="logout" onClick={handleLogout}>
-          Выйти из аккаунта
+                Выйти из аккаунта
       </Menu.Item>
     </Menu>
   );
 
   return (
     <>
-      <div className="bg-[#F3F2F2] py-4">
+      <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
           </Link>
-          <ul className="hidden md:flex space-x-4">
-            {navbar.map((item: NavItem) => (
-              <li key={item.id}>
-                <Link to={item.to} className="text-[#333] hover:text-blue-300 font-semibold text-lg">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+          <div>
+            <input
+              type="text"
+              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300"
+              placeholder="Поиск товаров"
+            />
+            <button
+              className="px-3 py-2 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none"
+            >
+                            Поиск
+            </button>
+          </div>
+
           <div className="flex items-center">
             {hasAccess && hasRefresh ? (
-              <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
-                <Button className="ml-4 text-white">
-                      Профиль
-                </Button>
+              <Dropdown overlay={menu} trigger={["click"]}>
+                <Button className="ml-4 text-white">Профиль</Button>
               </Dropdown>
             ) : (
               <Link to="/login">
@@ -88,12 +107,12 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
               </Link>
             )}
 
-            <Link to="/cart" className="ml-4 text-[#333] hover:text-blue-300">
+            <Link to="/cart" className="mx-10 text-[#333] hover:text-blue-300">
               <Badge count={cartItemsCount} showZero>
                 <AiOutlineShoppingCart size={24} />
               </Badge>
             </Link>
-            <div onClick={handleNav} className="md:hidden cursor-pointer">
+            <div onClick={handleNav} className="cursor-pointer">
               {nav ? (
                 <AiOutlineClose size={24} color="#333" />
               ) : (
@@ -103,6 +122,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           </div>
         </div>
       </div>
+
       <div
         className={
           nav
