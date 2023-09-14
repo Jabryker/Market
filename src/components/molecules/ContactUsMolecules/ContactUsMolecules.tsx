@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { TitleText } from "../../atoms/";
+import {Button, TitleText} from "../../atoms/";
 import nav from "../../../assets/images/contactIcons/.png";
 import phone from "../../../assets/images/contactIcons/phone.png";
 import mail from "../../../assets/images/contactIcons/mail.png";
@@ -66,12 +66,9 @@ export const ContactUsMolecules: FC = () => {
               />
             </div>
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="w-full px-[15px] py-[10px] bg-[#EC9A1E] text-white rounded-[18px] hover:bg-yellow-600 focus:outline-none"
-              >
+              <Button type="submit">
                 Отправить
-              </button>
+              </Button>
             </div>
           </form>
         </div>

@@ -11,3 +11,4 @@ export { PartnerCardFields } from "./PartnerCardFields/PartnerCardFirlds";
 export { ProductDetailsMolecules } from "./ProductDetailsMolecules/ProductDetailsMolecules";
 export { SellerRegistrationFormFields } from "./SellerRegistrationFormFields/SellerRegistrationFormFields";
 export { UsefulArticlesMolecules } from "./UsefulArticlesMolecules/UsefulArticlesMolecules";
+export { SearchWithBannerMolecules } from "./SearchWithBannerMolecules/SearchWithBannerMolecules";
