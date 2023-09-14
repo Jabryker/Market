@@ -7,18 +7,19 @@ import logo from "../../../assets/images/logo.svg";
 import store from "../../../store/store";
 
 interface NavItem {
-    id: number;
-    to: string;
-    label: string;
+  id: number;
+  to: string;
+  label: string;
 }
 
 interface IHeaderOrganismProps {
-    userType?: string;
+  userType?: string;
 }
 
 export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
   const handleNav = () => {
@@ -32,6 +33,15 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       setScrolling(false);
     }
   };
+
+  const handleSearch = (searchValue: string) => {
+    // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
+    // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
+
+    // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
+    navigate(`/product?search=${encodeURIComponent(searchValue)}`);
+  };
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -68,7 +78,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       ) : null}
       <Menu.Divider />
       <Menu.Item key="logout" onClick={handleLogout}>
-                Выйти из аккаунта
+          Выйти из аккаунта
       </Menu.Item>
     </Menu>
   );
@@ -84,13 +94,16 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           <div>
             <input
               type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300"
               placeholder="Поиск товаров"
             />
             <button
-              className="px-3 py-2 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none"
+              onClick={() => handleSearch(searchValue)}
+              className="px-3 py-2 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32" // Добавлен класс w-32
             >
-                            Поиск
+              Поиск
             </button>
           </div>
 
@@ -133,7 +146,10 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
         <ul className="text-white capitalize">
           {navbar.map((item: NavItem) => (
             <li key={item.id} className="p-4">
-              <Link to={item.to} className="border-b border-[#999] hover:text-blue-300">
+              <Link
+                to={item.to}
+                className="border-b border-[#999] hover:text-blue-300 transition-colors duration-300"
+              >
                 {item.label}
               </Link>
             </li>
