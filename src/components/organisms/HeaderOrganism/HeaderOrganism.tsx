@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import { Badge, Button, Dropdown, Menu } from "antd";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
@@ -101,7 +101,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
             />
             <button
               onClick={() => handleSearch(searchValue)}
-              className="px-3 py-2 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32" // Добавлен класс w-32
+              className="px-3 py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32"
             >
               Поиск
             </button>
@@ -114,8 +114,8 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
               </Dropdown>
             ) : (
               <Link to="/login">
-                <button className="ml-4 bg-[#EC9A1E] hover:bg-[#ED5555] text-white font-semibold py-2 px-4 rounded-full shadow-md transition">
-                  <AiOutlineUser className="inline-block mr-2" /> Войти в аккаунт
+                <button className="ml-4 bg-[#fff] text-[#000] hover:bg-[#000] hover:text-[#fff] font-semibold py-2 px-4 rounded-[10px] shadow-md border border-[#47535F] transition duration-300 ease-in-out">
+                    Войти
                 </button>
               </Link>
             )}
