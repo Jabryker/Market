@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 
 import {
   MainPage,
@@ -79,8 +79,12 @@ const AppRoutes = () => {
       element: <ProfilePages userType="seller" />,
     },
     {
-      path: "*",
+      path: "404",
       element: <NotFoundScreen />,
+    },
+    {
+      path: "*",
+      element: <Navigate to="/404" />,
     },
   ]);
 
