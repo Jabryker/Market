@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-export const Terms = () => {
+export const Terms: FC = () => {
   return (
     <div
       style={{
@@ -15,9 +15,9 @@ export const Terms = () => {
       }}
     >
       Продолжая вы соглашаетесь с{" "}
-      <a style={{ textDecoration: "underLine" }}>
+      <a href="/" style={{ textDecoration: "underLine" }}>
         Условиями обслуживания и{" "}
-        <a style={{ color: "#fff" }}>Политикой конфиденциальности </a>
+        <a href="/" style={{ color: "#fff" }}>Политикой конфиденциальности </a>
         Ordo marketplace
       </a>
     </div>

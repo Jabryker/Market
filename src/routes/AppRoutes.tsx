@@ -1,24 +1,24 @@
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom"
 
 import {
-  MainPage,
+  BasketPages,
   LoginScreen,
-  RegistrationScreen,
+  MainPage,
+  NotFoundScreen,
   PasswordConfirmationScreen,
   PasswordReset,
-  NotFoundScreen,
   ProductDetailsScreen,
-  BasketPages,
-  ProfilePages,
   ProductPages,
-} from "../pages";
+  ProfilePages,
+  RegistrationScreen,
+} from "../pages"
 
 import {
   BuyerRegistrationPageTemplate,
-  SellerRegistrationPageTemplates,
   NewsDetailsTemplate,
+  SellerRegistrationPageTemplates,
   UsefulArticlesDetailTemplate,
-} from "../templates/";
+} from "../templates/"
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -79,12 +79,16 @@ const AppRoutes = () => {
       element: <ProfilePages userType="seller" />,
     },
     {
-      path: "*",
+      path: "404",
       element: <NotFoundScreen />,
     },
-  ]);
+    {
+      path: "*",
+      element: <Navigate to="/404" />,
+    },
+  ])
 
-  return routes;
-};
+  return routes
+}
 
-export default AppRoutes;
+export default AppRoutes

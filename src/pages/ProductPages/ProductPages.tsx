@@ -1,5 +1,12 @@
-import {ProductPageTemplate} from "../../templates";
+import { FooterOrganism, HeaderOrganism } from "../../components/organisms"
+import { ProductPageTemplate } from "../../templates"
 
 export const ProductPages = () => {
-  return <ProductPageTemplate />;
-};
+  return (
+    <>
+      <HeaderOrganism />
+      <ProductPageTemplate />
+      <FooterOrganism />
+    </>
+  )
+}

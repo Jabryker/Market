@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { Input, Select } from "../../atoms/";
+import { Input } from "../../atoms/";
 import { ISellerRegistrationFormProps } from "./SellerRegistrationFormFields.interface";
 
 export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
@@ -119,8 +119,8 @@ export const SellerRegistrationFormFields: FC<ISellerRegistrationFormProps> = ({
       {errors.password &&
         errors.confirmPassword &&
         errors.password.message !== errors.confirmPassword.message && (
-          <div className="bg-red-500 text-black">Passwords do not match</div>
-        )}
+        <div className="bg-red-500 text-black">Passwords do not match</div>
+      )}
 
       {userType === "Legal" && (
         <Input
