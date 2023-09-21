@@ -1,22 +1,19 @@
-import { FC } from "react";
+import { FC } from "react"
 import {
-  HeaderOrganism,
-  SubHeaderOrganism,
+  CategorySelectOrganism,
+  ContactUsOrganism,
   DiscountProductsOrganisms,
   FeaturedProductsOrganism,
-  SearchWithBannerOrgamism,
-  CategorySelectOrganism,
   NewsListOrganism,
+  SearchWithBannerOrgamism,
+  SubHeaderOrganism,
   UsefulArticlesOrganism,
-  ContactUsOrganism,
-  FooterOrganism,
-} from "../../components/organisms";
+} from "../../components/organisms"
 
 export const MainPage: FC = () => {
   return (
     <>
       <SubHeaderOrganism />
-      <HeaderOrganism />
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
@@ -24,7 +21,6 @@ export const MainPage: FC = () => {
       <NewsListOrganism />
       <UsefulArticlesOrganism />
       <ContactUsOrganism />
-      <FooterOrganism />
     </>
-  );
-};
+  )
+}

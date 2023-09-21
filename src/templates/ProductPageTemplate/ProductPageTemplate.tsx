@@ -1,48 +1,54 @@
-import React, { FC, useEffect, useState } from "react";
-import { DiscountProductsMolecules } from "../../components/molecules";
-import ProductController from "../../controllers/ProductController";
-import { IProduct } from "../../controllers/interfaces/Product.interface";
-import { CategoryFilter, NameFilter, PriceRangeFilter, AddressFilter } from "../../components/atoms";
+import { FC, useEffect, useState } from "react"
+import {
+  AddressFilter,
+  CategoryFilter,
+  NameFilter,
+  PriceRangeFilter,
+} from "../../components/atoms"
+import { DiscountProductsMolecules } from "../../components/molecules"
+import ProductController from "../../controllers/ProductController"
+import { IProduct } from "../../controllers/interfaces/Product.interface"
 
 export const ProductPageTemplate: FC = () => {
-  const [allProduct, setAllProduct] = useState<IProduct[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [nameFilter, setNameFilter] = useState<string>("");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
-  const [selectedAddress, setSelectedAddress] = useState<string>("");
-  const [selectedSort, setSelectedSort] = useState<string>("");
+  const [allProduct, setAllProduct] = useState<IProduct[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string>("")
+  const [nameFilter, setNameFilter] = useState<string>("")
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000])
+  const [selectedAddress, setSelectedAddress] = useState<string>("")
+  const [selectedSort, setSelectedSort] = useState<string>("")
 
   useEffect(() => {
     try {
       const fetchProducts = async () => {
-        const fetchedProducts: IProduct[] = await ProductController.getFilteredProducts({
-          category: selectedCategory,
-          name: nameFilter,
-          minPrice: priceRange[0],
-          maxPrice: priceRange[1],
-          address: selectedAddress,
-        });
+        const fetchedProducts: IProduct[] =
+					await ProductController.getFilteredProducts({
+					  category: selectedCategory,
+					  name: nameFilter,
+					  minPrice: priceRange[0],
+					  maxPrice: priceRange[1],
+					  address: selectedAddress,
+					})
 
-        const sortedProducts = sortProducts(fetchedProducts, selectedSort);
-        setAllProduct(sortedProducts);
-      };
+        const sortedProducts = sortProducts(fetchedProducts, selectedSort)
+        setAllProduct(sortedProducts)
+      }
 
-      fetchProducts();
+      fetchProducts()
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  }, [selectedCategory, nameFilter, priceRange, selectedAddress, selectedSort]);
+  }, [selectedCategory, nameFilter, priceRange, selectedAddress, selectedSort])
 
   const sortProducts = (products: IProduct[], sortBy: string) => {
     switch (sortBy) {
     case "priceLowToHigh":
-      return products.slice().sort((a, b) => a.price - b.price);
+      return products.slice().sort((a, b) => a.price - b.price)
     case "priceHighToLow":
-      return products.slice().sort((a, b) => b.price - a.price);
+      return products.slice().sort((a, b) => b.price - a.price)
     default:
-      return products;
+      return products
     }
-  };
+  }
 
   return (
     <div className="flex h-screen">
@@ -60,26 +66,19 @@ export const ProductPageTemplate: FC = () => {
 
         {/* Фильтр по названию */}
         <h3 className="text-sm font-medium mb-2">Название</h3>
-        <NameFilter
-          value={nameFilter}
-          onChange={setNameFilter}
-        />
+        <NameFilter value={nameFilter} onChange={setNameFilter} />
 
         {/* Фильтр по цене */}
         <h3 className="text-sm font-medium mb-2">Цена</h3>
         <PriceRangeFilter
           minPrice={0}
           maxPrice={1000}
-          onChange={(values) => setPriceRange(values)} // Передайте функцию обратного вызова для обновления priceRange
+          onChange={values => setPriceRange(values)} // Передайте функцию обратного вызова для обновления priceRange
         />
-
 
         {/* Фильтр по адресу */}
         <h3 className="text-sm font-medium mb-2">Адрес</h3>
-        <AddressFilter
-          value={selectedAddress}
-          onChange={setSelectedAddress}
-        />
+        <AddressFilter value={selectedAddress} onChange={setSelectedAddress} />
       </div>
 
       {/* Правая колонка с продуктами */}
@@ -88,5 +87,5 @@ export const ProductPageTemplate: FC = () => {
         <DiscountProductsMolecules products={allProduct} />
       </div>
     </div>
-  );
-};
+  )
+}
