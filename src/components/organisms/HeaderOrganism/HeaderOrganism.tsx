@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from "react";
 import { Badge, Button, Dropdown, Menu } from "antd";
+import { FC, useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
@@ -26,13 +26,16 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
     setNav(!nav);
   };
 
+  const subHeaderHeight = 50;
+
   const handleScroll = () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > subHeaderHeight) {
       setScrolling(true);
     } else {
       setScrolling(false);
     }
   };
+
 
   const handleSearch = (searchValue: string) => {
     // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
@@ -85,7 +88,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
 
   return (
     <>
-      <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
+       <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />

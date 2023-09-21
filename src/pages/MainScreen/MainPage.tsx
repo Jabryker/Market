@@ -6,14 +6,12 @@ import {
   FeaturedProductsOrganism,
   NewsListOrganism,
   SearchWithBannerOrgamism,
-  SubHeaderOrganism,
   UsefulArticlesOrganism,
 } from "../../components/organisms"
 
 export const MainPage: FC = () => {
   return (
     <>
-      <SubHeaderOrganism />
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />

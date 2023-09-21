@@ -1,7 +1,6 @@
 export { AddressFilter } from "./AddressFilter/AddressFilter";
 export { Button } from "./Button/Button";
 export { CardSkeleton } from "./CardSkeleton/CardSkeleton";
-export { Category } from "./Category/Category";
 export { CategoryFilter } from "./CategoryFilter/CategoryFilter";
 export { CategorySelect } from "./CategorySelect/CategorySelect";
 export { CheckBox } from "./CheckBox/CheckBox";
@@ -18,3 +17,4 @@ export { SkeletonCombine } from "./SkeletonCombine/SkeletonCombine";
 export { TitleText } from "./TitleText/TitleText";
 export { displayErrorToast } from "./displayErrorToast/displayErrorToast";
 export { displaySuccessToast } from "./displaySuccessToast/displaySuccessToast";
+
