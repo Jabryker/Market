@@ -1,6 +1,6 @@
 import { Badge, Button, Dropdown, Menu } from "antd";
 import { FC, useEffect, useState } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
@@ -89,26 +89,27 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   return (
     <>
        <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
           </Link>
 
-          <div>
-            <input
-              type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300"
-              placeholder="Поиск товаров"
-            />
-            <button
-              onClick={() => handleSearch(searchValue)}
-              className="px-3 py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32"
-            >
-              Поиск
-            </button>
-          </div>
+        <div className="flex justify-center items-center">
+          <input
+            type="text"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300 w-[600px]" 
+            placeholder="Поиск товаров"
+          />
+
+          <button
+            onClick={() => handleSearch(searchValue)}
+            className="py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
+          >
+            <AiOutlineSearch size={20} className="mr-2" /> Поиск
+          </button>
+        </div>
 
           <div className="flex items-center">
             {hasAccess && hasRefresh ? (
