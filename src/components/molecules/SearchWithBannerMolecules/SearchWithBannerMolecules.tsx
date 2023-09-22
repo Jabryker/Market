@@ -23,9 +23,9 @@ export const SearchWithBannerMolecules: FC = () => {
           Все быстро и качественно <br /> от прямых поставщиков
         </p>
         <div className="w-[300px]">
-        <Link to="/about-us">
-          <Button type="button">Стать Партнером</Button>
-        </Link>
+          <Link to="/about-us">
+            <Button type="button">Стать Партнером</Button>
+          </Link>
         </div>
       </div>
     </div>
