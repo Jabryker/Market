@@ -1,4 +1,3 @@
-import { Grade } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -66,12 +65,6 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
             className="w-full h-48 object-cover"
           />
         </Link>
-        <Box className="flex items-center">
-          <Grade fontSize="small" color="primary" />
-          <Typography variant="subtitle1" color="primary" className="ml-1">
-            {/*{product?.rating}*/} rating
-          </Typography>
-        </Box>
         <Typography variant="h6" className="mb-4">
           {product?.name}
         </Typography>
