@@ -9,14 +9,18 @@ const baseApiUrl = process.env.REACT_APP_API_URL;
 // const baseApiUrl = "http://16.171.197.36/";
 
 const AuthController = {
-  login: async (loginData: ILoginData, navigate: (path: string) => void, rememberMe: boolean) => {
+  login: async (
+    loginData: ILoginData,
+    navigate: (path: string) => void,
+    rememberMe: boolean
+  ) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/auth/token/`,
         {
           ...loginData,
           rememberMe,
-        },
+        }
       );
 
       if (responseLogin.status === 200) {
@@ -41,12 +45,15 @@ const AuthController = {
       }
     }
   },
-  register: async (registerData: IRegisterData, navigate: (path: string) => void) => {
+  register: async (
+    registerData: IRegisterData,
+    navigate: (path: string) => void
+  ) => {
     try {
       const { confirmPassword, ...registerPayload } = registerData;
       const responseRegister: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/accounts/users/`,
-        registerPayload,
+        registerPayload
       );
 
       if (responseRegister.status === 200 || responseRegister.status === 201) {
@@ -68,12 +75,14 @@ const AuthController = {
       password: sellerData.password,
       INN: sellerData.inn !== undefined ? parseInt(sellerData.inn, 10) : null,
       certificate_number:
-        sellerData.certificate !== undefined ? parseInt(sellerData.certificate, 10) : null,
+        sellerData.certificate !== undefined
+          ? parseInt(sellerData.certificate, 10)
+          : null,
     };
 
     const responseSeller: AxiosResponse = await axios.post(
       `${baseApiUrl}/api/v1/accounts/sellers/`,
-      payload,
+      payload
     );
 
     if (responseSeller.status === 200 || responseSeller.status === 201) {
@@ -93,7 +102,7 @@ const AuthController = {
 
       // Проверяем, существует ли пользователь с таким email
       const userExistsResponse = await axios.get(
-        `${baseApiUrl}/api/v1/accounts/check-user-exists/?email=${googleData.email}`,
+        `${baseApiUrl}/api/v1/accounts/check-user-exists/?email=${googleData.email}`
       );
 
       const userExists = userExistsResponse.data.exists;
@@ -102,14 +111,14 @@ const AuthController = {
         // Если пользователь существует, выполняем вход
         const loginResponse: AxiosResponse = await axios.post(
           `${baseApiUrl}/api/v1/accounts/login/`,
-          googlePayload,
+          googlePayload
         );
         displaySuccessToast("Logged in successfully");
       } else {
         // Если пользователя нет, выполняем регистрацию
         const responseGoogleAuth: AxiosResponse = await axios.post(
           `${baseApiUrl}/api/v1/accounts/users/`,
-          googlePayload,
+          googlePayload
         );
         console.log(responseGoogleAuth);
       }
@@ -126,7 +135,7 @@ const AuthController = {
     try {
       const response: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/accounts/password-reset/`,
-        { email },
+        { email }
       );
 
       if (response.status === 200) {
@@ -148,7 +157,7 @@ const AuthController = {
     try {
       const response: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/accounts/password-reset/validate_token/`,
-        { token },
+        { token }
       );
 
       if (response.status === 200) {
@@ -165,7 +174,7 @@ const AuthController = {
     try {
       const response: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/accounts/password-reset/confirm/`,
-        { token, password },
+        { token, password }
       );
 
       if (response.status === 200) {
