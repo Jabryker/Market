@@ -75,24 +75,24 @@ export const PriceRangeAtom: FC<PriceRangeProps> = ({ value, onChange }) => {
   return (
     <>
       <div className="flex justify-between">
-      <Input
-        type="number"
-        placeholder="From"
-        value={value[0]}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          onChange([Number(e.target.value), value[1]])
-        }
-        className="w-[20%]" 
-      />
-      <Input
-        type="number"
-        placeholder="To"
-        value={value[1]}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          onChange([value[0], Number(e.target.value)])
-        }
-        className="w-[20%]" 
-      />
+        <Input
+          type="number"
+          placeholder="From"
+          value={value[0]}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange([Number(e.target.value), value[1]])
+          }
+          className="w-[20%]" 
+        />
+        <Input
+          type="number"
+          placeholder="To"
+          value={value[1]}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange([value[0], Number(e.target.value)])
+          }
+          className="w-[20%]" 
+        />
       </div>
       <Slider
         range
