@@ -1,91 +1,79 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react";
+import { DiscountProductsMolecules } from "../../components/molecules";
+import { IProduct } from "../../controllers/interfaces/Product.interface";
 import {
-  AddressFilter,
-  CategoryFilter,
-  NameFilter,
-  PriceRangeFilter,
-} from "../../components/atoms"
-import { DiscountProductsMolecules } from "../../components/molecules"
-import ProductController from "../../controllers/ProductController"
-import { IProduct } from "../../controllers/interfaces/Product.interface"
+  NameFilterAtom,
+  AddressFilterAtom,
+  BrandFilterAtom,
+  CountryFilterAtom,
+  PriceRangeAtom,
+} from "../../components/atoms/FilterItem/FilterItem";
 
 export const ProductPageTemplate: FC = () => {
-  const [allProduct, setAllProduct] = useState<IProduct[]>([])
-  const [selectedCategory, setSelectedCategory] = useState<string>("")
-  const [nameFilter, setNameFilter] = useState<string>("")
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000])
-  const [selectedAddress, setSelectedAddress] = useState<string>("")
-  const [selectedSort, setSelectedSort] = useState<string>("")
+  const [nameFilter, setNameFilter] = useState<string>("");
+  const [addressFilter, setAddressFilter] = useState<string | number>("");
+  const [brandFilter, setBrandFilter] = useState<string>("");
+  const [countryFilter, setCountryFilter] = useState<string>("");
+  const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
 
-  useEffect(() => {
+  const fetchFilteredProducts = async () => {
     try {
-      const fetchProducts = async () => {
-        const fetchedProducts: IProduct[] =
-					await ProductController.getFilteredProducts({
-					  category: selectedCategory,
-					  name: nameFilter,
-					  minPrice: priceRange[0],
-					  maxPrice: priceRange[1],
-					  address: selectedAddress,
-					})
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/v1/stores/products/?search=${encodeURIComponent(
+          nameFilter,
+        )}&category=&address=${encodeURIComponent(
+          addressFilter,
+        )}&country=${encodeURIComponent(
+          countryFilter,
+        )}&brand=${encodeURIComponent(
+          brandFilter,
+        )}&fuel=&price__gte=${encodeURIComponent(
+          priceRange[0],
+        )}&price__lte=${encodeURIComponent(priceRange[1])}`,
+      );
 
-        const sortedProducts = sortProducts(fetchedProducts, selectedSort)
-        setAllProduct(sortedProducts)
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
       }
 
-      fetchProducts()
-    } catch (e) {
-      console.log(e)
+      const data = await response.json();
+      // Update this code to match your expected data structure
+      const filteredProducts = data.results;
+      setFilteredProducts(filteredProducts);
+    } catch (error) {
+      console.error("Error fetching products:", error);
     }
-  }, [selectedCategory, nameFilter, priceRange, selectedAddress, selectedSort])
+  };
 
-  const sortProducts = (products: IProduct[], sortBy: string) => {
-    switch (sortBy) {
-    case "priceLowToHigh":
-      return products.slice().sort((a, b) => a.price - b.price)
-    case "priceHighToLow":
-      return products.slice().sort((a, b) => b.price - a.price)
-    default:
-      return products
-    }
-  }
+  useEffect(() => {
+    // Fetch data when the component mounts
+    // fetchFilteredProducts();
+  }, [nameFilter, addressFilter, brandFilter, countryFilter, priceRange]);
+
+  const handleFilterButtonClick = () => {
+    // Trigger data fetching when the button is clicked
+    fetchFilteredProducts();
+  };
 
   return (
-    <div className="flex h-screen">
-      {/* Левая колонка с фильтрами */}
-      <div className="w-1/4 p-4 border-r h-full overflow-y-auto">
-        <h2 className="text-lg font-semibold mb-4">Фильтры</h2>
-
-        {/* Фильтр по категории */}
-        <h3 className="text-sm font-medium mb-2">Категория</h3>
-        <CategoryFilter
-          categories={["Категория 1", "Категория 2", "Категория 3"]}
-          selectedCategory={selectedCategory}
-          onChange={setSelectedCategory}
-        />
-
-        {/* Фильтр по названию */}
-        <h3 className="text-sm font-medium mb-2">Название</h3>
-        <NameFilter value={nameFilter} onChange={setNameFilter} />
-
-        {/* Фильтр по цене */}
-        <h3 className="text-sm font-medium mb-2">Цена</h3>
-        <PriceRangeFilter
-          minPrice={0}
-          maxPrice={1000}
-          onChange={values => setPriceRange(values)} // Передайте функцию обратного вызова для обновления priceRange
-        />
-
-        {/* Фильтр по адресу */}
-        <h3 className="text-sm font-medium mb-2">Адрес</h3>
-        <AddressFilter value={selectedAddress} onChange={setSelectedAddress} />
+    <div className="flex">
+      <div className="w-1/4 p-4 border-r border-gray-300">
+        <NameFilterAtom value={nameFilter} onChange={setNameFilter} />
+        <AddressFilterAtom value={addressFilter} onChange={setAddressFilter} />
+        <BrandFilterAtom value={brandFilter} onChange={setBrandFilter} />
+        <CountryFilterAtom value={countryFilter} onChange={setCountryFilter} />
+        <PriceRangeAtom value={priceRange} onChange={setPriceRange} />
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          onClick={handleFilterButtonClick}
+        >
+                    Применить фильтры
+        </button>
       </div>
-
-      {/* Правая колонка с продуктами */}
-      <div className="w-3/4 p-4 h-full overflow-y-auto">
-        <h2 className="text-lg font-semibold mb-4">Товары</h2>
-        <DiscountProductsMolecules products={allProduct} />
+      <div className="w-3/4 p-4">
+        <DiscountProductsMolecules products={filteredProducts} />
       </div>
     </div>
-  )
-}
+  );
+};
