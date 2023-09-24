@@ -19,7 +19,7 @@ interface IHeaderOrganismProps {
 export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   const handleNav = () => {
@@ -37,13 +37,19 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   };
 
 
-  const handleSearch = (searchValue: string) => {
-    // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
-    // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
+  // const handleSearch = (searchValue: string) => {
+  //   // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
+  //   // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
+  //
+  //   // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
+  //   navigate(`/product?search=${encodeURIComponent(searchValue)}`);
+  // };
 
-    // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
-    navigate(`/product?search=${encodeURIComponent(searchValue)}`);
+  const handleSearch = () => {
+    // Navigate to the '/product' route with the search query as a parameter
+    navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
+
 
 
   useEffect(() => {
@@ -97,14 +103,15 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           <div className="flex justify-center items-center">
             <input
               type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300 w-[600px]" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300 w-[600px]"
               placeholder="Поиск товаров"
             />
 
+
             <button
-              onClick={() => handleSearch(searchValue)}
+              onClick={handleSearch}
               className="py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
             >
               <AiOutlineSearch size={20} className="mr-2" /> Поиск

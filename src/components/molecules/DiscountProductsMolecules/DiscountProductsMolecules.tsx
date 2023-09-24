@@ -11,7 +11,7 @@ export const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ p
   return (
     <div className="discount-products-block">
       <Row gutter={[16, 16]}>
-        {products.map((product) => (
+        {products?.map((product) => (
           <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
             <ProductCard
               product={product}

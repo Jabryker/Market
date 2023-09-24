@@ -1,14 +1,10 @@
-export { AddressFilter } from "./AddressFilter/AddressFilter";
 export { Button } from "./Button/Button";
 export { CardSkeleton } from "./CardSkeleton/CardSkeleton";
-export { CategoryFilter } from "./CategoryFilter/CategoryFilter";
 export { CategorySelect } from "./CategorySelect/CategorySelect";
 export { CheckBox } from "./CheckBox/CheckBox";
 export { CombinedData } from "./CombinedData/CombinedData";
 export { HelpText } from "./HelpText/HelpText";
 export { Input } from "./Input/Input";
-export { NameFilter } from "./NameFilter/NameFilter";
-export { PriceRangeFilter } from "./PriceRangeFilter/PriceRangeFilter";
 export { ProductCard } from "./ProductCard/ProductCard";
 export { ProductSkeleton } from "./ProductSkeleton/ProductSkeleton";
 export { Select } from "./Select/Select";
