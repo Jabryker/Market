@@ -26,7 +26,7 @@ export const NewsListOrganism = () => {
 
   return (
     <div>
-      <TitleText>Наши новости</TitleText>
+      <TitleText color="white">Наши новости</TitleText>
       {loading ? (
         <SkeletonCombine quantity={4} />
       ) : newsData.length === 0 ? (

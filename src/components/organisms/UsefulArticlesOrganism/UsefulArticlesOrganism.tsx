@@ -26,7 +26,7 @@ export const UsefulArticlesOrganism = () => {
 
   return (
     <div>
-      <TitleText>Полезные статьи</TitleText>
+      <TitleText color="text-[#47535F]">Полезные статьи</TitleText>
       {loading ? (
         <SkeletonCombine quantity={4} />
       ) : articlesData.length === 0 ? (

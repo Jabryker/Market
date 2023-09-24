@@ -25,7 +25,7 @@ export const ContactUsMolecules: FC = () => {
 
   return (
     <div className="contactUs-block mb-40">
-      <TitleText>Свяжитесь с нами</TitleText>
+      <TitleText color="text-[#47535F]">Свяжитесь с нами</TitleText>
       <div
         className="contactUs-form-block w-11/12 px-28 py-28 container mx-auto flex justify-between"
         style={{ background: "#F5F5F5" }}

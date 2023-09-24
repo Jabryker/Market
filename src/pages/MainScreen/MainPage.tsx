@@ -12,15 +12,17 @@ import {
 
 export const MainPage: FC = () => {
   return (
-    <>
+    <div className="my-10">
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
-      <FeaturedProductsOrganism />
-      <NewsListOrganism />
+      <div className="bg-[#47535F] rounded-t-2xl">
+        <FeaturedProductsOrganism />
+        <NewsListOrganism />
+      </div>
       <UsefulArticlesOrganism />
       <PartnersOrganism />
       <ContactUsOrganism />
-    </>
+    </div>
   )
 }

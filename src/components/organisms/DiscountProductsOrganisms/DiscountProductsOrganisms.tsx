@@ -26,7 +26,7 @@ export const DiscountProductsOrganisms = () => {
 
   return (
     <div>
-      <TitleText>Товары со скидкой</TitleText>
+      <TitleText color="text-[#47535F]">Товары со скидкой</TitleText>
       {loading ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
       ) : products.length === 0 ? (

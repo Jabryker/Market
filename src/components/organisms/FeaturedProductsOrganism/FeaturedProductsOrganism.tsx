@@ -26,7 +26,7 @@ export const FeaturedProductsOrganism = () => {
 
   return (
     <div>
-      <TitleText>Лучшие товары</TitleText>
+      <TitleText color="white">Лучшие товары</TitleText>
       {loading ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
       ) : products.length === 0 ? (
