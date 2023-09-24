@@ -101,14 +101,28 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           </Link>
 
           <div className="flex justify-center items-center">
+            <select
+              className="px-4 py-2 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
+              placeholder="Фильтр по"
+            >
+              <option value="">Выберите фильтр</option>
+              <option value="name">Названию</option>
+              <option value="category">Категории</option>
+              <option value="address">Адресу</option>
+              <option value="country">Стране производителя</option>
+              <option value="brand">Бренду</option>
+              <option value="fuelType">Виду топлива</option>
+              <option value="priceLessThan">Цена меньше чем</option>
+              <option value="priceGreaterThan">Цена больше чем</option>
+            </select>
+
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300 w-[600px]"
+              className="px-4 py-2 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
               placeholder="Поиск товаров"
             />
-
 
             <button
               onClick={handleSearch}
@@ -117,6 +131,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
               <AiOutlineSearch size={20} className="mr-2" /> Поиск
             </button>
           </div>
+
 
           <div className="flex items-center">
             {hasAccess && hasRefresh ? (
