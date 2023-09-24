@@ -1,29 +1,30 @@
-import { FC, ChangeEvent } from "react";
 import { Input, Slider } from "antd";
+import { ChangeEvent, FC } from "react";
 
 interface NameFilterProps {
-    value: string;
-    onChange: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
 }
 
 interface AddressFilterProps {
-    value: string | number;
-    onChange: (value: string | number) => void;
+  value: string | number;
+  onChange: (value: string | number) => void;
 }
 
 interface BrandFilterProps {
-    value: string;
-    onChange: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
 }
 
 interface CountryFilterProps {
-    value: string;
-    onChange: (value: string) => void;
+  value: string;
+  onChange: (value: string) => void;
 }
 
+
 interface PriceRangeProps {
-    value: [number, number];
-    onChange: (value: [number, number]) => void;
+  value: [number, number];
+  onChange: (value: [number, number]) => void;
 }
 
 export const NameFilterAtom: FC<NameFilterProps> = ({ value, onChange }) => {
@@ -72,12 +73,34 @@ export const CountryFilterAtom: FC<CountryFilterProps> = ({ value, onChange }) =
 
 export const PriceRangeAtom: FC<PriceRangeProps> = ({ value, onChange }) => {
   return (
-    <Slider
-      range
-      min={0}
-      max={100}
-      value={value}
-      onChange={(value: [number, number]) => onChange(value)}
-    />
+    <>
+      <div className="flex justify-between">
+      <Input
+        type="number"
+        placeholder="From"
+        value={value[0]}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChange([Number(e.target.value), value[1]])
+        }
+        className="w-[20%]" 
+      />
+      <Input
+        type="number"
+        placeholder="To"
+        value={value[1]}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChange([value[0], Number(e.target.value)])
+        }
+        className="w-[20%]" 
+      />
+      </div>
+      <Slider
+        range
+        min={0}
+        max={100}
+        value={value}
+        onChange={(value: [number, number]) => onChange(value)}
+      />
+    </>
   );
 };
