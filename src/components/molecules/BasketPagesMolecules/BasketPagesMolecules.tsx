@@ -1,22 +1,22 @@
-import { FC } from "react";
 import { Button, Empty, InputNumber, List } from "antd";
+import { FC, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, updateCartItemQuantity } from "../../../store/slice/cartSlice";
+import rootReducer from "../../../store/reducers/rootReducer";
+import { removeFromCart } from "../../../store/slice/cartSlice";
 import { CartItem } from "../../atoms/ProductCard/ProductCard.interface";
-import rootReducer from "../../../store/reducers/rootReducer"; // Импортируем корректный корневой редюсер
 
 export const BasketPagesMolecules: FC = () => {
   const dispatch = useDispatch();
+  const [cart, setCart] = useState<CartItem[]>([]); 
+  const cartItems = useSelector((state: ReturnType<typeof rootReducer>) => state.cart.cartItems);
 
-  const cart = useSelector((state: ReturnType<typeof rootReducer>) => state.cart.cartItems); // Используем корректный rootReducer
+  useEffect(() => {
+    setCart(cartItems);
+  }, [cartItems, dispatch]); 
 
   const handleRemoveFromCart = (productId: number) => {
     dispatch(removeFromCart(productId));
-  };
-
-  const handleUpdateQuantity = (productId: number, quantity: number) => {
-    dispatch(updateCartItemQuantity({ productId, quantity }));
   };
 
   if (cart.length === 0) {
@@ -39,7 +39,7 @@ export const BasketPagesMolecules: FC = () => {
           <List.Item
             actions={[
               <InputNumber min={1} defaultValue={item.quantity} />,
-              <Button type="dashed">Удалить</Button>,
+              <Button type="dashed" onClick={() => handleRemoveFromCart(item.product.id)}>Удалить</Button>,
             ]}
           >
             <List.Item.Meta
