@@ -7,6 +7,7 @@ import {
   NewsListOrganism,
   SearchWithBannerOrgamism,
   UsefulArticlesOrganism,
+  PartnersOrganism,
 } from "../../components/organisms"
 
 export const MainPage: FC = () => {
@@ -18,6 +19,7 @@ export const MainPage: FC = () => {
       <FeaturedProductsOrganism />
       <NewsListOrganism />
       <UsefulArticlesOrganism />
+      <PartnersOrganism />
       <ContactUsOrganism />
     </>
   )

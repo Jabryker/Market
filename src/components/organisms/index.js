@@ -13,3 +13,4 @@ export { SellerRegistrationFormOrganism } from "./SellerRegistrationFormOrganism
 export { SubHeaderOrganism } from "./SubHeaderOrganism/SubHeaderOrganism";
 export { UsefulArticlesOrganism } from "./UsefulArticlesOrganism/UsefulArticlesOrganism";
 export { SearchWithBannerOrgamism } from "./SearchWithBannerOrgamism/SearchWithBannerOrgamism";
+export { PartnersOrganism } from "./PartnersOrganism/PartnersOrganism";

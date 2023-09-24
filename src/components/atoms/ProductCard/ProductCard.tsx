@@ -1,22 +1,22 @@
-import React, { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { Grade } from "@mui/icons-material";
 import {
+  Box,
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  IconButton,
-  Typography,
-  Box,
-  Grid,
-  TextField,
   Chip,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { Grade } from "@mui/icons-material";
+import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { CustomShoppingCartIcon } from "../../../assets/images/cunstomIcons/CustomShoppingCartIcon";
 import { addToCart } from "../../../store/slice/cartSlice";
-import { Product, CartItem } from "./ProductCard.interface";
+import { CartItem, Product } from "./ProductCard.interface";
 
 interface ProductCardProps {
   product: Product;
