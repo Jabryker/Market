@@ -14,13 +14,14 @@ interface INewsListMolesulesProps {
 }
 
 export const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => {
+
   return (
     <div className="px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsData.map((news) => (
           <div
             key={news.id}
-            className="flex border-[#A7B2BD] p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out relative"
+            className="flex border-[#A7B2BD] p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out relative bg-white"
             style={{ minHeight: "250px" }}
           >
             <div className="flex-shrink-0 w-80">
@@ -33,10 +34,12 @@ export const NewsListMolesules: FC<INewsListMolesulesProps> = ({ newsData }) => 
             </div>
             <div className="flex-grow pl-4">
               <h3 className="text-xl font-semibold mb-2">{news.name}</h3>
-              <p className="text-gray-700 text-lg mb-4">{news.description}</p>
-              <div className="absolute bottom-4 right-4">
+              <p className="text-gray-700 text-lg mb-4 overflow-hidden h-16">
+                {news.description}
+              </p>
+              <div className="overflow-y-hidden absolute bottom-4 right-4">
                 <Link to={`/news/${news.id}`}>
-                  <Button type="link">Подробнее</Button>
+                  <Button type="link" className="overflow-hidden">Подробнее</Button>
                 </Link>
               </div>
             </div>
