@@ -9,6 +9,7 @@ import {
   UsefulArticlesOrganism,
   PartnersOrganism,
 } from "../../components/organisms"
+import { HorecaArtAtom } from "../../components/atoms"
 
 export const MainPage: FC = () => {
   return (
@@ -21,6 +22,7 @@ export const MainPage: FC = () => {
         <NewsListOrganism />
       </div>
       <UsefulArticlesOrganism />
+      <HorecaArtAtom />
       <PartnersOrganism />
       <ContactUsOrganism />
     </div>
