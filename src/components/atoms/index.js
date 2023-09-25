@@ -14,3 +14,4 @@ export { TitleText } from "./TitleText/TitleText";
 export { displayErrorToast } from "./displayErrorToast/displayErrorToast";
 export { displaySuccessToast } from "./displaySuccessToast/displaySuccessToast";
 export { ViewAllButton } from "./ViewAllButton/ViewAllButton";
+export { HorecaArtAtom } from "./HorecaArtAtom/HorecaArtAtom";
