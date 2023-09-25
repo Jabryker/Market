@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CommonController from "../../../controllers/CommonController";
-import { SkeletonCombine, TitleText, displayErrorToast } from "../../atoms";
+import {SkeletonCombine, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
 import { UsefulArticlesMolecules } from "../../molecules/";
 import { IArticle } from "../../molecules/UsefulArticlesMolecules/UsefulArticlesMolecules";
 
@@ -35,6 +35,7 @@ export const UsefulArticlesOrganism = () => {
         <UsefulArticlesMolecules articles={articlesData} />
       )
       }
+      <ViewAllButton to="/articles" color="#47535F" />
     </div>
   );
 };
