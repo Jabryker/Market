@@ -3,17 +3,10 @@ import ContentLoader from "react-content-loader";
 
 export const CombinedData: FC = () => {
   return (
-    <ContentLoader
-      speed={2}
-      width={400}
-      height={460}
-      viewBox="0 0 400 460"
-      backgroundColor="#f3f3f3"
-      foregroundColor="#ecebeb"
-    >
-      <rect x="7" y="0" rx="2" ry="2" width="386" height="400" />
-      <rect x="7" y="416" rx="0" ry="0" width="386" height="24" />
-      <rect x="318" y="436" rx="0" ry="0" width="70" height="16" />
+    <ContentLoader viewBox="0 0 500 420" height={450} width={500}>
+      <rect x="16" y="17" rx="0" ry="0" width="360" height="200" />
+      <rect x="69" y="229" rx="2" ry="2" width="275" height="15" />
+      <rect x="69" y="253" rx="2" ry="2" width="140" height="15" />
     </ContentLoader>
   );
 };
