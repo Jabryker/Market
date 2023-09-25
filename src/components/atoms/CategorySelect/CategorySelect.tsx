@@ -44,13 +44,13 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
     <div
       className={`${
         isScrolled
-          ? "fixed top-50 right-50 flex justify-center items-center z-50"
-          : ""
-      }`}
+          ? "fixed top-50 flex justify-center items-center z-50"
+          : "flex justify-center items-center"
+      } w-full`}
     >
       <div>
         {categories.map((category) => (
-          <Select key={category.id} value={category.name} size="large">
+          <Select key={category.id} value={category.name} size="large" className="mx-1">
             {category.children?.map((child) => (
               <Select.Option key={child.id} value={child.name}>
                 {child.name}
