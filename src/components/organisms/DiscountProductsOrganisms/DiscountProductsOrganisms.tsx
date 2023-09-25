@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ProductController from "../../../controllers/ProductController";
 import { SkeletonCard, TitleText, displayErrorToast } from "../../atoms";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
@@ -25,8 +26,8 @@ export const DiscountProductsOrganisms = () => {
   }, []);
 
   return (
-    <div>
-      <TitleText color="text-[#47535F]">Товары со скидкой</TitleText>
+    <div className="my-20">
+      <TitleText color="text-[#47535F]">Акция!</TitleText>
       {loading ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
       ) : products.length === 0 ? (
@@ -34,6 +35,11 @@ export const DiscountProductsOrganisms = () => {
       ) : (
         <DiscountProductsMolecules products={products} />
       )}
+      <div className="mt-4 flex justify-end mr-5">
+        <Link to="/product" className="text-[#47535F] hover:underline font-bold">
+          Смотреть все &gt;
+        </Link>
+      </div>
     </div>
   );
 };
