@@ -2,7 +2,6 @@ import { FC, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Spin } from "antd";
 import axios from "axios";
-import { FooterOrganism, HeaderOrganism } from "../../components/organisms";
 import { IDetailsMolecules } from "../../components/molecules/DetailsMolecules/DetailsMolecules";
 import { DetailsMolecules } from "../../components/molecules/";
 
@@ -35,9 +34,7 @@ export const NewsDetailsTemplate: FC = () => {
         <Spin size="large" />
       ) : (
         <>
-          <HeaderOrganism />
           {news && <DetailsMolecules details={news} />}
-          <FooterOrganism />
         </>
       )}
     </div>
