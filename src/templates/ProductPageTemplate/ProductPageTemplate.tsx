@@ -8,6 +8,8 @@ import {
 } from "../../components/atoms/FilterItem/FilterItem";
 import { DiscountProductsMolecules } from "../../components/molecules";
 import { IProduct } from "../../controllers/interfaces/Product.interface";
+import {ICategory} from "../../components/atoms/CategorySelect/CategorySelect.interface";
+import HeaderController from "../../controllers/HeaderController";
 
 export const ProductPageTemplate: FC = () => {
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -17,14 +19,18 @@ export const ProductPageTemplate: FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<string>(""); // New filter
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
 
   const fetchFilteredProducts = async () => {
     try {
+      // Находим объект категории на основе выбранного значения categoryFilter
+      const selectedCategory = categories.find((category) => category.id.toString() === categoryFilter);
+
       const response = await fetch(
         `http://127.0.0.1:8000/api/v1/stores/products/?search=${encodeURIComponent(
           nameFilter,
-        )}&category=${encodeURIComponent( // Include the category filter in the URL
-          categoryFilter,
+        )}&category=${encodeURIComponent(
+          selectedCategory ? selectedCategory.name : "", // Используйте имя выбранной категории или пустую строку, если категория не выбрана
         )}&address=${encodeURIComponent(
           addressFilter,
         )}&country=${encodeURIComponent(
@@ -41,7 +47,7 @@ export const ProductPageTemplate: FC = () => {
       }
 
       const data = await response.json();
-      // Update this code to match your expected data structure
+      // Обновите этот код в соответствии с ожидаемой структурой данных
       const filteredProducts = data.results;
       setFilteredProducts(filteredProducts);
     } catch (error) {
@@ -49,10 +55,27 @@ export const ProductPageTemplate: FC = () => {
     }
   };
 
+
+
+  const fetchCategoriesData = async () => {
+    try {
+      const data = await HeaderController.getCategories();
+      setCategories(data);
+    } catch (error) {
+      console.error("Error fetching categories data:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Вызывайте функцию fetchCategoriesData при монтировании компонента
+    fetchCategoriesData();
+  }, []);
+
+
   useEffect(() => {
     // Fetch data when the component mounts
     fetchFilteredProducts();
-  }, [nameFilter, addressFilter, brandFilter, countryFilter, categoryFilter, priceRange]);
+  }, [nameFilter, addressFilter, brandFilter, countryFilter, categoryFilter, priceRange, categories]);
 
   const handleFilterButtonClick = () => {
     // Trigger data fetching when the button is clicked
@@ -77,9 +100,11 @@ export const ProductPageTemplate: FC = () => {
                 onChange={(e) => setCategoryFilter(e.target.value)}
               >
                 <option value="">Выберите категорию</option>
-                <option value="category1">Категория 1</option>
-                <option value="category2">Категория 2</option>
-                <option value="category3">Категория 3</option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id.toString()}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
             <PriceRangeAtom value={priceRange} onChange={setPriceRange} />
