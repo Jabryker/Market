@@ -1,3 +1,8 @@
+input[type="password"]::-webkit-password-toggle-button {
+  appearance: none;
+  display: none;
+}
+
 .Input {
   display: flex;
   flex-direction: column;
@@ -19,7 +24,7 @@
     background: #ffffff;
     border: none;
     outline: none;
-    padding: 18px 29px;
+    padding: 0 18px;
 
     width: 357px;
     height: 50px;
@@ -32,5 +37,54 @@
       font-weight: 400;
       line-height: normal;
     }
+  }
+}
+.InputPassword {
+  display: flex;
+  flex-direction: column;
+  width: 357px;
+  margin-top: 24px;
+  .Label {
+    color: #a7b2bd;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .InputField {
+    display: flex;
+    border-radius: 10px;
+    background: #ffffff;
+    align-items: center;
+    width: 357px;
+  }
+
+  .Inp {
+    padding: 18px 29px;
+    border: none;
+    outline: none;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    width: 325px;
+    &::placeholder {
+      color: #838383;
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+  .Img {
+    width: 17.5px;
+    height: 14px;
+    cursor: pointer;
+  }
+  .Img:active {
+    transform: scale(0.9);
+    cursor: grab;
   }
 }
