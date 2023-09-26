@@ -1,22 +1,8 @@
-import React, { FC, useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  IconButton,
-  Typography,
-  Box,
-  Grid,
-  TextField,
-  Chip,
-} from "@mui/material";
-import { Grade } from "@mui/icons-material";
+import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import { CustomShoppingCartIcon } from "../../../assets/images/cunstomIcons/CustomShoppingCartIcon";
+import { Link } from "react-router-dom";
 import { addToCart } from "../../../store/slice/cartSlice";
-import { Product, CartItem } from "./ProductCard.interface";
+import { CartItem, Product } from "./ProductCard.interface";
 
 interface ProductCardProps {
   product: Product;
@@ -38,102 +24,80 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
     }
   };
 
-  // Рассчитываем скидку в процентах
+  // Calculate discount percentage
   const discountPercentage = 30;
 
   return (
-    <Card className="border border-gray-300 rounded-lg shadow-md">
-      <CardContent>
-        <Box className="flex items-center justify-between">
-          <Box className="flex items-center">
-            <Grid item xs={12}>
-              {discountPercentage > 0 && (
-                <Chip
-                  label={`${discountPercentage}% скидка`}
-                  className="bg-gradient-to-r from-yellow-500 via-red-500 to-red-700 text-white rounded-sm px-2 py-1"
-                />
-              )}
-            </Grid>
-          </Box>
-          <IconButton aria-label="Add to cart">
-            <CustomShoppingCartIcon />
-          </IconButton>
-        </Box>
+    <div className="border border-gray-300 rounded-lg shadow-md w-[293px] h-[485px] overflow-y-hidden bg-white">
+      <div className="p-4">
+        <div className="flex justify-between items-center">
+          <div>
+            {discountPercentage > 0 && (
+              <span className="bg-gradient-to-r from-yellow-500 via-red-500 to-red-700 text-white rounded-sm">
+                {discountPercentage}% скидка
+              </span>
+            )}
+          </div>
+          <button
+            className="bg-transparent hover:bg-gray-200 p-2 rounded-full"
+            onClick={() => handleAddToCart(quantity)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </button>
+        </div>
         <Link to={`/products/${product?.id}`}>
           <img
             src={product?.images[0]?.image}
             alt={product?.name}
-            className="w-full h-48 object-cover"
+            className="w-[300px] h-[200px] mb-2"
           />
         </Link>
-        <Box className="flex items-center">
-          <Grade fontSize="small" color="primary" />
-          <Typography variant="subtitle1" color="primary" className="ml-1">
-            {/*{product?.rating}*/} rating
-          </Typography>
-        </Box>
-        <Typography variant="h6" className="mb-4">
-          {product?.name}
-        </Typography>
-        <Typography variant="subtitle1" className="text-amber-500 font-bold">
-            ${product?.price}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Grid container alignItems="center" spacing={2}>
-          <Grid item xs={4}>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => setQuantity(Math.max(quantity - 1, 1))}
-              fullWidth
-            >
-                -
-            </Button>
-          </Grid>
-          <Grid item xs={4}>
-            <TextField
-              label="Количество"
-              type="number"
-              InputProps={{
-                inputProps: {
-                  min: 1,
-                  style: {
-                    WebkitAppearance: "none",
-                    MozAppearance: "textfield",
-                  },
-                },
-              }}
-              variant="outlined"
-              size="small"
-              fullWidth
-              value={quantity}
-              onChange={(e) => handleQuantityChange(Number(e.target.value))}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => setQuantity(quantity + 1)}
-              fullWidth
-            >
-                +
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant="contained"
-              className=""
-              fullWidth
-              onClick={() => handleAddToCart(quantity)}
-              style={{ backgroundColor: "#FE9C08", color: "#fff",  borderRadius: "4px", transition: "background-color 0.3s" }}
-            >
-                Купить
-            </Button>
-          </Grid>
-        </Grid>
-      </CardActions>
-    </Card>
+        <h6 className="text-xl mb-1">{product?.name}</h6>
+        <p className="text-lg mb-2 text-[#FE9C08]">Цена: ${product?.price}</p>
+        <div className="flex items-center justify-around border border-gray-300 rounded-lg">
+          <button
+            className="w-12 h-full hover:bg-gray-300 rounded-l-lg flex items-center justify-center"
+            onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+          >
+            <span className="text-xl">-</span>
+          </button>
+          <input
+            type="number"
+            className="w-16 text-center border-none border-gray-400 focus:outline-none"
+            min={1}
+            value={quantity}
+            onChange={(e) => handleQuantityChange(Number(e.target.value))}
+          />
+          <button
+            className="w-12 h-full hover:bg-gray-300 rounded-r-lg flex items-center justify-center"
+            onClick={() => setQuantity(quantity + 1)}
+          >
+            <span className="text-xl">+</span>
+          </button>
+        </div>
+
+      </div>
+      <div className="mt-auto p-4">
+        <button
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-md py-2 transition duration-300"
+          onClick={() => handleAddToCart(quantity)}
+        >
+            Купить
+        </button>
+      </div>
+    </div>
   );
 };

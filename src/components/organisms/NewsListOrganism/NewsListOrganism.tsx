@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CommonController from "../../../controllers/CommonController";
-import { SkeletonCombine, TitleText, displayErrorToast } from "../../atoms";
+import {SkeletonCombine, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
 import { NewsListMolesules } from "../../molecules/";
 import { INews } from "../../molecules/NewsListMolesules/NewsListMolesules";
 
@@ -26,7 +26,7 @@ export const NewsListOrganism = () => {
 
   return (
     <div>
-      <TitleText>Наши новости</TitleText>
+      <TitleText color="white">Наши новости</TitleText>
       {loading ? (
         <SkeletonCombine quantity={4} />
       ) : newsData.length === 0 ? (
@@ -34,6 +34,7 @@ export const NewsListOrganism = () => {
       ) : (
         <NewsListMolesules newsData={newsData} />
       )}
+      <ViewAllButton to="/news" color="white" />
     </div>
   );
 };

@@ -1,26 +1,26 @@
 {
-  "extends": ["react-app", "react-app/jest"],
-  "rules": {
-    // "no-console": "warn",
-    "prefer-const": "error",
-    "quotes": ["error", "double"],
-    "jsx-quotes": ["error", "prefer-double"],
-    "indent": ["warn", 2],
-
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ]
-      }
-    ]
-  }
+	"extends": ["react-app", "react-app/jest"],
+	"rules": {
+		// "no-console": "warn",
+		"prefer-const": "error",
+		"quotes": ["error", "double"],
+		"jsx-quotes": ["error", "prefer-double"],
+		"indent": ["warn", 2],
+		"comma-dangle": ["error", "always-multiline"],
+		"import/order": [
+			"error",
+			{
+				"groups": [
+					"builtin",
+					"external",
+					"internal",
+					"parent",
+					"sibling",
+					"index",
+					"object",
+					"type"
+				]
+			}
+		]
+	}
 }

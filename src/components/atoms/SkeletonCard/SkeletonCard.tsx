@@ -14,9 +14,6 @@ export const SkeletonCard: FC<SkeletonCardProps> = ({ quantity }) => {
             <div className="relative pb-2/3">
               <CardSkeleton />
             </div>
-            <h3 className="text-lg font-semibold mt-4">
-              <CardSkeleton />
-            </h3>
           </div>
         </div>
       ))}

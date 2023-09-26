@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from "react";
 import { Badge, Button, Dropdown, Menu } from "antd";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { FC, useEffect, useState } from "react";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/logo.svg";
@@ -19,28 +19,37 @@ interface IHeaderOrganismProps {
 export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   const [nav, setNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   const handleNav = () => {
     setNav(!nav);
   };
 
+  const subHeaderHeight = 50;
+
   const handleScroll = () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > subHeaderHeight) {
       setScrolling(true);
     } else {
       setScrolling(false);
     }
   };
 
-  const handleSearch = (searchValue: string) => {
-    // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
-    // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
 
-    // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
-    navigate(`/product?search=${encodeURIComponent(searchValue)}`);
+  // const handleSearch = (searchValue: string) => {
+  //   // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
+  //   // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
+  //
+  //   // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
+  //   navigate(`/product?search=${encodeURIComponent(searchValue)}`);
+  // };
+
+  const handleSearch = () => {
+    // Navigate to the '/product' route with the search query as a parameter
+    navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
+
 
 
   useEffect(() => {
@@ -86,26 +95,43 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   return (
     <>
       <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
           </Link>
 
-          <div>
+          <div className="flex justify-center items-center">
+            <select
+              className="px-4 py-2 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
+              placeholder="Фильтр по"
+            >
+              <option value="">Выберите фильтр</option>
+              <option value="name">Названию</option>
+              <option value="category">Категории</option>
+              <option value="address">Адресу</option>
+              <option value="country">Стране производителя</option>
+              <option value="brand">Бренду</option>
+              <option value="fuelType">Виду топлива</option>
+              <option value="priceLessThan">Цена меньше чем</option>
+              <option value="priceGreaterThan">Цена больше чем</option>
+            </select>
+
             <input
               type="text"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:border-blue-300"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
               placeholder="Поиск товаров"
             />
+
             <button
-              onClick={() => handleSearch(searchValue)}
-              className="px-3 py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32"
+              onClick={handleSearch}
+              className="py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
             >
-              Поиск
+              <AiOutlineSearch size={20} className="mr-2" /> Поиск
             </button>
           </div>
+
 
           <div className="flex items-center">
             {hasAccess && hasRefresh ? (
@@ -139,7 +165,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-[60%] h-full bg-gray-600 ease-in-out duration-500 z-50"
+            ? "fixed left-0 top-0 w-[60%] h-full bg-gray-600 ease-in-out duration-500 z-40"
             : "fixed left-[-100%]"
         }
       >
