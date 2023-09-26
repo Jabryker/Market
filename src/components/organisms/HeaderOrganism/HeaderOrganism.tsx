@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
-import logo from "../../../assets/images/logo.svg";
+import logo from "../../../assets/images/Logo_HorecaArt.svg";
 import store from "../../../store/store";
 
 interface NavItem {
