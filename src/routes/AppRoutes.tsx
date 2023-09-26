@@ -1,4 +1,4 @@
-import { Navigate, useRoutes } from "react-router-dom"
+import { Navigate, useRoutes } from "react-router-dom";
 
 import {
   BasketPages,
@@ -11,14 +11,14 @@ import {
   ProductPages,
   ProfilePages,
   RegistrationScreen,
-} from "../pages"
+} from "../pages";
 
 import {
   BuyerRegistrationPageTemplate,
   NewsDetailsTemplate,
   SellerRegistrationPageTemplates,
   UsefulArticlesDetailTemplate,
-} from "../templates/"
+} from "../templates/";
 
 const AppRoutes = () => {
   const routes = useRoutes([
@@ -86,9 +86,9 @@ const AppRoutes = () => {
       path: "*",
       element: <Navigate to="/404" />,
     },
-  ])
+  ]);
 
-  return routes
-}
+  return routes;
+};
 
-export default AppRoutes
+export default AppRoutes;
