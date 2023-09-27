@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import {ChangeEvent, FC, useState} from "react";
 import {Button, TitleText} from "../../atoms/";
 import nav from "../../../assets/images/contactIcons/.png";
 import phone from "../../../assets/images/contactIcons/phone.png";
@@ -15,7 +15,7 @@ export const ContactUsMolecules: FC = () => {
     console.log("Отправка данных:", formData);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -24,8 +24,8 @@ export const ContactUsMolecules: FC = () => {
   };
 
   return (
-    <div className="contactUs-block mb-40">
-      <TitleText>Свяжитесь с нами</TitleText>
+    <div className="contactUs-block mb-40 rounded border border-solid border-gray-300">
+      <TitleText color="text-[#47535F]">Свяжитесь с нами</TitleText>
       <div
         className="contactUs-form-block w-11/12 px-28 py-28 container mx-auto flex justify-between"
         style={{ background: "#F5F5F5" }}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductController from "../../../controllers/ProductController";
-import { SkeletonCard, TitleText, displayErrorToast } from "../../atoms";
+import {SkeletonCard, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
 import { DiscountProductsMolecules } from "../../molecules/";
 
@@ -25,8 +25,8 @@ export const DiscountProductsOrganisms = () => {
   }, []);
 
   return (
-    <div>
-      <TitleText>Товары со скидкой</TitleText>
+    <div className="my-20">
+      <TitleText color="text-[#47535F]">Акция!</TitleText>
       {loading ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
       ) : products.length === 0 ? (
@@ -34,6 +34,7 @@ export const DiscountProductsOrganisms = () => {
       ) : (
         <DiscountProductsMolecules products={products} />
       )}
+      <ViewAllButton to="/product" color="#47535F" />
     </div>
   );
 };

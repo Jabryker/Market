@@ -1,30 +1,30 @@
-import { FC } from "react";
+import { FC } from "react"
 import {
-  HeaderOrganism,
-  SubHeaderOrganism,
+  CategorySelectOrganism,
+  ContactUsOrganism,
   DiscountProductsOrganisms,
   FeaturedProductsOrganism,
-  SearchWithBannerOrgamism,
-  CategorySelectOrganism,
   NewsListOrganism,
+  SearchWithBannerOrgamism,
   UsefulArticlesOrganism,
-  ContactUsOrganism,
-  FooterOrganism,
-} from "../../components/organisms";
+  PartnersOrganism,
+} from "../../components/organisms"
+import { HorecaArtAtom } from "../../components/atoms"
 
 export const MainPage: FC = () => {
   return (
-    <>
-      <SubHeaderOrganism />
-      <HeaderOrganism />
+    <div className="my-10">
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
-      <FeaturedProductsOrganism />
-      <NewsListOrganism />
+      <div className="bg-[#47535F] rounded-t-2xl">
+        <FeaturedProductsOrganism />
+        <NewsListOrganism />
+      </div>
       <UsefulArticlesOrganism />
+      <HorecaArtAtom />
+      <PartnersOrganism />
       <ContactUsOrganism />
-      <FooterOrganism />
-    </>
-  );
-};
+    </div>
+  )
+}

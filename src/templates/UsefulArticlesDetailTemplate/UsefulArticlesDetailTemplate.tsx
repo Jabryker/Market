@@ -35,9 +35,7 @@ export const UsefulArticlesDetailTemplate: FC = () => {
         <Spin size="large" />
       ) : (
         <>
-          <HeaderOrganism />
           {article && <DetailsMolecules details={article} />}
-          <FooterOrganism />
         </>
       )}
     </div>

@@ -1,22 +1,40 @@
+import mountainLogo from "../images/partners/mountain.png";
+import mochaccinoLogo from "../images/partners/mochaccino.png";
+import steakhouseLogo from "../images/partners/steckhouse.png";
+import deerbendLogo from "../images/partners/deerbend.png";
+
+
 export const partners = [
   {
     id: 1,
-    logoUrl: require("../images/partners/mountain.png"),
-    description: "Mountain",
+    logoUrl: mountainLogo,
   },
   {
     id: 2,
-    logoUrl: require("../images/partners/mochaccino.png"),
-    description: "Mochaccino",
+    logoUrl: mochaccinoLogo,
   },
   {
     id: 3,
-    logoUrl: require("../images/partners/steckhouse.png"),
-    description: "Steakhouse",
+    logoUrl: steakhouseLogo,
   },
   {
     id: 4,
-    logoUrl: require("../images/partners/deerbend.png"),
-    description: "DERBENT",
+    logoUrl: deerbendLogo,
+  },
+  {
+    id: 5,
+    logoUrl: mountainLogo,
+  },
+  {
+    id: 6,
+    logoUrl: mochaccinoLogo,
+  },
+  {
+    id: 7,
+    logoUrl: steakhouseLogo,
+  },
+  {
+    id: 8,
+    logoUrl: deerbendLogo,
   },
 ];

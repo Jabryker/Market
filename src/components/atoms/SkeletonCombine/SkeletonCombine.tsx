@@ -14,9 +14,6 @@ export const SkeletonCombine: FC<ISkeletonCombineProps> = ({ quantity }) => {
             <div className="relative pb-2/3">
               <CombinedData />
             </div>
-            <h3 className="text-lg font-semibold mt-4">
-              <CombinedData />
-            </h3>
           </div>
         </div>
       ))}
