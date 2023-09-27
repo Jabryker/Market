@@ -12,3 +12,4 @@ export { ProductDetailsMolecules } from "./ProductDetailsMolecules/ProductDetail
 export { SellerRegistrationFormFields } from "./SellerRegistrationFormFields/SellerRegistrationFormFields";
 export { UsefulArticlesMolecules } from "./UsefulArticlesMolecules/UsefulArticlesMolecules";
 export { SearchWithBannerMolecules } from "./SearchWithBannerMolecules/SearchWithBannerMolecules";
+export { InformationLine } from "./InformationLine/InformationLine";
