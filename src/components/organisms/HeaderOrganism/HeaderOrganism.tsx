@@ -37,7 +37,6 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   };
 
   const handleSearch = () => {
-    // Navigate to the '/product' route with the search query as a parameter
     navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
 
@@ -86,7 +85,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   return (
     <>
       <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
-        <div className="container mx-auto flex items-center justify-around">
+        <div className="flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
           </Link>
