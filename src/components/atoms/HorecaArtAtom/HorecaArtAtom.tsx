@@ -5,7 +5,7 @@ export const HorecaArtAtom: FC = () => {
   return (
     <div className="flex flex-row justify-between items-center m-20">
       <img src={HorecaArtAtomPhoto} alt="HorecaArtAtomPhoto" className="w-[800px] h-[400px]" />
-      <div className="rounded-3xl border-3 border-[#EC9A1E] bg-[#EC9A1E] p-4 w-[900px] h-[400px] flex flex-col justify-center items-start">
+      <div className="rounded-3xl border-3 border-[#EC9A1E] bg-[#EC9A1E] p-4 w-[850px] h-[400px] flex flex-col justify-center items-start">
         <div className="text-white text-left ml-20">
           <h2 className="text-2xl font-semibold mb-4">HorecaArt</h2>
           <p className="text-lg mb-4">
