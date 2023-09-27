@@ -22,7 +22,6 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
   }, []);
 
   const handleScroll = () => {
-    // Проверяем, находится ли пользователь в зоне скролла
     if (window.scrollY > 100) {
       setIsScrolled(true);
     } else {
