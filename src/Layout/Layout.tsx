@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react"
 import { FooterOrganism, HeaderOrganism, SubHeaderOrganism } from "../components/organisms"
 
 type LayoutProps = {
-	children: ReactNode
+  children: ReactNode
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {

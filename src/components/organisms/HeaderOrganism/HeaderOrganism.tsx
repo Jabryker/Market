@@ -36,15 +36,6 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
     }
   };
 
-
-  // const handleSearch = (searchValue: string) => {
-  //   // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
-  //   // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
-  //
-  //   // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
-  //   navigate(`/product?search=${encodeURIComponent(searchValue)}`);
-  // };
-
   const handleSearch = () => {
     // Navigate to the '/product' route with the search query as a parameter
     navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
