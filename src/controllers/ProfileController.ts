@@ -12,6 +12,11 @@ export interface IUser {
   specialization?: string;
   whatsapp?: string;
   telegram?: string;
+  role?: string;
+  password?: string;
+  INN?: number;
+  type?: string;
+  certificate_number?: number;
 }
 
 export interface IUserProfile extends IUser {
