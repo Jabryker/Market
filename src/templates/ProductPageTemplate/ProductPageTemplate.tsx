@@ -10,6 +10,7 @@ import { DiscountProductsMolecules } from "../../components/molecules";
 import { IProduct } from "../../controllers/interfaces/Product.interface";
 import {ICategory} from "../../components/atoms/CategorySelect/CategorySelect.interface";
 import HeaderController from "../../controllers/HeaderController";
+import {BacketItem} from "../../components/atoms";
 
 export const ProductPageTemplate: FC = () => {
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -118,7 +119,7 @@ export const ProductPageTemplate: FC = () => {
         </div>
       </div>
       <div className="w-3/4 p-4">
-        <DiscountProductsMolecules products={filteredProducts} />
+        <BacketItem products={filteredProducts} />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+export { BacketItem } from "./BacketItem/BacketItem"
 export { Button } from "./Button/Button";
 export { CardSkeleton } from "./CardSkeleton/CardSkeleton";
 export { CategorySelect } from "./CategorySelect/CategorySelect";
