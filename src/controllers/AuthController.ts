@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { displaySuccessToast, displayErrorToast } from "../components/atoms";
+import { displayErrorToast, displaySuccessToast } from "../components/atoms";
 import handleServerError from "./helpers/handleServerError";
 import { ILoginData } from "./interfaces/LoginData.interface";
 import { IRegisterData } from "./interfaces/RegisterData.interface";
@@ -25,16 +25,31 @@ const AuthController = {
       if (responseLogin.status === 200) {
         const { refresh, access } = responseLogin.data;
 
-        if (rememberMe) {
           localStorage.setItem("refresh", refresh);
           localStorage.setItem("access", access);
-        } else {
-          sessionStorage.setItem("refresh", refresh);
-          sessionStorage.setItem("access", access);
-        }
+  
+        const token = localStorage.getItem("access");
 
-        navigate("/");
-        displaySuccessToast("Logged in successfully");
+        // После успешного входа, делаем запрос на получение информации о пользователе
+          const userInfoResponse: AxiosResponse = await axios.get(
+            `${baseApiUrl}/api/v1/accounts/get_user_info/`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          
+          if (userInfoResponse.status === 200) {
+            const userInfo = userInfoResponse.data;
+            
+            // Сохраняем информацию о пользователе в localStorage
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+            
+            // Перенаправляем пользователя на главную страницу
+            navigate("/");
+            
+            displaySuccessToast("Logged in successfully");
+          }
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
