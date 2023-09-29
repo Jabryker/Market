@@ -12,6 +12,48 @@ const ProfileChangeOrganism: React.FC<ProfileChangeOrganismProps> = ({
   userData,
 }) => {
   console.log(userData);
+  const [username, setUsername] = useState(userData.username);
+  const [email, setEmail] = useState(userData.email);
+  const [phone_number, setPhoneNumber] = useState(userData.phone_number || "");
+  const [INN, setINN] = useState(userData.INN || "");
+  const [certificate_number, setCertificateNumber] = useState(
+    userData.certificate_number || ""
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Формируем объект с измененными данными
+    const updatedData = {
+      username,
+      email,
+      phone_number,
+      INN,
+      certificate_number,
+    };
+
+    // Выполняем отправку данных на сервер, например, с использованием fetch
+    fetch(`URL для отправки данных на сервер`, {
+      method: "PATCH", // Используйте PATCH для обновления данных
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData), // Отправляем только измененные данные
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Данные успешно отправлены
+          console.log("Данные успешно обновлены");
+        } else {
+          // Обработка ошибки при отправке данных
+          console.error("Ошибка при обновлении данных");
+        }
+      })
+      .catch((error) => {
+        // Обработка ошибки при выполнении запроса
+        console.error("Произошла ошибка:", error);
+      });
+  };
 
   return (
     <div style={{ fontFamily: "Inter" }}>
@@ -234,7 +276,7 @@ const ProfileChangeOrganism: React.FC<ProfileChangeOrganismProps> = ({
               fontWeight: "500",
             }}
           >
-            Номер телефоны
+            Номер телефона
           </label>
           <div
             style={{
