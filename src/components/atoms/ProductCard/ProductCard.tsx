@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../../store/slice/cartSlice";
+import { FavoriteAtom } from "../../atoms";
 import { CartItem, Product } from "./ProductCard.interface";
 
 interface ProductCardProps {
@@ -57,6 +58,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
               />
             </svg>
           </button>
+          <FavoriteAtom productId={product.id} />
         </div>
         <Link to={`/products/${product?.id}`}>
           <img
