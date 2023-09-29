@@ -31,45 +31,61 @@ export enum UserType {
 }
 
 const basicApi = process.env.REACT_APP_API_URL;
-const id = "3";
 
 export const ProfileController = {
-  fetchUserProfile: async (
-    userType: UserType,
-    userId: string
-  ): Promise<IUserProfile | IUser> => {
+  fetchUserProfile: async (userId: string): Promise<IUserProfile | IUser> => {
     try {
+      // Retrieve the user type from local storage
+      const userInfo = localStorage.getItem("userInfo");
+      if (!userInfo) {
+        throw new Error("User information not found in local storage");
+      }
+      
+      const { role } = JSON.parse(userInfo);
+      const { id } = JSON.parse(userInfo)      
+
       let endpoint = "";
-      if (userType === UserType.Buyer) {
+      if (role === "B") {
         endpoint = `/api/v1/accounts/users/${id}/`;
-      } else {
+      } else if (role === "S") {
         endpoint = `/api/v1/accounts/sellers/${id}/`;
+      } else {
+        throw new Error("Invalid user role in local storage");
       }
 
       const response: AxiosResponse<IUserProfile | IUser> = await axios.get(
-        `http://3.94.80.210/api/v1/accounts/sellers/${id}/`
+        `${basicApi}${endpoint}`
       );
       return response.data;
     } catch (error) {
-      throw new Error("Error fetching user profile");
+      throw new Error("Error fetching user profile: " + error);
     }
   },
   updateProfile: async (
-    userType: UserType,
     userId: string,
     updatedUserData: IUserProfile
   ): Promise<void> => {
     try {
+      // Retrieve the user type from local storage
+      const userInfo = localStorage.getItem("userInfo");
+      if (!userInfo) {
+        throw new Error("User information not found in local storage");
+      }
+      
+      const { role } = JSON.parse(userInfo);
+
       let endpoint = "";
-      if (userType === UserType.Buyer) {
+      if (role === "B") {
         endpoint = `/api/v1/accounts/users/${userId}`;
-      } else {
+      } else if (role === "S") {
         endpoint = `/api/v1/accounts/sellers/${userId}`;
+      } else {
+        throw new Error("Invalid user role in local storage");
       }
 
       await axios.patch(`${basicApi}${endpoint}`, updatedUserData);
     } catch (error) {
-      throw new Error("Error updating user profile");
+      throw new Error("Error updating user profile: " + error);
     }
   },
 };

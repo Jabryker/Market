@@ -1,16 +1,15 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { HeaderOrganism } from "../../components/organisms";
-import { ProfileTemplate } from "../../templates/";
 import {
-  ProfileController,
-  IUserProfile,
   IUser,
+  IUserProfile,
+  ProfileController,
   UserType,
 } from "../../controllers/ProfileController";
+import { ProfileTemplate } from "../../templates/";
 
 interface ProfileScreenProps {
-  userType: string;
+  userType: string; // Add userType prop to the interface
 }
 
 export const ProfilePages: FC<ProfileScreenProps> = ({ userType }) => {
@@ -27,7 +26,6 @@ export const ProfilePages: FC<ProfileScreenProps> = ({ userType }) => {
             userType === "buyer" ? UserType.Buyer : UserType.Seller;
           const data = await ProfileController.fetchUserProfile(
             userTypeValue,
-            id
           );
           setProfileData(data);
         } catch (error) {
@@ -41,7 +39,6 @@ export const ProfilePages: FC<ProfileScreenProps> = ({ userType }) => {
 
   return (
     <div>
-      <HeaderOrganism userType={userType} />
       {profileData && <ProfileTemplate userData={profileData} />}
     </div>
   );

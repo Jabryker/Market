@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { displayErrorToast, displaySuccessToast } from "../components/atoms";
+import { deleteToken } from "../utils/deleteToken";
 import handleServerError from "./helpers/handleServerError";
 import { ILoginData } from "./interfaces/LoginData.interface";
 import { IRegisterData } from "./interfaces/RegisterData.interface";
@@ -11,14 +12,12 @@ const AuthController = {
   login: async (
     loginData: ILoginData,
     navigate: (path: string) => void,
-    rememberMe: boolean
   ) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/auth/token/`,
         {
           ...loginData,
-          rememberMe,
         }
       );
 
@@ -44,6 +43,8 @@ const AuthController = {
             
             // Сохраняем информацию о пользователе в localStorage
             localStorage.setItem("userInfo", JSON.stringify(userInfo));
+            
+            deleteToken() // Функция для автоматического удаления "access" и "refresh" токенов из localStorage
             
             // Перенаправляем пользователя на главную страницу
             navigate("/");
