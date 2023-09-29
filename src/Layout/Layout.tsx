@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react"
 import { FooterOrganism, HeaderOrganism, SubHeaderOrganism } from "../components/organisms"
 
 type LayoutProps = {
-	children: ReactNode
+  children: ReactNode
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
@@ -10,7 +10,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      <main>{children}</main>
+      <main className="mx-10">{children}</main>
       <FooterOrganism />
     </>
   )

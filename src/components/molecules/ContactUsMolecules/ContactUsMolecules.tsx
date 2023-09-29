@@ -76,7 +76,7 @@ export const ContactUsMolecules: FC = () => {
           <ul className="space-y-3 flex-column justify-center">
             <li className="flex  space-x-3" style={{ margin: "10px 0" }}>
               <img src={nav} alt="" style={{ width: "20px", height: "20px" }} />
-              <span>Infomation technologies building, Victoria Island, Lagos, Nigeria.</span>
+              <span>Information technologies building, Victoria Island, Lagos, Nigeria.</span>
             </li>
             <li className="flex  space-x-3" style={{ margin: "30px 0" }}>
               <img src={phone} alt="" style={{ width: "20px", height: "20px" }} />

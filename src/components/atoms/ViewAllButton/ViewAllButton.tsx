@@ -13,6 +13,5 @@ export const ViewAllButton: FC<IViewAllButtonProps> = ({ to, color }) => {
               Смотреть все &gt;
       </Link>
     </div>
-
   )
 }

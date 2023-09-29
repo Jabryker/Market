@@ -36,17 +36,7 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
     }
   };
 
-
-  // const handleSearch = (searchValue: string) => {
-  //   // Выполните необходимую логику поиска (например, отправьте запрос на сервер)
-  //   // Здесь предполагается, что результат поиска - это массив объектов продуктов, найденных по запросу.
-  //
-  //   // После получения результатов поиска, выполните переход на страницу /product с параметром поиска:
-  //   navigate(`/product?search=${encodeURIComponent(searchValue)}`);
-  // };
-
   const handleSearch = () => {
-    // Navigate to the '/product' route with the search query as a parameter
     navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
 
@@ -95,42 +85,45 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
   return (
     <>
       <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
-        <div className="container mx-auto flex items-center justify-around">
+        <div className="flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
           </Link>
 
           <div className="flex justify-center items-center">
-            <select
-              className="px-4 py-2 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
-              placeholder="Фильтр по"
-            >
-              <option value="">Выберите фильтр</option>
-              <option value="name">Названию</option>
-              <option value="category">Категории</option>
-              <option value="address">Адресу</option>
-              <option value="country">Стране производителя</option>
-              <option value="brand">Бренду</option>
-              <option value="fuelType">Виду топлива</option>
-              <option value="priceLessThan">Цена меньше чем</option>
-              <option value="priceGreaterThan">Цена больше чем</option>
-            </select>
+            <div className="relative flex">
+              <select
+                  className="px-4 py-3 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
+                  placeholder="Фильтр по"
+              >
+                <option value="">Выберите фильтр</option>
+                <option value="name">Названию</option>
+                <option value="category">Категории</option>
+                <option value="address">Адресу</option>
+                <option value="country">Стране производителя</option>
+                <option value="brand">Бренду</option>
+                <option value="fuelType">Виду топлива</option>
+                <option value="priceLessThan">Цена меньше чем</option>
+                <option value="priceGreaterThan">Цена больше чем</option>
+              </select>
 
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
-              placeholder="Поиск товаров"
-            />
+              <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="px-4 py-3 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
+                  placeholder="Поиск товаров"
+              />
+            </div>
 
             <button
-              onClick={handleSearch}
-              className="py-2 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
+                onClick={handleSearch}
+                className="py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
             >
               <AiOutlineSearch size={20} className="mr-2" /> Поиск
             </button>
           </div>
+
 
 
           <div className="flex items-center">

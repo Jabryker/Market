@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const InformationLine: FC = () => {
+export const InformationLine: FC = () => {
   return (
     <div
       className="w-fullWidth bg-[#373737] text-white py-20 flex flex-col items-center justify-center rounded-tl-[50px] rounded-tr-[50px] shadow-md text-center"
@@ -15,5 +15,3 @@ const InformationLine: FC = () => {
     </div>
   );
 };
-
-export default InformationLine;

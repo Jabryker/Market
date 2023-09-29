@@ -20,19 +20,6 @@ const ProductController = {
       throw error;
     }
   },
-  // getAllProduct: async () => {
-  //   try {
-  //     const response: AxiosResponse = await axios.get(`${baseApiUrl}/api/v1/stores/products/`);
-  //     console.log(response);
-  //
-  //     // Assuming your API response structure matches the data field of the response
-  //     const products: IProduct[] = response.data.results;
-  //
-  //     return products;
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // },
 };
 
 export default ProductController;
