@@ -1,53 +1,10 @@
-import { FC, useEffect, useState } from "react";
-import { BsTrash } from "react-icons/bs"
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import rootReducer from "../../../store/reducers/rootReducer";
-import { removeFromCart } from "../../../store/slice/cartSlice";
-import { CartItem } from "../../atoms/ProductCard/ProductCard.interface";
+import { FC } from "react";
 
 export const BasketPagesMolecules: FC = () => {
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state: ReturnType<typeof rootReducer>) => state.cart.cartItems);
-  const [cart, setCart] = useState<CartItem[]>(cartItems);
-
-  useEffect(() => {
-    setCart(cartItems);
-  }, [cartItems, dispatch]);
-
-  const updateCartQuantity = (productId: number, newQuantity: number) => {
-    const updatedCart = cart.map((item) => {
-      if (item.product.id === productId) {
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    });
-    setCart(updatedCart);
-  };
-
-  const handleRemoveFromCart = (productId: number) => {
-    dispatch(removeFromCart(productId));
-  };
-
-  if (cart.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-xl mb-4">Ваша корзина пуста</p>
-        <Link to="/" className="btn-primary">
-                    Вернуться на главную
-        </Link>
-      </div>
-    );
-  }
-
-  // Вычисляем общую стоимость товаров в корзине
-  const totalCost = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-
 
   return (
     <div className="p-4 flex flex-row">
-      <div className="bg-[#F5F5F5] h-[80vh] p-4 mx-9 w-[60%]">
+      {/* <div className="bg-[#F5F5F5] h-[80vh] p-4 mx-9 w-[60%]">
         <h3 className="text-2xl font-bold mb-10">Ваша корзина</h3>
         <div className="flex space-x-4">
           <div className="w-3/4">
@@ -120,7 +77,8 @@ export const BasketPagesMolecules: FC = () => {
           <p className="text-xl font-semibold mb-4">Итого: ₽{totalCost}</p>
           <button className="bg-[#EC9A1E] text-[#fff] px-[5px] py-[10px]">Купить</button>
         </div>
-      </div>
+      </div> */}
+      <div>Корзина</div>
     </div>
   );
 };

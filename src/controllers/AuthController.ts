@@ -11,14 +11,12 @@ const AuthController = {
   login: async (
     loginData: ILoginData,
     navigate: (path: string) => void,
-    rememberMe: boolean
   ) => {
     try {
       const responseLogin: AxiosResponse = await axios.post(
         `${baseApiUrl}/api/v1/auth/token/`,
         {
           ...loginData,
-          rememberMe,
         }
       );
 

@@ -1,3 +1,4 @@
+export { BacketAdder } from "./BacketAdder/BacketAdder";
 export { BacketItem } from "./BacketItem/BacketItem";
 export { Button } from "./Button/Button";
 export { CardSkeleton } from "./CardSkeleton/CardSkeleton";
@@ -17,4 +18,3 @@ export { TitleText } from "./TitleText/TitleText";
 export { ViewAllButton } from "./ViewAllButton/ViewAllButton";
 export { displayErrorToast } from "./displayErrorToast/displayErrorToast";
 export { displaySuccessToast } from "./displaySuccessToast/displaySuccessToast";
-

@@ -4,7 +4,6 @@ import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart }
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/Logo_HorecaArt.svg";
-import store from "../../../store/store";
 
 interface NavItem {
   id: number;
@@ -47,7 +46,8 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
     };
   }, []);
 
-  const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
+  // const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
+  const cartItemsCount = 1
 
   const userInfo = localStorage.getItem("userInfo");
   const userType = userInfo ? JSON.parse(userInfo).role : "";
