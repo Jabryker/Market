@@ -16,7 +16,7 @@ interface IHeaderOrganismProps {
   userType?: string;
 }
 
-export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
+export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
   const [nav, setNav] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,8 +40,6 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
     navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
   };
 
-
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -51,40 +49,44 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
 
   const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
 
-  const hasAccess = localStorage.getItem("access") || sessionStorage.getItem("access");
-  const hasRefresh = localStorage.getItem("refresh") || sessionStorage.getItem("refresh");
+  const userInfo = localStorage.getItem("userInfo");
+  const userType = userInfo ? JSON.parse(userInfo).role : "";
+  const userId = userInfo ? JSON.parse(userInfo).id : "";
+
+
+  const hasAccess = localStorage.getItem("access");
+  const hasRefresh = localStorage.getItem("refresh");
 
   const handleLogout = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
-    sessionStorage.removeItem("access");
-    sessionStorage.removeItem("refresh");
+    localStorage.removeItem("userInfo")
     navigate("/");
   };
 
   const menu = (
-    <Menu>
+    <Menu className="overflow-hidden">
       {hasAccess && hasRefresh ? (
-        userType === "buyer" ? (
-          <Menu.Item key="profile-buyer">
-            <Link to="/profile/buyer/:id">Профиль покупателя</Link>
+        userType === "S" ? (
+          <Menu.Item key="profile-seller" >
+            <Link to={`/profile/seller/${userId}`} >Профиль продавца</Link>
           </Menu.Item>
         ) : (
-          <Menu.Item key="profile-seller">
-            <Link to="/profile/seller/:id">Профиль продавца</Link>
+          <Menu.Item key="profile-buyer">
+            <Link to={`/profile/buyer/${userId}`} >Профиль покупателя</Link>
           </Menu.Item>
         )
       ) : null}
       <Menu.Divider />
       <Menu.Item key="logout" onClick={handleLogout}>
-          Выйти из аккаунта
+        Выйти из аккаунта
       </Menu.Item>
     </Menu>
   );
 
   return (
     <>
-      <div className={`bg-[#F3F2F2] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
+      <div className={`bg-[#47535F] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
         <div className="flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
@@ -93,8 +95,8 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
           <div className="flex justify-center items-center">
             <div className="relative flex">
               <select
-                  className="px-4 py-3 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
-                  placeholder="Фильтр по"
+                className="px-4 py-3 border bg-white rounded-l-full focus:outline-none focus:border-blue-300"
+                placeholder="Фильтр по"
               >
                 <option value="">Выберите фильтр</option>
                 <option value="name">Названию</option>
@@ -108,33 +110,31 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = ({ userType = "" }) => {
               </select>
 
               <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="px-4 py-3 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
-                  placeholder="Поиск товаров"
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-4 py-3 border border-gray-300 rounded-l-none border-l-0 focus:outline-none focus:border-blue-300 w-[600px]"
+                placeholder="Поиск товаров"
               />
             </div>
 
             <button
-                onClick={handleSearch}
-                className="py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
+              onClick={handleSearch}
+              className="py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold rounded-r-full shadow-md transition focus:outline-none w-32 flex items-center justify-center"
             >
               <AiOutlineSearch size={20} className="mr-2" /> Поиск
             </button>
           </div>
 
-
-
-          <div className="flex items-center">
+          <div className="flex items-center overflow-hidden">
             {hasAccess && hasRefresh ? (
               <Dropdown overlay={menu} trigger={["click"]}>
                 <Button className="ml-4 text-white">Профиль</Button>
               </Dropdown>
             ) : (
-              <Link to="/login">
+              <Link to="/login" className="overflow-hidden">
                 <button className="ml-4 bg-[#fff] text-[#000] hover:bg-[#000] hover:text-[#fff] font-semibold py-2 px-4 rounded-[10px] shadow-md border border-[#47535F] transition duration-300 ease-in-out">
-                    Войти
+                  Войти
                 </button>
               </Link>
             )}
