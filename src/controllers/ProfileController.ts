@@ -12,6 +12,11 @@ export interface IUser {
   specialization?: string;
   whatsapp?: string;
   telegram?: string;
+  role?: string;
+  password?: string;
+  INN?: number;
+  type?: string;
+  certificate_number?: number;
 }
 
 export interface IUserProfile extends IUser {
@@ -26,7 +31,7 @@ export enum UserType {
 }
 
 const basicApi = process.env.REACT_APP_API_URL;
-const id = "2";
+const id = "3";
 
 export const ProfileController = {
   fetchUserProfile: async (
@@ -42,7 +47,7 @@ export const ProfileController = {
       }
 
       const response: AxiosResponse<IUserProfile | IUser> = await axios.get(
-        `http://3.94.80.210/api/v1/accounts/users/${id}/`
+        `http://3.94.80.210/api/v1/accounts/sellers/${id}/`
       );
       return response.data;
     } catch (error) {
