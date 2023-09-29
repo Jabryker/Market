@@ -15,7 +15,6 @@ export const UsefulArticlesOrganism = () => {
         setArticlesData(newsResponse);
         setLoading(false);
       } catch (error) {
-        // console.error("Error fetching news:", error);
         displayErrorToast("Произошла ошибка получения полезных статей");
         setLoading(false);
       }

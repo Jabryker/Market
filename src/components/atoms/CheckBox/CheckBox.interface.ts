@@ -1,9 +1,9 @@
-import { UseFormRegister } from "react-hook-form";
+import {ChangeEvent} from "react";
 
 export interface ICheckBox {
   name: string;
   label?: string;
   error?: any;
 
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }

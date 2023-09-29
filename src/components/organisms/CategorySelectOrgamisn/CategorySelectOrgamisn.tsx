@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { Card } from "antd";
 import { CategorySelect } from "../../atoms";
 
 export const CategorySelectOrganism: FC = () => {
@@ -12,8 +11,6 @@ export const CategorySelectOrganism: FC = () => {
   };
 
   return (
-    <Card>
       <CategorySelect selectedCategory={selectedCategory} onChange={handleCategoryChange} />
-    </Card>
   );
 };

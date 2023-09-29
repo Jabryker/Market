@@ -30,7 +30,6 @@ export const GoogleAuthOrgamism: FC = () => {
           width="357px"
           onSuccess={handleGoogleAuthSuccess}
           onError={() => {
-            console.log("Ошибка входа");
             displayErrorToast("Произошла ошибка входа через Google");
           }}
         />
