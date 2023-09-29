@@ -1,5 +1,4 @@
 import { Navigate, useRoutes } from "react-router-dom";
-
 import {
   BasketPages,
   LoginScreen,
@@ -20,7 +19,25 @@ import {
   UsefulArticlesDetailTemplate,
 } from "../templates/";
 
+const getUserTypeFromLocalStorage = () => {
+  const userInfo = localStorage.getItem("userInfo");
+  if (userInfo) {
+    try {
+      const userInfoObject = JSON.parse(userInfo);
+      if (userInfoObject && userInfoObject.role) {
+        return userInfoObject.role;
+      }
+    } catch (error) {
+      console.error("Error parsing userInfo from localStorage", error);
+    }
+  }
+  // Default to "buyer" if no valid userType is found in localStorage
+  return "buyer";
+};
+
 const AppRoutes = () => {
+  const userType = getUserTypeFromLocalStorage();
+
   const routes = useRoutes([
     {
       path: "/",
@@ -72,11 +89,11 @@ const AppRoutes = () => {
     },
     {
       path: "/profile/buyer/:id",
-      element: <ProfilePages userType="buyer" />,
+      element: <ProfilePages userType={userType} />,
     },
     {
       path: "/profile/seller/:id",
-      element: <ProfilePages userType="seller" />,
+      element: <ProfilePages userType={userType} />,
     },
     {
       path: "404",

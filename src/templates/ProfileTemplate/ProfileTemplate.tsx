@@ -1,16 +1,17 @@
-import { FC, useState } from "react";
-import { Descriptions, Input, DatePicker, Select } from "antd";
-import dayjs from "dayjs";
-import { IUserProfile, IUser } from "../../controllers/ProfileController";
-import userPng from "../../assets/images/profile/user.png";
-import back from "../../assets/images/profile/border_all.png";
-import heart from "../../assets/images/profile/heart small.png";
-import mallBack from "../../assets/images/profile/icon-mallbag.png";
+import {
+  HeartOutlined,
+  HistoryOutlined,
+  LogoutOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+import { FC, useEffect, useState } from "react";
 import Profile from "../../assets/images/profile/ProfileFoto.jpg";
-import out from "../../assets/images/profile/Icon-logout.png";
 import ProfileChangeOrganism from "../../components/organisms/ProfileChangeOrganism/ProfileChangeOrganism";
+import { IUser, IUserProfile } from "../../controllers/ProfileController";
 
-const { Option } = Select;
+const { Sider, Content } = Layout;
 
 interface ProfileTemplateProps {
   userData: IUserProfile | IUser;
@@ -18,24 +19,48 @@ interface ProfileTemplateProps {
 
 export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
   const [activeLi, setActiveLi] = useState<string | null>(null);
+  const usertype = localStorage.getItem("userInfo");
+
+  useEffect(() => {
+    if (usertype) {
+      const userInfo = JSON.parse(usertype);
+      // Access userInfo.role and perform actions accordingly
+      // For example, if userInfo.role === 'S', set the initial activeLi value
+      // based on your requirements.
+    }
+  }, [usertype]);
 
   const handleLiClick = (liName: string) => {
     setActiveLi(liName);
   };
 
   return (
-    <div style={{ margin: "20px 0 300px" }}>
-      <div style={{ padding: "20px", display: "flex" }}>
-        <div
-          className="col-span-1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-            width: "30%",
-            borderRight: "1px solid #979797",
-          }}
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider width={200} theme="light">
+        <Menu
+          mode="vertical"
+          selectedKeys={[activeLi || "profile"]}
+          onClick={({ key }) => handleLiClick(key.toString())}
         >
+          <Menu.Item key="profile" icon={<UserOutlined />}>
+            Профиль
+          </Menu.Item>
+          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+            Корзина
+          </Menu.Item>
+          <Menu.Item key="favorites" icon={<HeartOutlined />}>
+            Избранные
+          </Menu.Item>
+          <Menu.Item key="history" icon={<HistoryOutlined />}>
+            История покупок
+          </Menu.Item>
+          <Menu.Item key="logout" icon={<LogoutOutlined />}>
+            Выйти
+          </Menu.Item>
+        </Menu>
+      </Sider>
+      <Content style={{ padding: "20px" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           {userData.photo ? (
             <img
               src={userData.photo}
@@ -49,179 +74,18 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
               style={{ width: "135px", height: "135px" }}
             />
           )}
-          <h3 style={{ color: "#253138", fontSize: "18px" }}>
-            {userData.username}
-          </h3>
-          <h4 style={{ color: "#253138", fontSize: "14px" }}>
-            {userData.email}
-          </h4>
-          <div>
-            <ul
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "start",
-                alignContent: "space-between",
-                width: "100%",
-                margin: "50px 0",
-              }}
-            >
-              <li
-                style={{
-                  width: "85%",
-                  height: "64px",
-                  color: activeLi === "profile" ? "white" : "#47535F",
-                  borderRadius: "10px",
-                  padding: "15px",
-                  fontSize: "20px",
-                  fontFamily: "Inter",
-                  fontWeight: "400",
-                  wordWrap: "break-word",
-                  display: "flex",
-                  backgroundColor:
-                    activeLi === "profile" ? "#EC9A1E" : "transparent",
-                  cursor: "pointer",
-                }}
-                onClick={() => handleLiClick("profile")}
-              >
-                <img
-                  src={userPng}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginTop: "5px",
-                    marginRight: "5px",
-                  }}
-                />{" "}
-                Профиль
-              </li>
-              <li
-                style={{
-                  width: "85%",
-                  height: "64px",
-                  color: activeLi === "cart" ? "white" : "#47535F",
-                  fontSize: "20px",
-                  display: "flex",
-                  fontFamily: "Inter",
-                  fontWeight: "400",
-                  wordWrap: "break-word",
-                  backgroundColor:
-                    activeLi === "cart" ? "#EC9A1E" : "transparent",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  padding: "15px",
-                }}
-                onClick={() => handleLiClick("cart")}
-              >
-                {" "}
-                <img
-                  src={back}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginTop: "5px",
-                    marginRight: "5px",
-                  }}
-                />
-                Корзина
-              </li>
-              <li
-                style={{
-                  width: "85%",
-                  height: "64px",
-                  color: activeLi === "favorites" ? "white" : "#47535F",
-                  fontSize: "20px",
-                  display: "flex",
-                  fontFamily: "Inter",
-                  fontWeight: "400",
-                  wordWrap: "break-word",
-                  backgroundColor:
-                    activeLi === "favorites" ? "#EC9A1E" : "transparent",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  padding: "15px",
-                }}
-                onClick={() => handleLiClick("favorites")}
-              >
-                {" "}
-                <img
-                  src={heart}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginTop: "5px",
-                    marginRight: "5px",
-                  }}
-                />
-                Избранные
-              </li>
-              <li
-                style={{
-                  width: "85%",
-                  height: "64px",
-                  color: activeLi === "history" ? "white" : "#47535F",
-                  fontSize: "20px",
-                  display: "flex",
-                  fontFamily: "Inter",
-                  fontWeight: "400",
-                  wordWrap: "break-word",
-                  backgroundColor:
-                    activeLi === "history" ? "#EC9A1E" : "transparent",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  padding: "15px",
-                }}
-                onClick={() => handleLiClick("history")}
-              >
-                {" "}
-                <img
-                  src={mallBack}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginTop: "5px",
-                    marginRight: "5px",
-                  }}
-                />{" "}
-                История покупок
-              </li>
-              <li
-                style={{
-                  width: "85%",
-                  height: "64px",
-                  color: activeLi === "logout" ? "white" : "#47535F",
-                  fontSize: "20px",
-                  display: "flex",
-                  fontFamily: "Inter",
-                  fontWeight: "400",
-                  wordWrap: "break-word",
-                  backgroundColor:
-                    activeLi === "logout" ? "#EC9A1E" : "transparent",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                  padding: "15px",
-                }}
-                onClick={() => handleLiClick("logout")}
-              >
-                {" "}
-                <img
-                  src={out}
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    marginTop: "5px",
-                    marginRight: "5px",
-                  }}
-                />
-                Выйти
-              </li>
-            </ul>
-          </div>
         </div>
-        <div style={{ padding: "0 70px", width: "70%" }}>
+        <h3 style={{ color: "#253138", fontSize: "18px", textAlign: "center" }}>
+          {userData.username}
+        </h3>
+        <h4 style={{ color: "#253138", fontSize: "14px", textAlign: "center" }}>
+          {userData.email}
+        </h4>
+        <div style={{ padding: "20px" }}>
           <ProfileChangeOrganism userData={userData} />
         </div>
-      </div>
-    </div>
+      </Content>
+    </Layout>
   );
 };
+
