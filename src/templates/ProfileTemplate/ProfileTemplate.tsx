@@ -1,11 +1,14 @@
 import {
   DollarOutlined,
+  FileOutlined,
   HeartOutlined,
   ShopOutlined,
+  TrophyOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { FC, useState } from "react";
+import { ProfileArticles } from "./ProfileArticles/ProfileArticles";
 import { ProfileContent } from "./ProfileContent/ProfileContent";
 import { ProfileFavorite } from "./ProfileFavorite/ProfileFavorite";
 import { ProfileShop } from "./ProfileShop/ProfileContent";
@@ -36,6 +39,9 @@ export const ProfileTemplate: FC = () => {
       break;
     case "wallet":
       content = <ProfileWallet />;
+      break;
+    case "articles":
+      content = <ProfileArticles />;
       break;
     case "tariff":
       content = <ProfileTariff />;
@@ -71,8 +77,11 @@ export const ProfileTemplate: FC = () => {
           <Menu.Item key="wallet" icon={<DollarOutlined />}>
             Кошелёк
           </Menu.Item>
-          <Menu.Item key="tariff" icon={<DollarOutlined />}>
+          <Menu.Item key="tariff" icon={<TrophyOutlined />}>
             Тариф
+          </Menu.Item>
+          <Menu.Item key="articles" icon={<FileOutlined />}>
+            Статьи
           </Menu.Item>
         </Menu>
       </Sider>
