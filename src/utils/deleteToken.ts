@@ -1,14 +1,14 @@
 /*
  * Функция для автоматического удаления "access" и "refresh" токенов из localStorage
- * через указанный промежуток времени (в данном случае 50 минут).
+ * при закрытии сайта.
  */
-export const deleteToken = () => {
-  const TIMEOUT_DURATION_MS = 50 * 60 * 1000; // 50 минут в миллисекундах
-  
-  setTimeout(() => {
+export const deleteTokenOnUnload = () => {
+  // Функция, которая будет вызвана перед выгрузкой страницы.
+  const handleUnload = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
-
     localStorage.removeItem("userInfo");
-  }, TIMEOUT_DURATION_MS);
+  };
+
+  window.addEventListener("beforeunload", handleUnload);
 };
