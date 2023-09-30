@@ -8,5 +8,7 @@ export const deleteToken = () => {
   setTimeout(() => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
+
+    localStorage.removeItem("userInfo");
   }, TIMEOUT_DURATION_MS);
 };
