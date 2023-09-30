@@ -10,6 +10,7 @@ import { ProfileContent } from "./ProfileContent/ProfileContent";
 import { ProfileFavorite } from "./ProfileFavorite/ProfileFavorite";
 import { ProfileShop } from "./ProfileShop/ProfileContent";
 import { ProfileTariff } from "./ProfileTariff/ProfileTariff";
+import { ProfileWallet } from "./ProfileWallet/ProfileWallet";
 
 const { Sider, Content } = Layout;
 
@@ -20,23 +21,31 @@ export const ProfileTemplate: FC = () => {
     setSelectedMenuItem(key);
   };
 
+  const userInfoString = localStorage.getItem("userInfo");
+  const userInfo = userInfoString !== null ? JSON.parse(userInfoString) : "";
+  const userRole = userInfo.role;
+
   let content;
 
   switch (selectedMenuItem) {
     case "profile":
       content = <ProfileContent />;
       break;
-    case "shop":
-      content = <ProfileShop />;
-      break;
     case "favorites":
       content = <ProfileFavorite />;
+      break;
+    case "wallet":
+      content = <ProfileWallet />;
       break;
     case "tariff":
       content = <ProfileTariff />;
       break;
     default:
-      content = <div>Профиль</div>;
+      content = null;
+  }
+
+  if (userRole === "S" && selectedMenuItem === "shop") {
+    content = <ProfileShop />;
   }
 
   return (
@@ -51,11 +60,16 @@ export const ProfileTemplate: FC = () => {
           <Menu.Item key="profile" icon={<UserOutlined />}>
             Профиль
           </Menu.Item>
-          <Menu.Item key="shop" icon={<ShopOutlined />}>
-            Магазин
-          </Menu.Item>
+          {userRole === "S" && (
+            <Menu.Item key="shop" icon={<ShopOutlined />}>
+              Магазин
+            </Menu.Item>
+          )}
           <Menu.Item key="favorites" icon={<HeartOutlined />}>
             Избранные
+          </Menu.Item>
+          <Menu.Item key="wallet" icon={<DollarOutlined />}>
+            Кошелёк
           </Menu.Item>
           <Menu.Item key="tariff" icon={<DollarOutlined />}>
             Тариф
