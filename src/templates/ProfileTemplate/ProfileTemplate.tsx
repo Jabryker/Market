@@ -311,7 +311,7 @@ export const ProfileTemplate: FC<ProfileTemplateProps> = ({ userData }) => {
           handleLiClick={handleLiClick}
         />
       </Sider>
-      <Content style={{ padding: "20px" }}>
+      <Content style={{ padding: "100px" }}>
         <div style={{ padding: "20px" }}>{currentOrganism}</div>
       </Content>
     </Layout>

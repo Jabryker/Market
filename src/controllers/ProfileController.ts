@@ -17,6 +17,7 @@ export interface IUser {
   INN?: number;
   type?: string;
   certificate_number?: number;
+  store: { id: number };
 }
 
 export interface IUserProfile extends IUser {
@@ -40,9 +41,9 @@ export const ProfileController = {
       if (!userInfo) {
         throw new Error("User information not found in local storage");
       }
-      
+
       const { role } = JSON.parse(userInfo);
-      const { id } = JSON.parse(userInfo)      
+      const { id } = JSON.parse(userInfo);
 
       let endpoint = "";
       if (role === "B") {
@@ -71,7 +72,7 @@ export const ProfileController = {
       if (!userInfo) {
         throw new Error("User information not found in local storage");
       }
-      
+
       const { role } = JSON.parse(userInfo);
 
       let endpoint = "";
