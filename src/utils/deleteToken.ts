@@ -10,5 +10,16 @@ export const deleteTokenOnUnload = () => {
     localStorage.removeItem("userInfo");
   };
 
+  const deleteToken = () => {
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("userInfo");
+  };
+
   window.addEventListener("beforeunload", handleUnload);
+
+  window.addEventListener("load", () => {
+    const fiftyMinutesInMilliseconds = 50 * 60 * 1000;
+    setTimeout(deleteToken, fiftyMinutesInMilliseconds);
+  });
 };
