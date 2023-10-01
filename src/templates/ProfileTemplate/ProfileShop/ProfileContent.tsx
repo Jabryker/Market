@@ -1,4 +1,6 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+// @ts-ignore
+
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 
 const basicApi = process.env.REACT_APP_API_URL;
@@ -14,9 +16,27 @@ const axiosInstance = axios.create({
   },
 });
 
+interface Store {
+  id: number;
+  name: string;
+  address: string;
+  description: string;
+  logo: string;
+  product_limit: number;
+  store_info: {
+    name: string;
+    address: string;
+    description: string;
+    logo: string;
+    product_limit: number;
+  };
+  products: Array<any>;
+}
+
 export const ProfileShop: FC = () => {
   const [stores, setStores] = useState([]);
-  const [userStore, setUserStore] = useState(null);
+  // const [userStore, setUserStore] = useState<UserStore | null>(null);
+  const [userStore, setUserStore] = useState<Store | null>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -42,6 +62,21 @@ export const ProfileShop: FC = () => {
       });
   }, [userId]);
 
+  useEffect(() => {
+    // Fetch user's store data if a store exists
+    if (userStore && userStore.id) {
+      // Ensure userStore and userStore.id are defined
+      axiosInstance
+        .get(`/api/v1/stores/stores/${userStore.id}/`)
+        .then((response) => {
+          setUserStore(response.data as Store); // Annotate the type of the response data
+        })
+        .catch((error) => {
+          console.error('Error loading user store data:', error);
+        });
+    }
+  }, [userStore]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -58,7 +93,7 @@ export const ProfileShop: FC = () => {
     });
   };
 
-  const handleCreateStore = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleCreateStore = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the default form submission
 
     const formDataToSend = new FormData();
@@ -72,7 +107,7 @@ export const ProfileShop: FC = () => {
 
     // Logic for creating a store
     axiosInstance
-      .post('/api/v1/stores/stores/', formDataToSend)
+      .post(`/api/v1/stores/stores/`, formDataToSend)
       .then((response) => {
         // Handle successful store creation
         setUserStore(response.data);
@@ -100,12 +135,24 @@ export const ProfileShop: FC = () => {
   return (
     <div>
       {userStore ? (
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleAddProduct}>
-          Add Product
-        </button>
+        <>
+          <div>
+            <h2 className='text-2xl font-semibold mb-4'>{userStore.store_info?.name}</h2>
+            <p>Address: {userStore.store_info?.address}</p>
+            <p>Description: {userStore.store_info?.description}</p>
+            <img src={userStore.store_info?.logo} alt={userStore.store_info?.name} className='w-32 h-32' />
+            <p>Product Limit: {userStore.store_info?.product_limit}</p>
+
+            <h3 className='text-xl font-semibold mt-4'>Products</h3>
+            <ul>{userStore.products?.map((product: Store) => <li key={product.id}>{product.name}</li>)}</ul>
+          </div>
+          <button className='bg-blue-500 hover.bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleAddProduct}>
+            Add Product
+          </button>
+        </>
       ) : (
         <div>
-          <h2>Create Store</h2>
+          <h2 className='text-2xl font-semibold mb-4'>Create Store</h2>
           <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' onClick={() => setIsModalOpen(true)}>
             Create Store
           </button>
@@ -115,40 +162,48 @@ export const ProfileShop: FC = () => {
                 <h3 className='text-xl font-semibold mb-4'>Create Store</h3>
                 <form onSubmit={handleCreateStore}>
                   <div className='mb-4'>
-                    <label htmlFor='name'>Store Name:</label>
+                    <label htmlFor='name' className='block text-sm font-medium text-gray-700'>
+                      Store Name:
+                    </label>
                     <input
                       type='text'
                       id='name'
                       name='name'
                       value={formData.name}
                       onChange={handleChange}
-                      className='w-full p-2 border rounded'
+                      className='w-full p-2 border rounded mt-1'
                     />
                   </div>
                   <div className='mb-4'>
-                    <label htmlFor='address'>Store Address:</label>
+                    <label htmlFor='address' className='block text-sm font-medium text-gray-700'>
+                      Store Address:
+                    </label>
                     <input
                       type='text'
                       id='address'
                       name='address'
                       value={formData.address}
                       onChange={handleChange}
-                      className='w-full p-2 border rounded'
+                      className='w-full p-2 border rounded mt-1'
                     />
                   </div>
                   <div className='mb-4'>
-                    <label htmlFor='description'>Store Description:</label>
+                    <label htmlFor='description' className='block text-sm font-medium text-gray-700'>
+                      Store Description:
+                    </label>
                     <textarea
                       id='description'
                       name='description'
                       value={formData.description}
                       onChange={handleChange}
-                      className='w-full p-2 border rounded'
+                      className='w-full p-2 border rounded mt-1'
                     />
                   </div>
                   <div className='mb-4'>
-                    <label htmlFor='logo'>Store Logo:</label>
-                    <input type='file' id='logo' name='logo' onChange={handleLogoChange} className='w-full p-2 border rounded' />
+                    <label htmlFor='logo' className='block text-sm font-medium text-gray-700'>
+                      Store Logo:
+                    </label>
+                    <input type='file' id='logo' name='logo' onChange={handleLogoChange} className='w-full p-2 border rounded mt-1' />
                   </div>
                   <div className='flex justify-end'>
                     <button

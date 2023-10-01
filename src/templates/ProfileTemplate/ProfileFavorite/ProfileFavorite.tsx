@@ -1,3 +1,6 @@
-export const ProfileFavorite = () => {
-  return <div>Контент избранных будет здесь</div>;
+import { DevelopmentMoment } from '../../../components/atoms';
+import { FC } from 'react';
+
+export const ProfileFavorite: FC = () => {
+  return <DevelopmentMoment />;
 };
