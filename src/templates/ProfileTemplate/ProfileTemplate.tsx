@@ -65,13 +65,13 @@ export const ProfileTemplate: FC = () => {
               <Menu.Item key='articles' icon={<FileOutlined />}>
                 Статьи
               </Menu.Item>
+              <Menu.Item key='wallet' icon={<DollarOutlined />}>
+                Кошелёк
+              </Menu.Item>
             </>
           )}
           <Menu.Item key='favorites' icon={<HeartOutlined />}>
             Избранные
-          </Menu.Item>
-          <Menu.Item key='wallet' icon={<DollarOutlined />}>
-            Кошелёк
           </Menu.Item>
         </Menu>
       </Sider>
