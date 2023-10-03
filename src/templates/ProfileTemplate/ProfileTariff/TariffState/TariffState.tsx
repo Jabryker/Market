@@ -15,9 +15,10 @@ export const TariffState: FC = () => {
     },
   });
 
-  // Состояние для хранения лимита товаров
+  // Состояние для хранения лимита товаров и информации о текущем тарифе
   const [storeId, setStoreId] = useState<number | null>(null);
   const [productLimit, setProductLimit] = useState<number | null>(null);
+  const [currentTariff, setCurrentTariff] = useState<string>('Бесплатный');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,10 +33,14 @@ export const TariffState: FC = () => {
           const secondResponse = await axiosInstance.get(`/api/v1/stores/stores/${storeId}/`);
           const productLimit = secondResponse.data?.store_info?.product_limit;
           setProductLimit(productLimit);
+
+          const tariffResponse = await axiosInstance.get(`/api/v1/payments/tariff-types/${storeId}/`);
+          const tariffData = tariffResponse.data;
+          const currentTariff = tariffResponse.data.results.length === 0 ? 'Бесплатный' : tariffData.name;
+          setCurrentTariff(tariffData.name); // Предположим, что имя тарифа хранится в свойстве "name"
         }
       } catch (error) {
-        console.error('Error loading product limit:', error);
-        // Добавьте обработку ошибок, например, вывод сообщения об ошибке пользователю
+        console.error('Error loading product limit and tariff information:', error);
       }
     };
 
@@ -47,7 +52,7 @@ export const TariffState: FC = () => {
   return (
     <div>
       <h3>Тарифы</h3>
-      <p>Ваш тариф: Бесплатный</p>
+      <p>Ваш тариф: {currentTariff}</p>
       <p>Можете продавать максимально {productLimit ?? 'N/A'} единиц товара. % скидок на рекламу каждого товара 0%</p>
     </div>
   );
