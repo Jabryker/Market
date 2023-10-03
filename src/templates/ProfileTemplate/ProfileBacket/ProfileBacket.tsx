@@ -1,14 +1,14 @@
 import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { ProductCard } from '../../../components/atoms';
-import { EmptyFavoriteCart } from './EmptyFavoriteCart/EmptyFavoriteCart';
+import { EmptyCardBacket } from '../../../components/molecules/EmptyCardBacket/EmptyCardBacket';
 
 interface FavoriteItem {
   product_id: number;
   product: string;
 }
 
-export const ProfileFavorite: FC = () => {
+export const ProfileBacket: FC = () => {
   const basicApi = process.env.REACT_APP_API_URL ?? '';
   const token = localStorage.getItem('access') || '';
   const userInfoString = localStorage.getItem('userInfo');
@@ -27,7 +27,7 @@ export const ProfileFavorite: FC = () => {
 
   useEffect(() => {
     axiosInstance
-      .get('/api/v1/favorites/favorite-items-list')
+      .get('/api/v1/carts/cart-items-list')
       .then((response) => {
         setFavoriteItems(response.data);
       })
@@ -56,7 +56,7 @@ export const ProfileFavorite: FC = () => {
   return (
     <div>
       {favoriteItems.length === 0 ? (
-        <EmptyFavoriteCart />
+        <EmptyCardBacket />
       ) : (
         favoriteItems.map((item) => (
           <div key={item.product_id}>{productInfo[item.product_id] && <ProductCard product={productInfo[item.product_id]} />}</div>

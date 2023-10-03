@@ -1,4 +1,12 @@
-import { DollarOutlined, FileOutlined, HeartOutlined, ShopOutlined, TrophyOutlined, UserOutlined } from '@ant-design/icons';
+import {
+  DollarOutlined,
+  FileOutlined,
+  HeartOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  TrophyOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { FC, useState } from 'react';
 import { ProfileArticles } from './ProfileArticles/ProfileArticles';
@@ -7,6 +15,7 @@ import { ProfileFavorite } from './ProfileFavorite/ProfileFavorite';
 import { ProfileShop } from './ProfileShop/ProfileContent';
 import { ProfileTariff } from './ProfileTariff/ProfileTariff';
 import { ProfileWallet } from './ProfileWallet/ProfileWallet';
+import { ProfileBacket } from './ProfileBacket/ProfileBacket';
 
 const { Sider, Content } = Layout;
 
@@ -35,6 +44,9 @@ export const ProfileTemplate: FC = () => {
       break;
     case 'articles':
       content = <ProfileArticles />;
+      break;
+    case 'backet':
+      content = <ProfileBacket />;
       break;
     case 'tariff':
       content = <ProfileTariff />;
@@ -72,6 +84,9 @@ export const ProfileTemplate: FC = () => {
           )}
           <Menu.Item key='favorites' icon={<HeartOutlined />}>
             Избранные
+          </Menu.Item>
+          <Menu.Item key='backet' icon={<ShoppingCartOutlined />}>
+            Корзина
           </Menu.Item>
         </Menu>
       </Sider>

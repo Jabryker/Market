@@ -1,22 +1,7 @@
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
-
-const TariffCard: FC<{ tariff: any; backgroundColor: string }> = ({ tariff, backgroundColor }) => {
-  return (
-    <div className={`w-full h-[27vh] p-4 rounded-lg shadow-md ${backgroundColor} transition-transform`}>
-      <h2 className='text-2xl font-bold mb-4 text-white'>{tariff.name}</h2>
-      <div className='text-white'>
-        <p>Цена: {tariff.price} сомов</p>
-        <p>Период: {tariff.period} дней</p>
-        <p>Лимит продуктов: {tariff.product_limit}</p>
-        <p>Диапазон веса: {tariff.range_weight}</p>
-        <button className='mt-4 bg-[#EC9A1E] text-white text-center px-3 py-1 rounded-md hover:bg-[#ED5555] transition-colors'>
-          Выбрать
-        </button>
-      </div>
-    </div>
-  );
-};
+import { TariffCard } from './TariffCard/TariffCard';
+import { TariffState } from './TariffState/TariffState';
 
 export const ProfileTariff: FC = () => {
   const [tariffs, setTariffs] = useState<any[]>([]);
@@ -49,6 +34,7 @@ export const ProfileTariff: FC = () => {
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+      <TariffState />
       {tariffs.map((tariff, index) => (
         <TariffCard key={index} tariff={tariff} backgroundColor={colors[index % colors.length]} />
       ))}
