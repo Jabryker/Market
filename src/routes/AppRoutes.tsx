@@ -36,7 +36,6 @@ const getUserTypeFromLocalStorage = () => {
 };
 
 const AppRoutes = () => {
-  const userType = getUserTypeFromLocalStorage();
 
   const routes = useRoutes([
     {
@@ -85,15 +84,11 @@ const AppRoutes = () => {
     },
     {
       path: "/cart",
-      element: <BasketPages />,
+      element: <BasketPages/>,
     },
     {
-      path: "/profile/buyer/:id",
-      element: <ProfilePages userType={userType} />,
-    },
-    {
-      path: "/profile/seller/:id",
-      element: <ProfilePages userType={userType} />,
+      path: "/profile",
+      element: <ProfilePages />
     },
     {
       path: "404",

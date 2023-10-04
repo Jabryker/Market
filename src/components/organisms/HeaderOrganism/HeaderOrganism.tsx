@@ -1,6 +1,11 @@
 import { Badge, Button, Dropdown, Menu } from "antd";
 import { FC, useEffect, useState } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { navbar } from "../../../assets/data/";
 import logo from "../../../assets/images/Logo_HorecaArt.svg";
@@ -47,12 +52,10 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
   }, []);
 
   // const cartItemsCount = store.getState().cart.cartItems.reduce((total, item) => total + item.quantity, 0);
-  const cartItemsCount = 1
+  const cartItemsCount = 1;
 
   const userInfo = localStorage.getItem("userInfo");
   const userType = userInfo ? JSON.parse(userInfo).role : "";
-  const userId = userInfo ? JSON.parse(userInfo).id : "";
-
 
   const hasAccess = localStorage.getItem("access");
   const hasRefresh = localStorage.getItem("refresh");
@@ -60,20 +63,20 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
   const handleLogout = () => {
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
-    localStorage.removeItem("userInfo")
+    localStorage.removeItem("userInfo");
     navigate("/");
   };
 
   const menu = (
-    <Menu className="overflow-hidden">
+    <Menu>
       {hasAccess && hasRefresh ? (
         userType === "S" ? (
-          <Menu.Item key="profile-seller" >
-            <Link to={`/profile/seller/${userId}`} >Профиль продавца</Link>
+          <Menu.Item key="profile-seller">
+            <Link to={`/profile`}>Профиль продавца</Link>
           </Menu.Item>
         ) : (
           <Menu.Item key="profile-buyer">
-            <Link to={`/profile/buyer/${userId}`} >Профиль покупателя</Link>
+            <Link to={`/profile`}>Профиль покупателя</Link>
           </Menu.Item>
         )
       ) : null}
@@ -86,7 +89,11 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
 
   return (
     <>
-      <div className={`bg-[#47535F] py-4 ${scrolling ? "fixed top-0 left-0 w-full z-50" : ""}`}>
+      <div
+        className={`bg-[#47535F] py-4 ${
+          scrolling ? "fixed top-0 left-0 w-full z-50" : ""
+        }`}
+      >
         <div className="flex items-center justify-around">
           <Link to="/">
             <img src={logo} alt="Logo" className="h-12" />
@@ -126,9 +133,13 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
             </button>
           </div>
 
-          <div className="flex items-center overflow-hidden">
+          <div className="flex items-center">
             {hasAccess && hasRefresh ? (
-              <Dropdown overlay={menu} trigger={["click"]}>
+              <Dropdown
+                overlay={menu}
+                trigger={["click"]}
+                className="overflow-hidden"
+              >
                 <Button className="ml-4 text-white">Профиль</Button>
               </Dropdown>
             ) : (
