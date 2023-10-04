@@ -11,12 +11,12 @@ import {
 import { Layout, Menu } from 'antd';
 import { FC, useState } from 'react';
 import { ProfileArticles } from './ProfileArticles/ProfileArticles';
+import { ProfileBacket } from './ProfileBacket/ProfileBacket';
 import { ProfileContent } from './ProfileContent/ProfileContent';
 import { ProfileFavorite } from './ProfileFavorite/ProfileFavorite';
 import { ProfileShop } from './ProfileShop/ProfileContent';
 import { ProfileTariff } from './ProfileTariff/ProfileTariff';
 import { ProfileWallet } from './ProfileWallet/ProfileWallet';
-import { ProfileBacket } from './ProfileBacket/ProfileBacket';
 
 const { Sider, Content } = Layout;
 
