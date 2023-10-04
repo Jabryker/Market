@@ -1,18 +1,25 @@
 import { FC } from 'react';
-
 import axios from 'axios';
 
-const purchaseTariff = async (storeId, tariffType) => {
+const basicApi = process.env.REACT_APP_API_URL;
+const token = localStorage.getItem('access');
+
+const axiosInstance = axios.create({
+    baseURL: basicApi,
+    headers: {
+        Authorization: `Bearer ${token}`,
+    },
+});
+
+const purchaseTariff = async (storeId: number, tariffType:number ) => {
   try {
-    const response = await axios.post('/api/v1/payments/tariff-payments/purchase_tariff/', {
+    const response = await axiosInstance.post('/api/v1/payments/tariff-payments/purchase_tariff/', {
       store: storeId,
       type: tariffType,
     });
-    // Обработайте успешный ответ, например, вы можете отображать сообщение о покупке тарифа.
     console.log('Тариф успешно куплен:', response.data);
   } catch (error) {
     console.error('Ошибка при покупке тарифа:', error);
-    // Добавьте обработку ошибок, например, вывод сообщения об ошибке пользователю.
   }
 };
 
@@ -26,8 +33,14 @@ export const TariffCard: FC<{ tariff: any; backgroundColor: string; storeId: num
         <p>Лимит продуктов: {tariff.product_limit}</p>
         <p>Диапазон веса: {tariff.range_weight}</p>
         <button
-          className='mt-4 bg-[#EC9A1E] text-white text-center px-3 py-1 rounded-md hover:bg-[#ED5555] transition-colors'
-          onClick={() => purchaseTariff(storeId, tariff.type)} // Передаем storeId и tariff.type
+            className='mt-4 bg-[#EC9A1E] text-white text-center px-3 py-1 rounded-md hover:bg-[#ED5555] transition-colors'
+            onClick={() => {
+              if (storeId !== null) {
+                purchaseTariff(storeId, tariff.id);
+              } else {
+                console.log('тариф не найден')
+              }
+            }}
         >
           Выбрать
         </button>
