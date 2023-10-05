@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
+import { displayErrorToast, displaySuccessToast } from '../../../../components/atoms';
 
 interface Category {
   id: number;
@@ -89,15 +90,14 @@ export const CreateProduct: FC = () => {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Остановка стандартной отправки формы
+    event.preventDefault();
 
-    // Создайте объект данных для отправки на сервер на основе полей формы
     const formData = new FormData(event.currentTarget);
     const data = {
       name: formData.get('name') as string,
       brand: formData.get('brand') as string,
       category: formData.get('category') as string,
-      country_of_origin: formData.get('country_of_origin') as string, // Добавьте страну происхождения
+      country_of_origin: formData.get('country_of_origin') as string,
       description: formData.get('description') as string,
       store: storeId,
       specifications: specifications,
@@ -107,11 +107,12 @@ export const CreateProduct: FC = () => {
       .post('/api/v1/stores/products/', data)
       .then((response) => {
         console.log('Product created successfully:', response.data);
-        // Здесь можно выполнить дополнительные действия после успешного создания продукта
+        displaySuccessToast('Product created successfully:')
       })
       .catch((error) => {
         console.error('Error creating product:', error);
-        // Здесь можно обработать ошибку создания продукта
+        const errorMessage = error.response?.data?.detail || 'Произошла ошибка при создании товара';
+        displayErrorToast(`Ошибка при создании товара: ${errorMessage}`);
       });
   };
 
@@ -233,7 +234,7 @@ export const CreateProduct: FC = () => {
               value={specification.name}
               onChange={(e) => handleSpecificationNameChange(e.target.value, index)}
               className='w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500'
-              required // Добавьте атрибут required
+              required
             />
             <input
               type='text'
@@ -241,7 +242,7 @@ export const CreateProduct: FC = () => {
               value={specification.value}
               onChange={(e) => handleSpecificationValueChange(e.target.value, index)}
               className='w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500'
-              required // Добавьте атрибут required
+              required
             />
             <button type='button' onClick={() => removeSpecification(index)} className='text-red-500 mt-2 block'>
               Remove
