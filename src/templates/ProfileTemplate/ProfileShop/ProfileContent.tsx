@@ -120,10 +120,6 @@ export const ProfileShop: FC = () => {
       });
   };
 
-  const handleAddProduct = () => {
-    console.log('Adding product');
-  };
-
   return (
     <div>
       {userStore ? (
@@ -136,11 +132,8 @@ export const ProfileShop: FC = () => {
             <p>Product Limit: {userStore.store_info?.product_limit}</p>
 
             <h3 className='text-xl font-semibold mt-4'>Products</h3>
-            <ul>{userStore.products?.map((product: Store) => <li key={product.id}>{product.name}</li>)}</ul>
+            {/*<ul>{userStore.products?.map((product: Store) => <li key={product.id}>{product.name}</li>)}</ul>*/}
           </div>
-          <button className='bg-blue-500 hover.bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleAddProduct}>
-            Add Product
-          </button>
           <CreateProduct />
         </>
       ) : (

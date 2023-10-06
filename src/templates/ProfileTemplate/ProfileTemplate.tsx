@@ -16,6 +16,7 @@ import { ProfileFavorite } from './ProfileFavorite/ProfileFavorite';
 import { ProfileShop } from './ProfileShop/ProfileContent';
 import { ProfileTariff } from './ProfileTariff/ProfileTariff';
 import { ProfileWallet } from './ProfileWallet/ProfileWallet';
+import { ProfileMyProduct } from './ProfileMyProduct/ProfileMyProduct';
 
 const { Sider, Content } = Layout;
 
@@ -51,6 +52,9 @@ export const ProfileTemplate: FC = () => {
     case 'tariff':
       content = <ProfileTariff />;
       break;
+    case 'myproduct':
+      content = <ProfileMyProduct />;
+      break;
     default:
       content = null;
   }
@@ -70,6 +74,9 @@ export const ProfileTemplate: FC = () => {
             <>
               <Menu.Item key='shop' icon={<ShopOutlined />}>
                 Магазин
+              </Menu.Item>
+              <Menu.Item key='myproduct' icon={<FileOutlined />}>
+                Мои товары
               </Menu.Item>
               <Menu.Item key='tariff' icon={<TrophyOutlined />}>
                 Тариф
