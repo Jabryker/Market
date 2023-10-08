@@ -126,16 +126,15 @@ export const ProfileShop: FC = () => {
       {userStore ? (
         <>
           <div>
-            <h2 className='text-2xl font-semibold mb-4'>
-              Магазин <b>{userStore.name}</b>
+            <h2 style={{ color: '#47535F', fontSize: '24px' }}>
+              Магазин: <b>{userStore.name}</b>
             </h2>
-            <p>Адрес: {userStore.address}</p>
-            {userStore.logo == null ? (
+            <p style={{ color: '#47535F', fontSize: '20px' }}>Адрес: {userStore.address}</p>
+            {userStore.logo === null ? null : (
               <img src={`${basicApi}${userStore.store_info?.logo}`} alt={userStore.store_info?.name} className='w-32 h-32' />
-            ) : null}
-            <p>
-              Описание: <br /> {userStore.description}
-            </p>
+            )}
+            <p style={{ color: '#47535F', fontSize: '24px', fontWeight: '600' }}>Описание:</p>
+            <p>{userStore.description}</p>
 
             <h3 className='text-xl font-semibold mt-4'>Products</h3>
             {/*<ul>{userStore.products?.map((product: Store) => <li key={product.id}>{product.name}</li>)}</ul>*/}
@@ -143,20 +142,31 @@ export const ProfileShop: FC = () => {
           <CreateProduct />
         </>
       ) : (
-        <div className='flex justify-center items-center h-screen'>
-          <h2
-            className='text-2xl font-semibold mb-4'
-            style={{ color: '#47535F', fontSize: '24px', fontFamily: 'Inter', fontWeight: 500, wordWrap: 'break-word' }}
-          >
-            Вы пока не создали магазин
-          </h2>
-          <button
-            className='text-white font-bold py-2 px-4 rounded'
-            style={{ fontSize: '18px', fontFamily: 'Inter', fontWeight: 600, wordWrap: 'break-word', background: '#47535F', width: '100%' }}
-            onClick={() => setIsCreateStoreModalOpen(true)}
-          >
-            Создать магазин
-          </button>
+        <div className='flex flex-col justify-center items-center h-screen '>
+          {isCreateStoreModalOpen ? null : (
+            <h2
+              className='text-2xl font-semibold mb-4'
+              style={{ color: '#47535F', fontSize: '24px', fontFamily: 'Inter', fontWeight: 500, wordWrap: 'break-word' }}
+            >
+              Вы пока не создали магазин
+            </h2>
+          )}
+          {isCreateStoreModalOpen ? null : (
+            <button
+              className='text-white font-bold py-2 px-4 rounded'
+              style={{
+                fontSize: '18px',
+                fontFamily: 'Inter',
+                fontWeight: 600,
+                wordWrap: 'break-word',
+                background: '#47535F',
+                width: '20%',
+              }}
+              onClick={() => setIsCreateStoreModalOpen(true)}
+            >
+              Создать магазин
+            </button>
+          )}
           {isCreateStoreModalOpen && <CreateStore onCreateStore={handleCreateStore} onCancel={() => setIsCreateStoreModalOpen(false)} />}
         </div>
       )}
