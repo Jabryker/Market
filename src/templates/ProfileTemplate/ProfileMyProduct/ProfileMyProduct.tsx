@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
-import { ProductCard } from '../../../components/atoms';
+import { FC, useEffect, useState } from 'react';
+import { ProductCard, displayErrorToast, displaySuccessToast } from '../../../components/atoms';
 import { TariffSelection } from './TariffSelection/TariffSelection';
 
 interface Product {
@@ -61,7 +61,7 @@ export const ProfileMyProduct: FC = () => {
 
   useEffect(() => {
     axiosInstance
-      .get<TariffTypesResponse>('/api/v1/payments/tariff-types/')
+      .get('/api/v1/payments/types/')
       .then((response) => {
         const tariffData = response.data.results;
         setTariffTypes(tariffData);
@@ -82,7 +82,6 @@ export const ProfileMyProduct: FC = () => {
         const sellerData = response.data;
         setProducts(sellerData.products);
 
-        // После получения списка продуктов, получите детали каждого продукта
         sellerData.products.forEach((product: Product) => {
           axiosInstance
             .get(`/api/v1/stores/products/${product.id}/`)
@@ -91,51 +90,77 @@ export const ProfileMyProduct: FC = () => {
               setProductDetails((prevProductDetails) => [...prevProductDetails, productDetail]);
             })
             .catch((error) => {
-              console.error('Error loading product details:', error);
+              displayErrorToast(`Error loading product details: ${error}`);
             });
         });
       })
       .catch((error) => {
-        console.error('Error loading seller data:', error);
+        displayErrorToast(`Error loading product details: ${error}`);
       });
   }, [userId]);
 
-  const handleStartSale = (productId: number, tariffId: number) => {
-    // Обработчик для кнопки "Начать акцию на товар"
-    // Вы можете добавить соответствующую логику здесь
-    console.log(`Начата акция на товар с ID: ${productId} и тарифом с ID: ${tariffId}`);
+  const handleStartSale = (productId: number) => {
+    axiosInstance
+      .post('/api/v1/payments/tariff-payments/', { product: productId })
+      .then((response) => {
+        console.log(`Начата акция на товар с ID: ${productId}`);
+        // Добавьте здесь код для обработки успешного ответа, если необходимо
+      })
+      .catch((error) => {
+        displayErrorToast(`Ошибка при начале акции: ${error}`);
+        // Добавьте здесь код для обработки ошибки, если необходимо
+      });
   };
 
-  const handleTopSale = (productId: number) => {
-    // Обработчик для кнопки "Вывести в Топ продаж"
-    // Вы можете добавить соответствующую логику здесь
-    console.log(`Товар с ID: ${productId} выведен в Топ продаж`);
+  const handleStartPayment = (productId: number) => {
+    axiosInstance
+      .post('/api/v1/payments/payment/start_payment/', { product: productId, type: selectedTariff })
+      .then((response) => {
+        displaySuccessToast(`Платеж для товара с ID: ${productId} начат.`);
+      })
+      .catch((error) => {
+        displayErrorToast(`Ошибка при начале платежа для товара с ID: ${productId}: ${error}`);
+      });
+  };
+
+  const handleStopPayment = (productId: number) => {
+    axiosInstance
+      .post('/api/v1/payments/payment/stop_payment/', { product: productId, type: selectedTariff })
+      .then((response) => {
+        displaySuccessToast(`Платеж для товара с ID: ${productId} остановлен.`);
+      })
+      .catch((error) => {
+        displayErrorToast(`Ошибка при остановке платежа для товара с ID: ${productId}: ${error}`);
+      });
   };
 
   return (
-    <div className="container mx-auto">
+    <div className='container mx-auto'>
       <h2 className='text-2xl font-semibold mb-4'>Мои товары</h2>
 
       <TariffSelection tariffTypes={tariffTypes} onSelectTariff={handleSelectTariff} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
         {productDetails.map((productDetail) => (
-          <div key={productDetail.id} className="bg-white p-4 border rounded shadow">
-            <ProductCard product={productDetail} />
-            <div className="mt-4">
+          <div className='bg-white p-4 border rounded shadow'>
+            <ProductCard key={productDetail.id} product={productDetail} />
+            <div className='mt-4'>
               {selectedTariff && (
                 <>
-                  <button
-                    onClick={() => handleStartSale(productDetail.id, selectedTariff)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-                  >
+                  <button onClick={() => handleStartSale(productDetail.id)} className='bg-blue-500 text-white px-4 py-2 rounded-md mr-2'>
                     Начать акцию на товар
                   </button>
                   <button
-                    onClick={() => handleTopSale(productDetail.id)}
-                    className="bg-green-500 text-white px-4 py-2 rounded-md"
+                    onClick={() => handleStartPayment(productDetail.id)} // Вызываем функцию handleStartPayment
+                    className='bg-green-500 text-white px-4 py-2 rounded-md mr-2'
                   >
-                    Вывести в Топ продаж
+                    Начать платеж
+                  </button>
+                  <button
+                    onClick={() => handleStopPayment(productDetail.id)} // Вызываем функцию handleStopPayment
+                    className='bg-red-500 text-white px-4 py-2 rounded-md'
+                  >
+                    Остановить платеж
                   </button>
                 </>
               )}
