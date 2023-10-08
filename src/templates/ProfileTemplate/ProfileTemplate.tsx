@@ -1,4 +1,3 @@
-
 import {
   DollarOutlined,
   FileOutlined,
@@ -9,7 +8,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { ProfileArticles } from './ProfileArticles/ProfileArticles';
 import { ProfileBacket } from './ProfileBacket/ProfileBacket';
 import { ProfileContent } from './ProfileContent/ProfileContent';

@@ -61,11 +61,12 @@ export const ProfileContent: FC = () => {
       console.error(error);
     }
   };
+  console.log(profileData);
 
   return (
     <div className='p-4'>
       <div className='mb-4'>
-        <div className='mb-4'>
+        <div className='mb-4 flex flex-col items-start'>
           <img
             src={profileData.photo || profile}
             onError={(e) => {
@@ -73,8 +74,12 @@ export const ProfileContent: FC = () => {
               img.src = profile;
             }}
             alt='Фото профиля'
-            className='rounded-full w-24 h-24 mx-auto'
+            className='rounded-full w-24 h-24'
           />
+          <h2 style={{ color: '#253138', fontSize: '18px', fontFamily: 'Inter', fontWeight: 500, wordWrap: 'break-word' }}>
+            {profileData.email}
+          </h2>
+          <h2 style={{ color: 'rgba(0, 0, 0, 0.70)', fontSize: '14px' }}>{profileData.username}</h2>
         </div>
       </div>
       <div className='mb-4'>
