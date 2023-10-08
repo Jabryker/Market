@@ -1,32 +1,70 @@
+# Ignore macOS .DS_Store files
 .DS_STORE
+
+# Ignore Node.js modules
 node_modules
+
+# Ignore Flow type checking configuration files
 scripts/flow/*/.flowconfig
 .flowconfig
+
+# Ignore editor backup files
 *~
 *.pyc
+
+# Ignore Grunt related files
 .grunt
+
+# Ignore Jasmine SpecRunner.html file
 _SpecRunner.html
+
+# Ignore benchmark files
 __benchmarks__
+
+# Ignore build output
 build/
+
+# Ignore remote repository files
 remote-repo/
+
+# Ignore code coverage reports
 coverage/
+
+# Ignore module cache files
 .module-cache
+
+# Ignore fixtures for DOM testing
 fixtures/dom/public/react-dom.js
 fixtures/dom/public/react.js
+
+# Ignore generated test files
 test/the-files-to-test.generated.js
+
+# Ignore log files
 *.log*
+
+# Ignore Chrome user data
 chrome-user-data
+
+# Ignore Sublime Text project and workspace files
 *.sublime-project
 *.sublime-workspace
-.idea
+
+# Ignore IntelliJ IDEA files
+.idea/
 *.iml
+
+# Ignore Visual Studio Code settings and workspace files
 .vscode
+
+# Ignore Vim swap files
 *.swp
 *.swo
+
+# Ignore environment files
 .env
 
-documentation.md
-
+# Ignore React DevTools build output and extension files
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
 packages/react-devtools-extensions/chrome/*.crx
