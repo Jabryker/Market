@@ -16,9 +16,8 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
     }
   };
 
-  // Calculate discount percentage
   const discountPercentage = 30;
-  console.log(product);
+
   return (
     <div className='pt-4 pb-4 rounded-lg  w-[293px] h-[485px] overflow-y-hidden bg-white'>
       <div className=' flex flex-col justify-between h-full'>
