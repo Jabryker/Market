@@ -70,5 +70,9 @@ export const BacketAdder: FC<BacketAdderProps> = ({ productId, quantity }) => {
     checkBacketStatus(); // Проверяем начальный статус корзины при монтировании компонента
   }, []);
 
-  return <button onClick={handleButtonClick}>{isBacket ? <DeleteOutlined /> : <ShoppingCartOutlined />}</button>;
+  return (
+    <button style={{ width: '32px', height: '32px' }} onClick={handleButtonClick}>
+      {isBacket ? <DeleteOutlined /> : <ShoppingCartOutlined />}
+    </button>
+  );
 };

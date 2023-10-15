@@ -28,7 +28,7 @@ export const ProfileWallet: FC = () => {
       try {
         const response = await axiosInstance.get(`${basicApi}/api/v1/accounts/sellers/${userId}/`);
         const { wallet } = response.data;
-        setWalletData(wallet); // Set wallet data to the wallet object
+        setWalletData(wallet);
       } catch (error) {
         console.error('Ошибка при получении данных кошелька:', error);
       }
