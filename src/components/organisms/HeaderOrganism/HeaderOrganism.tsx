@@ -88,16 +88,16 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
 
   return (
     <>
-      <div className={`py-4 ${scrolling ? 'fixed top-0 left-0 w-full z-50' : ''}`}>
-        <div className='container mx-auto flex items-center justify-between'>
-          <Link to='/'>
+      <div className={`py-4 w-full ${scrolling ? 'fixed w-full top-0 z-50 bg-white' : ''}`}>
+        <div className='w-11/12 flex items-center justify-between max-w-screen-2xl m-auto'>
+          <Link to='/' className='w-1/12 mr-2'>
             <img src={logo} alt='Logo' className='h-12' />
           </Link>
 
-          <div className='flex justify-center items-center w-full sm:w-[1000px]'>
+          <div className='flex justify-center items-center w-9/12'>
             <select
               style={{ borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px', background: '#F3F2F2', borderRight: '1px solid gray' }}
-              className='w-1/5 px-4 py-3 border focus:outline-none focus:border-blue-300'
+              className='w-1/5 px-2 py-3 border focus:outline-none focus:border-blue-300'
               placeholder='Фильтр по'
             >
               <option value=''>Фильтры</option>
@@ -116,33 +116,33 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{ background: '#F3F2F2' }}
-              className='w-1/2 px-4 py-3 border rounded-l-none border-l-0 focus:outline-none focus:border-blue-300'
+              className='w-[70%] py-3 border rounded-l-none border-l-1 focus:outline-none focus:border-blue-300'
               placeholder='Поиск'
             />
 
             <button
               onClick={handleSearch}
               style={{ borderTopRightRadius: '10px', borderBottomRightRadius: '10px' }}
-              className='py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold  shadow-md transition focus:outline-none w-32 flex items-center justify-center ml-2'
+              className='py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold  shadow-md transition focus:outline-none w-32 flex items-center justify-center'
             >
               <AiOutlineSearch size={20} className='mr-2' /> Поиск
             </button>
           </div>
 
-          <div className='flex items-center'>
+          <div className='flex items-center w-2/12 justify-evenly'>
             {hasAccess && hasRefresh ? (
               <Dropdown overlay={menu} trigger={['click']} className='overflow-hidden'>
-                <Button className='ml-4 text-[#373737]'>Профиль</Button>
+                <Button className='text-[#373737]'>Профиль</Button>
               </Dropdown>
             ) : (
               <Link to='/login' className='overflow-hidden'>
-                <button className='ml-4 bg-[#fff] text-[#373737] hover:bg-[#000] hover:text-[#fff] font-semibold py-2 px-4 rounded-[10px] shadow-md border border-[#47535F] transition duration-300 ease-in-out'>
+                <button className='bg-[#fff] text-[#373737] hover:bg-[#000] hover:text-[#fff] font-semibold py-2 px-4 rounded-[10px] shadow-md border border-[#47535F] transition duration-300 ease-in-out'>
                   Войти
                 </button>
               </Link>
             )}
 
-            <Link to='/cart' className='mx-10 text-[#333] hover:text-blue-300'>
+            <Link to='/cart' className='text-[#333] hover:text-blue-300'>
               <Badge count={cartItemsCount} showZero>
                 <AiOutlineShoppingCart size={24} />
               </Badge>
@@ -155,9 +155,8 @@ export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
       </div>
 
       <div
-        className={`bg-gray-600 transition duration-500 ease-in-out ${
-          nav ? 'fixed top-0 left-0 w-full h-full z-50' : 'fixed left-[-100%]'
-        }`}
+        className={`bg-gray-600 transition duration-500 ease-in-out ${nav ? 'fixed top-0 left-0 w-full h-full z-50' : 'fixed left-[-100%]'
+          }`}
       >
         <div className='container mx-auto'>
           <ul className='text-white capitalize'>
