@@ -6,7 +6,7 @@ export const FooterOrganism: FC = () => {
   return (
     <footer className="bg-gray-100 text-center text-lg-start text-muted">
       <section className="bg-gradient-to-b from-[#47535F] to-[#333] rounded-tl-[50px] rounded-tr-[50px] py-16 text-white">
-        <div className="container mx-auto">
+        <div className="w-11/12 max-w-screen-2xl m-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="mb-4">
               <h6 className="text-xl font-bold mb-4 text-left mx-6 text-white">Меню</h6>

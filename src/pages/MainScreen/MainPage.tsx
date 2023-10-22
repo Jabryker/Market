@@ -17,7 +17,7 @@ export const MainPage: FC = () => {
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
-      <div className="bg-[#47535F] rounded-t-2xl">
+      <div className="bg-[#47535F] rounded-t-2xl pb-10">
         <FeaturedProductsOrganism />
         <NewsListOrganism />
       </div>

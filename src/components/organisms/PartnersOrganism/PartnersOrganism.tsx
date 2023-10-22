@@ -5,7 +5,7 @@ import {TitleText} from "../../atoms";
 
 export const PartnersOrganism: FC = () => {
   return (
-    <>
+    <div className="w-11/12 max-w-screen-2xl m-auto">
       <TitleText color="text-[#47535F]">Наши партнеры</TitleText>
       <div className="flex flex-wrap justify-center h-[50vh]">
         {partners.map((partnerE) => (
@@ -17,6 +17,6 @@ export const PartnersOrganism: FC = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };

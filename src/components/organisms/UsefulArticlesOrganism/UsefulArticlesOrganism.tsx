@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CommonController from "../../../controllers/CommonController";
-import {SkeletonCombine, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
+import { SkeletonCombine, TitleText, displayErrorToast, ViewAllButton } from "../../atoms";
 import { UsefulArticlesMolecules } from "../../molecules/";
 import { IArticle } from "../../molecules/UsefulArticlesMolecules/UsefulArticlesMolecules";
 
@@ -24,17 +24,19 @@ export const UsefulArticlesOrganism = () => {
   }, []);
 
   return (
-    <div>
-      <TitleText color="text-[#47535F]">Полезные статьи</TitleText>
-      {loading ? (
-        <SkeletonCombine quantity={4} />
-      ) : articlesData.length === 0 ? (
-        <SkeletonCombine quantity={4} />
-      ) : (
-        <UsefulArticlesMolecules articles={articlesData} />
-      )
-      }
-      <ViewAllButton to="/articles" color="#47535F" />
+    <div className="rounded-t-2xl bg-white" style={{ marginTop:'-15px' }}>
+      <div className="w-11/12 max-w-screen-2xl m-auto">
+        <TitleText color="text-[#47535F]">Полезные статьи</TitleText>
+        {loading ? (
+          <SkeletonCombine quantity={4} />
+        ) : articlesData.length === 0 ? (
+          <SkeletonCombine quantity={4} />
+        ) : (
+          <UsefulArticlesMolecules articles={articlesData} />
+        )
+        }
+        <ViewAllButton to="/articles" color="#47535F" />
+      </div>
     </div>
   );
 };

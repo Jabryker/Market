@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductController from "../../../controllers/ProductController";
-import {SkeletonCard, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
+import { SkeletonCard, TitleText, displayErrorToast, ViewAllButton } from "../../atoms";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
 import { DiscountProductsMolecules } from "../../molecules/";
 
@@ -25,16 +25,18 @@ export const DiscountProductsOrganisms = () => {
   }, []);
 
   return (
-    <div className="my-20">
-      <TitleText color="text-[#47535F]">Акция!</TitleText>
-      {loading ? (
-        <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
-      ) : products.length === 0 ? (
-        <SkeletonCard quantity={4} /> // Display SkeletonCard when no products available
-      ) : (
-        <DiscountProductsMolecules products={products} />
-      )}
-      <ViewAllButton to="/product" color="#47535F" />
+    <div>
+      <div className="my-20 w-11/12 max-w-screen-2xl m-auto">
+        <TitleText color="text-[#47535F]">Акция!</TitleText>
+        {loading ? (
+          <SkeletonCard quantity={4} /> // Display SkeletonCard when loading
+        ) : products.length === 0 ? (
+          <SkeletonCard quantity={4} /> // Display SkeletonCard when no products available
+        ) : (
+          <DiscountProductsMolecules products={products} />
+        )}
+        <ViewAllButton to="/product" color="#47535F" />
+      </div>
     </div>
   );
 };
