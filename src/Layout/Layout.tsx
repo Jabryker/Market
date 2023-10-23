@@ -10,7 +10,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     <>
       <SubHeaderOrganism />
       <HeaderOrganism />
-      <main className="mx-10">{children}</main>
+      <main>{children}</main>
       <FooterOrganism />
     </>
   )

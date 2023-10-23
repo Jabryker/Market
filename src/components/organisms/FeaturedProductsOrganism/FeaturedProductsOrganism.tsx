@@ -25,7 +25,7 @@ export const FeaturedProductsOrganism = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-11/12 max-w-screen-2xl m-auto">
       <TitleText color="white">Топ продаж</TitleText>
       {loading ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when loading

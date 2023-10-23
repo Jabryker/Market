@@ -25,7 +25,7 @@ export const NewsListOrganism = () => {
   }, []);
 
   return (
-    <div>
+    <div className="w-11/12 max-w-screen-2xl m-auto">
       <TitleText color="white">Наши новости</TitleText>
       {loading ? (
         <SkeletonCombine quantity={4} />

@@ -24,10 +24,10 @@ export const ContactUsMolecules: FC = () => {
   };
 
   return (
-    <div className="contactUs-block mb-40 rounded border border-solid border-gray-300">
+    <div className="contactUs-block mb-40 rounded w-11/12 max-w-screen-2xl m-auto">
       <TitleText color="text-[#47535F]">Свяжитесь с нами</TitleText>
       <div
-        className="contactUs-form-block w-11/12 px-28 py-28 container mx-auto flex justify-between"
+        className="contactUs-form-block px-28 py-28 flex flex-wrap justify-between"
         style={{ background: "#F5F5F5" }}
       >
         <div className="contactUs-block-left w-1/2 pr-7" style={{ color: "#ECEBE9" }}>
