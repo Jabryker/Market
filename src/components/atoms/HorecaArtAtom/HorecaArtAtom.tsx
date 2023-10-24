@@ -3,7 +3,7 @@ import HorecaArtAtomPhoto from "../../../assets/images/HorecaArt/homeKitcher.png
 
 export const HorecaArtAtom: FC = () => {
   return (
-    <div className="flex gap-6 flex-row flex-wrap lg:flex-nowrap justify-between items-center m-20">
+    <div className="flex gap-6 flex-row flex-wrap lg:flex-nowrap justify-between items-center m-20 w-11/12 max-w-screen-2xl m-auto">
       <img src={HorecaArtAtomPhoto} alt="HorecaArtAtomPhoto" className="w-[800px] h-[400px]" />
       <div className="rounded-3xl border-3 border-[#EC9A1E] bg-[#EC9A1E] p-4 w-[800px] h-[400px] flex flex-col justify-center items-start">
         <div className="text-white text-left ml-20">

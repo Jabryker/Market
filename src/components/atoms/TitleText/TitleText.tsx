@@ -6,7 +6,7 @@ export const TitleText: FC<ITitleText> = ({ children, color }) => {
 
   return (
     <div className="my-20">
-      <h1 className={`title text-4xl font-bold md:text-4xl lg:text-5x1 ml-6 py-1 ${textColorClass}`}>
+      <h1 className={`title text-4xl font-bold md:text-4xl lg:text-5x1 py-1 ${textColorClass}`}>
         {children}
       </h1>
     </div>
