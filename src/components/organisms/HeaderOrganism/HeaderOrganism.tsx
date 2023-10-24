@@ -1,179 +1,82 @@
-import { Badge, Button, Dropdown, Menu } from 'antd';
-import { FC, useEffect, useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
 import { navbar } from '../../../assets/data/';
 import logo from '../../../assets/images/HorecaArt/new_logo.png';
-import { BorderLeft } from '@mui/icons-material';
 
-interface NavItem {
-  id: number;
-  to: string;
-  label: string;
-}
+import { FC, useState } from "react";
+import { AiOutlineSearch } from 'react-icons/ai'
+import {Link} from "react-router-dom";
 
-interface IHeaderOrganismProps {
-  userType?: string;
-}
+export const HeaderOrganism: FC = () => {
+      const [menuOpen, setMenuOpen] = useState<boolean>(false);
+      const [searchQuery, setSearchQuery] = useState<string>('');
+      const handleSearch = () => {
+            console.log('поиск: ', searchQuery)
+      };
 
-export const HeaderOrganism: FC<IHeaderOrganismProps> = () => {
-  const [nav, setNav] = useState(false);
-  const [scrolling, setScrolling] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+      const toggleMenu = () => {
+            setMenuOpen(!menuOpen);
+      };
 
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-  const subHeaderHeight = 50;
-
-  const handleScroll = () => {
-    if (window.scrollY > subHeaderHeight) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
-  };
-
-  const handleSearch = () => {
-    navigate(`/product?search=${encodeURIComponent(searchQuery)}`);
-    // Закрыть навигационное меню после перехода
-    setNav(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const cartItemsCount = 1;
-
-  const userInfo = localStorage.getItem('userInfo');
-  const userType = userInfo ? JSON.parse(userInfo).role : '';
-
-  const hasAccess = localStorage.getItem('access');
-  const hasRefresh = localStorage.getItem('refresh');
-
-  const handleLogout = () => {
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-    localStorage.removeItem('userInfo');
-    navigate('/');
-    // Закрыть навигационное меню после выхода
-    setNav(false);
-  };
-
-  const menu = (
-    <Menu>
-      {hasAccess && hasRefresh ? (
-        userType === 'S' ? (
-          <Menu.Item key='profile-seller'>
-            <Link to={`/profile`}>Профиль продавца</Link>
-          </Menu.Item>
-        ) : (
-          <Menu.Item key='profile-buyer'>
-            <Link to={`/profile`}>Профиль покупателя</Link>
-          </Menu.Item>
-        )
-      ) : null}
-      <Menu.Divider />
-      <Menu.Item key='logout' onClick={handleLogout}>
-        Выйти из аккаунта
-      </Menu.Item>
-    </Menu>
-  );
-
-  return (
-    <>
-      <div className={`py-4 w-full ${scrolling ? 'fixed w-full top-0 z-50 bg-white' : ''}`}>
-        <div className='w-11/12 flex items-center justify-between max-w-screen-2xl m-auto'>
-          <Link to='/' className='w-1/12 mr-2'>
-            <img src={logo} alt='Logo' className='h-12' />
-          </Link>
-
-          <div className='flex justify-center items-center w-9/12'>
-            <select
-              style={{ borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px', background: '#F3F2F2', borderRight: '1px solid gray' }}
-              className='w-1/5 px-2 py-3 border focus:outline-none focus:border-blue-300'
-              placeholder='Фильтр по'
-            >
-              <option value=''>Фильтры</option>
-              <option value='name'>Названию</option>
-              <option value='category'>Категории</option>
-              <option value='address'>Адресу</option>
-              <option value='country'>Стране производителя</option>
-              <option value='brand'>Бренду</option>
-              <option value='fuelType'>Виду топлива</option>
-              <option value='priceLessThan'>Цена меньше чем</option>
-              <option value='priceGreaterThan'>Цена больше чем</option>
-            </select>
-
-            <input
-              type='text'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{ background: '#F3F2F2' }}
-              className='w-[70%] py-3 border rounded-l-none border-l-1 focus:outline-none focus:border-blue-300'
-              placeholder='Поиск'
-            />
-
-            <button
-              onClick={handleSearch}
-              style={{ borderTopRightRadius: '10px', borderBottomRightRadius: '10px' }}
-              className='py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold  shadow-md transition focus:outline-none w-32 flex items-center justify-center'
-            >
-              <AiOutlineSearch size={20} className='mr-2' /> Поиск
-            </button>
+      return (
+          <div>
+                <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                            <Link to="/" className="flex items-center">
+                                  <img src={logo} className="h-8 mr-3" alt="PMORDO Logo" />
+                                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PM</span>
+                            </Link>
+                            <div className="flex items-center justify-center space-x-2 mt-2">
+                                  <div className="flex rounded-2xl border border-blue-300 focus:ring focus:ring-blue-300">
+                                        <select className="w-1/2 px-2 py-3 focus:outline-none">
+                                              <option value=''>Фильтры</option>
+                                              <option className="bg-blue-100 text-blue-800" value='name'>Названию</option>
+                                              <option className="bg-green-100 text-green-800" value='category'>Категории</option>
+                                              <option className="bg-yellow-100 text-yellow-800" value='address'>Адресу</option>
+                                              <option className="bg-red-100 text-red-800" value='country'>Стране производителя</option>
+                                              <option className="bg-indigo-100 text-indigo-800" value='brand'>Бренду</option>
+                                              <option className="bg-pink-100 text-pink-800" value='fuelType'>Виду топлива</option>
+                                              <option className="bg-purple-100 text-purple-800" value='priceLessThan'>Цена меньше чем</option>
+                                              <option className="bg-gray-100 text-gray-800" value='priceGreaterThan'>Цена больше чем</option>
+                                        </select>
+                                        <input
+                                            type="text"
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                            className="w-1/2 py-3 border-l-1 focus:outline-none"
+                                            placeholder="Поиск"
+                                        />
+                                        <button
+                                            onClick={handleSearch}
+                                            className="py-3 bg-gradient-to-r from-[#EC9A1E] via-[#EC9A1E] to-[#ED5555] text-white font-semibold shadow-md transition focus:outline-none w-32 flex items-center justify-center rounded"
+                                        >
+                                              <AiOutlineSearch size={20} className="mr-2" /> Поиск
+                                        </button>
+                                  </div>
+                            </div>
+                            <button
+                                onClick={toggleMenu}
+                                className={`inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-transform duration-300 ease-in-out ${
+                                    menuOpen ? "transform rotate-180" : ""
+                                }`}
+                                aria-expanded={menuOpen}
+                            >
+                                  <span className="sr-only">Open main menu</span>
+                                  <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                        <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15"/>
+                                  </svg>
+                            </button>
+                            <div className={`w-full ${menuOpen ? "block" : "hidden"} transition-opacity duration-300 ease-in-out`}>
+                                  <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                        {navbar.map(item => (
+                                            <li key={item.id}>
+                                                  <Link to={item.to} className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-700 hover:text-white">
+                                                        {item.label}
+                                                  </Link>
+                                            </li>
+                                        ))}
+                                  </ul>
+                            </div>
+                      </div>
+                </nav>
           </div>
-
-          <div className='flex items-center w-2/12 justify-evenly'>
-            {hasAccess && hasRefresh ? (
-              <Dropdown overlay={menu} trigger={['click']} className='overflow-hidden'>
-                <Button className='text-[#373737]'>Профиль</Button>
-              </Dropdown>
-            ) : (
-              <Link to='/login' className='overflow-hidden'>
-                <button className='bg-[#fff] text-[#373737] hover:bg-[#000] hover:text-[#fff] font-semibold py-2 px-4 rounded-[10px] shadow-md border border-[#47535F] transition duration-300 ease-in-out'>
-                  Войти
-                </button>
-              </Link>
-            )}
-
-            <Link to='/cart' className='text-[#333] hover:text-blue-300'>
-              <Badge count={cartItemsCount} showZero>
-                <AiOutlineShoppingCart size={24} />
-              </Badge>
-            </Link>
-            <div onClick={handleNav} className='cursor-pointer'>
-              {nav ? <AiOutlineClose size={24} color='#333' /> : <AiOutlineMenu size={24} color='#333' />}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={`bg-gray-600 transition duration-500 ease-in-out ${nav ? 'fixed top-0 left-0 w-full h-full z-50' : 'fixed left-[-100%]'
-          }`}
-      >
-        <div className='container mx-auto'>
-          <ul className='text-white capitalize'>
-            {navbar.map((item: NavItem) => (
-              <li key={item.id} className='p-4'>
-                <Link
-                  to={item.to}
-                  className='border-b border-[#999] hover:text-blue-300 transition-colors duration-300'
-                  onClick={() => setNav(false)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </>
-  );
+      );
 };
