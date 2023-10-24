@@ -24,7 +24,7 @@ export const UsefulArticlesOrganism = () => {
   }, []);
 
   return (
-    <div className="rounded-t-2xl bg-white" style={{ marginTop:'-15px' }}>
+    <div className="rounded-t-2xl bg-white pb-8" style={{ marginTop:'-15px' }}>
       <div className="w-11/12 max-w-screen-2xl m-auto">
         <TitleText color="text-[#47535F]">Полезные статьи</TitleText>
         {loading ? (

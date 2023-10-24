@@ -1,8 +1,8 @@
 import {ChangeEvent, FC, useState} from "react";
 import {Button, TitleText} from "../../atoms/";
-import nav from "../../../assets/images/contactIcons/.png";
-import phone from "../../../assets/images/contactIcons/phone.png";
-import mail from "../../../assets/images/contactIcons/mail.png";
+import nav from "../../../assets/images/contactIcons/point.svg";
+import phone from "../../../assets/images/contactIcons/phone.svg";
+import mail from "../../../assets/images/contactIcons/mail.svg";
 
 export const ContactUsMolecules: FC = () => {
   const [formData, setFormData] = useState({
@@ -27,11 +27,10 @@ export const ContactUsMolecules: FC = () => {
     <div className="contactUs-block mb-40 rounded w-11/12 max-w-screen-2xl m-auto">
       <TitleText color="text-[#47535F]">Свяжитесь с нами</TitleText>
       <div
-        className="contactUs-form-block px-28 py-28 flex flex-wrap justify-between"
-        style={{ background: "#F5F5F5" }}
+        className="contactUs-form-block gap-16 md:gap-28 py-16 md:py-28 flex flex-wrap md:flex-nowrap justify-evenly"
+        style={{ background: "#F5F5F5"}}
       >
-        <div className="contactUs-block-left w-1/2 pr-7" style={{ color: "#ECEBE9" }}>
-          <h2>Оставьте нам сообщение</h2>
+        <div className="contactUs-block-left w-11/12 md:w-2/5" style={{ color: "#ECEBE9"}}>
           <form onSubmit={handleSubmit} className="space-y-7 mt-4">
             <div className="flex space-x-4">
               <input
@@ -72,21 +71,21 @@ export const ContactUsMolecules: FC = () => {
             </div>
           </form>
         </div>
-        <div className="contactUs-block-right w-2/5  items-center justify-center px-10 pt-10 space-y-7">
-          <ul className="space-y-3 flex-column justify-center">
-            <li className="flex  space-x-3" style={{ margin: "10px 0" }}>
-              <img src={nav} alt="" style={{ width: "20px", height: "20px" }} />
-              <span>Information technologies building, Victoria Island, Lagos, Nigeria.</span>
-            </li>
-            <li className="flex  space-x-3" style={{ margin: "30px 0" }}>
-              <img src={phone} alt="" style={{ width: "20px", height: "20px" }} />
+        <div className="contactUs-block-right w-11/12 md:w-2/6  items-center justify-center pt-10 space-y-7">
+          <div className="flex flex-col gap-8">
+            <div className="flex items-start gap-4">
+              <img src={nav} alt="" className="shrink-0"/>
+              <h5>Information technologies building, Victoria Island, Lagos, Nigeria.</h5>
+            </div>
+            <div className="flex align-center gap-4">
+              <img src={phone} alt="" className="h-full"/>
               <span>+234 081-1236-4568</span>
-            </li>
-            <li className="flex  space-x-3" style={{ margin: "30px 0 10px" }}>
-              <img src={mail} alt="" style={{ width: "20px", height: "20px" }} />
+            </div>
+            <div className="flex text-center gap-4">
+              <img src={mail} alt="" className="w-fit"/>
               <span>hello@info.com.ng</span>
-            </li>
-          </ul>
+            </div>
+          </div>
           <div className="w-auto" style={{ height: "200px" }}>
             <iframe
               title="Google Map"
