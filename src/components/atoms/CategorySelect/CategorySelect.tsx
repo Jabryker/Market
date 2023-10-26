@@ -41,9 +41,9 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
 
   return (
     <div
-      className={`${
+      className={` mb-10 ${
         isScrolled
-          ? "fixed top-50 flex justify-center items-center z-50"
+          ? "fixed top-24 flex justify-center items-center z-50"
           : "flex justify-center items-center"
       } w-full`}
     >

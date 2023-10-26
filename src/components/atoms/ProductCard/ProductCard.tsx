@@ -16,13 +16,13 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
     }
   };
 
-  const discountPercentage = 30;
+  const discountPercentage = product.discounts[0]?.discount || 0;;
 
   return (
-    <div className='pt-4 pb-4 rounded-lg  w-[293px] h-[485px] overflow-y-hidden bg-white'>
+    <div className='pt-4 pb-4 rounded-lg w-full h-[485px] overflow-y-hidden bg-white' style={{border:'1px solid gray'}}>
       <div className=' flex flex-col justify-between h-full'>
         <div>
-          <div className='flex justify-between items-center' style={{}}>
+          <div className='flex justify-between items-center'>
             <div className='flex items-center'>
               {discountPercentage > 0 && (
                 <span
@@ -53,7 +53,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
               className='w-[159px] h-[149px] mb-2 mx-auto block'
             />
           </Link>
-          <h6 style={{ color: '#0C0C0C', fontSize: '20px', fontFamily: 'Inter', fontWeight: '500', margin: '100px 8px 0' }}>
+          <h6 style={{ color: '#0C0C0C', fontSize: '20px', fontFamily: 'Inter', fontWeight: '500', margin: '50px 8px 0' }}>
             {product?.name}
           </h6>
           <p style={{ margin: '0 8px', color: '#FE9C08', fontSize: '18px', fontWeight: '600', marginBottom: '10px' }}>

@@ -36,11 +36,17 @@ interface Specification {
   value: string;
 }
 
-interface Review {}
+interface Review { }
 
-interface Discount {}
+interface Discount {
+  id: number;
+  discount: number;
+  discounted_price: number;
+  start_date: string;
+  end_date: string;
+}
 
-interface Payment {}
+interface Payment { }
 
 interface ProductDetailsMoleculesProps {
   product: IProduct | null;
@@ -77,6 +83,8 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
     console.log("handleBuyNow");
   };
 
+  const discountedPrice = product.price - (product.price * (product.discounts[0]?.discount / 100 || 0));
+
   return (
     <Row gutter={16} className="mx-auto mb-8">
       <Col span={6}>
@@ -87,9 +95,8 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
                 key={index}
                 alt={product.name}
                 src={image.image}
-                className={`w-32 h-32 object-contain cursor-pointer ${
-                  index === selectedImageIndex ? "border-2 border-gray-500" : ""
-                }`}
+                className={`w-32 h-32 object-contain cursor-pointer ${index === selectedImageIndex ? "border-2 border-gray-500" : ""
+                  }`}
                 onClick={() => setSelectedImageIndex(index)}
               />
             ))}
@@ -111,10 +118,12 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
           <div className="flex flex-col">
             <Title level={4}>{product.name}</Title>
             <div className="flex items-center mb-4">
-              <Text strong>⃀{product.price}</Text>
-              <Text type="secondary" className="ml-2">
-                <del>⃀{product.price + 200}</del>
-              </Text>
+              <Text strong>${discountedPrice.toFixed(2)}</Text>
+              {product.discounts[0]?.discount && (
+                <Text type="secondary" className="ml-2">
+                  <del>${product.price.toFixed(2)}</del>
+                </Text>
+              )}
             </div>
             <Text>{product.description}</Text>
             <div className="flex items-center mt-2 mb-4">
@@ -124,7 +133,7 @@ export const ProductDetailsMolecules: FC<ProductDetailsMoleculesProps> = ({ prod
                 onChange={(value) => setQuantity(value as number)}
                 className="mr-2"
               />
-              <Button type="text" onClick={handleBuyNow}>
+              <Button style={{ padding: '0' }} type="text" onClick={handleBuyNow}>
                 Купить
               </Button>
               {/* <Button icon={<ShoppingCartOutlined />} onClick={handleAddToCart} className="ml-2">
