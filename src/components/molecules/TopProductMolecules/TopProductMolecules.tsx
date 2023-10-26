@@ -7,15 +7,15 @@ interface DiscountProductsOrganismProps {
     products: Product[];
 }
 
-export const DiscountProductsMolecules: FC<DiscountProductsOrganismProps> = ({ products }) => {
+export const TopProductMolecules: FC<DiscountProductsOrganismProps> = ({ products }) => {
 
-  const discountedProducts = products.filter((product) => product.discounts && product.discounts.length > 0);
+  // const discountedProducts = products.filter((product) => product.discounts && product.discounts.length > 0);
   
   return (
     <div className="flex justify-center items-center py-2">
       <div className="w-[80vw]">
         <Row gutter={[16, 16]}>
-          {discountedProducts?.map((product) => (
+          {products?.map((product) => (
             <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
               <ProductCard
                 product={product}

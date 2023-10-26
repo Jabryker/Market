@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductController from "../../../controllers/ProductController";
 import {SkeletonCard, TitleText, displayErrorToast, ViewAllButton} from "../../atoms";
 import { Product } from "../../atoms/ProductCard/ProductCard.interface";
-import { DiscountProductsMolecules } from "../../molecules/";
+import { TopProductMolecules } from "../../molecules/TopProductMolecules/TopProductMolecules";
 
 export const FeaturedProductsOrganism = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -32,7 +32,7 @@ export const FeaturedProductsOrganism = () => {
       ) : products.length === 0 ? (
         <SkeletonCard quantity={4} /> // Display SkeletonCard when no products available
       ) : (
-        <DiscountProductsMolecules products={products} />
+        <TopProductMolecules products={products} />
       )}
       <ViewAllButton to="/product" color="white" />
     </div>

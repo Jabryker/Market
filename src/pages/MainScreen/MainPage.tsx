@@ -13,7 +13,7 @@ import { HorecaArtAtom } from "../../components/atoms"
 
 export const MainPage: FC = () => {
   return (
-    <div className="my-10">
+    <div className="mb-10">
       <CategorySelectOrganism />
       <SearchWithBannerOrgamism />
       <DiscountProductsOrganisms />
