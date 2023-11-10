@@ -73,7 +73,7 @@ export const CountryFilterAtom: FC<CountryFilterProps> = ({ value, onChange }) =
 
 export const PriceRangeAtom: FC<PriceRangeProps> = ({ value, onChange }) => {
   return (
-    <>
+    <div>
       <div className="flex justify-between">
         <Input
           type="number"
@@ -82,7 +82,7 @@ export const PriceRangeAtom: FC<PriceRangeProps> = ({ value, onChange }) => {
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             onChange([Number(e.target.value), value[1]])
           }
-          className="w-[20%]" 
+          className="w-3/12 xl:w-1/5 2xl:w-1/6 px-0 lg:px-1 2xl:px-2" 
         />
         <Input
           type="number"
@@ -91,16 +91,16 @@ export const PriceRangeAtom: FC<PriceRangeProps> = ({ value, onChange }) => {
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             onChange([value[0], Number(e.target.value)])
           }
-          className="w-[20%]" 
+          className="w-3/12 xl:w-1/5 2xl:w-1/6 px-0 lg:px-1 2xl:px-2"
         />
       </div>
       <Slider
         range
         min={0}
-        max={100}
+        max={200}
         value={value}
         onChange={(value: [number, number]) => onChange(value)}
       />
-    </>
+    </div>
   );
 };

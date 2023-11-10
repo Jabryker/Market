@@ -6,11 +6,13 @@ import {
   NameFilterAtom,
   PriceRangeAtom,
 } from "../../components/atoms/FilterItem/FilterItem";
-import { DiscountProductsMolecules } from "../../components/molecules";
+// import { DiscountProductsMolecules } from "../../components/molecules";
 import { IProduct } from "../../controllers/interfaces/Product.interface";
 import {ICategory} from "../../components/atoms/CategorySelect/CategorySelect.interface";
 import HeaderController from "../../controllers/HeaderController";
 import {BacketItem} from "../../components/atoms";
+
+const baseApiUrl = process.env.REACT_APP_API_URL;
 
 export const ProductPageTemplate: FC = () => {
   const [nameFilter, setNameFilter] = useState<string>("");
@@ -19,8 +21,9 @@ export const ProductPageTemplate: FC = () => {
   const [countryFilter, setCountryFilter] = useState<string>("");
   const [categoryFilter, setCategoryFilter] = useState<string>(""); // New filter
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 100]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
   const [categories, setCategories] = useState<ICategory[]>([]);
+  
 
   const fetchFilteredProducts = async () => {
     try {
@@ -28,7 +31,7 @@ export const ProductPageTemplate: FC = () => {
       const selectedCategory = categories.find((category) => category.id.toString() === categoryFilter);
 
       const response = await fetch(
-        `http://127.0.0.1:8000/api/v1/stores/products/?search=${encodeURIComponent(
+        `${baseApiUrl}/api/v1/stores/products/?search=${encodeURIComponent(
           nameFilter,
         )}&category=${encodeURIComponent(
           selectedCategory ? selectedCategory.name : "", // Используйте имя выбранной категории или пустую строку, если категория не выбрана
@@ -50,6 +53,8 @@ export const ProductPageTemplate: FC = () => {
       const data = await response.json();
       // Обновите этот код в соответствии с ожидаемой структурой данных
       const filteredProducts = data.results;
+      console.log(filteredProducts);
+      
       setFilteredProducts(filteredProducts);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -66,6 +71,7 @@ export const ProductPageTemplate: FC = () => {
       console.error("Error fetching categories data:", error);
     }
   };
+  
 
   useEffect(() => {
     // Вызывайте функцию fetchCategoriesData при монтировании компонента
@@ -81,7 +87,7 @@ export const ProductPageTemplate: FC = () => {
   const handleFilterButtonClick = () => {
     // Trigger data fetching when the button is clicked
     fetchFilteredProducts();
-  };
+  };  
 
   return (
     <div className="flex">
@@ -118,7 +124,7 @@ export const ProductPageTemplate: FC = () => {
           </button>
         </div>
       </div>
-      <div className="w-3/4 p-4">
+      <div className="w-3/4 p-4" style={{border:'1px solid red'}}>
         <BacketItem products={filteredProducts} />
       </div>
     </div>

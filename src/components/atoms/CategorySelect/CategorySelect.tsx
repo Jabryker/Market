@@ -6,7 +6,6 @@ import { ICategory, ICategorySelectProps } from "./CategorySelect.interface";
 
 export const CategorySelect: FC<ICategorySelectProps> = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -21,32 +20,8 @@ export const CategorySelect: FC<ICategorySelectProps> = () => {
     fetchCategories();
   }, []);
 
-  const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
-
-  useEffect(() => {
-    // Добавляем слушателя события скролла при монтировании компонента
-    window.addEventListener("scroll", handleScroll);
-
-    // Удаляем слушателя события скролла при размонтировании компонента
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <div
-      className={` mb-10 ${
-        isScrolled
-          ? "fixed top-24 flex justify-center items-center z-50"
-          : "flex justify-center items-center"
-      } w-full`}
-    >
+    <div>
       <div>
         {categories.map((category) => (
           <Select key={category.id} value={category.name} size="large" className="mx-1">
