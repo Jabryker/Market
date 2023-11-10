@@ -7,9 +7,9 @@ interface BacketItemProps {
 
 export const BacketItem: FC<BacketItemProps> = ({ products }) => {
     return (
-        <div className="grid grid-cols-1 gap-4 border-b border-gray-300">
+        <div className="grid grid-cols-1 gap-4 border-b border-gray-300" style={{border:'1px solid red'}}>
             {products.map((product) => (
-                <div className="flex items-center p-4" key={product.id}>
+                <div className="flex justify-evenly items-center p-4 " key={product.id}>
                     <div className="w-1/6">
                         <img
                             src={product.images[0]?.image} // Assuming the image is in the first element of the images array
@@ -17,11 +17,11 @@ export const BacketItem: FC<BacketItemProps> = ({ products }) => {
                             className="w-[200px] h-[100px] rounded-lg"
                         />
                     </div>
-                    <div className="w-3/4 ml-4">
+                    <div className="w-3/5" style={{border:'1px solid red'}}>
                         <h3 className="text-xl font-semibold">{product.name}</h3>
                         <p className="text-gray-600">{product.description}</p>
                     </div>
-                    <div>
+                    <div className="w-1/6">
                         <p className="text-gray-600 mb-2">Цена: <span className="text-[#DB4444]">₽{product.price}</span></p>
                         <button
                             className="px-2 py-1 border border-gray-300 rounded-l-lg bg-white text-[#EC9A1E]"

@@ -18,7 +18,7 @@ export const SearchWithBannerMolecules: FC = () => {
                 <h1 className="text-xl md:text-4xl lg:text-6xl font-medium md:font-bold mb-0 md:mb-6 overflow-hidden whitespace-nowrap">
                     Начните свой <br /> БИЗНЕС<br />с HorecaArt
                 </h1>
-                <p className="ms:text-base md:text-xl lg:text-2xl xl:text-3xl text-[#ec9a1e] mb-0 md:mb-6 lg:mb-8 whitespace-nowrap">
+                <p className="ms:text-base md:text-xl lg:text-2xl xl:text-3xl text-[#ec9a1e] mb-0 md:mb-6 lg:mb-8 whitespace-nowrap py-2">
                     Все быстро и качественно <br /> от прямых поставщиков
                 </p>
                 <div className="w-9/12 md:w-4/5 2xl:w-3/5 mt-0 sm:mt-2 md:mt-6">
